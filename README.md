@@ -1,7 +1,9 @@
-# Portfolio style preview
+# Reference style study
 
-This is a buildless HTML/CSS/JavaScript style preview inspired by the presentation style of https://www.zionemond.dev/. Open `dist/index.html` directly or serve `dist/` with a static HTTP server.
+Private, static reproduction of the visual direction at [zionemond.dev](https://www.zionemond.dev/) for Naeem to review before building his own portfolio. The supplied Naeem master profile has not been incorporated.
 
-The hero, animated background, typing tagline, profile card, latest feed, section reveals, and responsive layout are in place. The text and cards are clearly marked as preview content. The supplied master profile is reserved for the next stage.
+The study includes the homepage, Blog pages 1–3, Portfolio, About, tag pages, and article routes. It recreates the floating glass navigation, Space Grotesk typography, olive canvas background, typing tagline, profile presentation, dated post list, and project grid. Search, navigation, pagination, model selection, and tagline refresh work locally.
 
-To build the actual portfolio later: use the supplied master profile to replace preview content; add verified project screenshots and links; refine the style from the owner's feedback; update document metadata; then verify and publish the final result.
+The public reference's portrait, koi artwork, project thumbnails, and font are used in this private visual study. Replace them and the Zion-specific text when building Naeem's portfolio. Article bodies and some summaries are abbreviated; the tagline interaction uses local sample lines rather than a live AI service.
+
+Run `python3 build_routes.py` after changing route definitions, then serve `dist/` with a static HTTP server for local preview.

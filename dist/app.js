@@ -1,51 +1,93 @@
-const taglines = [
-  "I build thoughtful digital experiences.",
-  "Curious by nature. Creative by design.",
-  "Turning ideas into things you can explore.",
-  "Making room for ideas to become real."
+const posts = [
+  {slug:"prepping-your-ecomm-site-for-agentic-apocalypse",title:"Prepping Your Ecommerce Site for the Agentic Apocalypse",date:"September 30, 2025",tags:["seo","guide"],excerpt:"A guide to preparing an online store for AI-assisted search and shopping.",image:null},
+  {slug:"shopify-metadata-migrator",title:"Shopify Metadata Migrator",date:"August 15, 2025",tags:["experience","projects"],excerpt:"A CLI tool for moving Shopify metafield and metaobject definitions between stores.",image:"shopify.png"},
+  {slug:"nanoHabits",title:"NanoHabits",date:"June 23, 2025",tags:["experience","projects"],excerpt:"An AI-assisted habit tracker for turning bigger goals into smaller actions.",image:"nanohabits.png"},
+  {slug:"nanoHabits-prototype",title:"NanoHabits Prototype",date:"June 22, 2025",tags:["experience","projects"],excerpt:"An early Discord bot prototype that tested the idea behind NanoHabits.",image:"time-machine.jpg"},
+  {slug:"devlog-6-2-25",title:"Website Devlog 6.2.25",date:"June 2, 2025",tags:["website","devlog"],excerpt:"A note on adding a generated tagline and typing effect to the homepage.",image:null},
+  {slug:"CQL",title:"CQL - Senior Software Engineer",date:"May 30, 2025",tags:["experience"],excerpt:"A look at building commerce applications with a collaborative engineering team.",image:"cql.png"},
+  {slug:"devlog-5-30-25",title:"Website Devlog 5.30.25",date:"May 30, 2025",tags:["website","devlog"],excerpt:"Progress on the homepage and portfolio layout.",image:null},
+  {slug:"kfb",title:"Kentucky Farm Bureau Internship",date:"May 30, 2025",tags:["experience"],excerpt:"An internship that introduced the rhythms of corporate software engineering.",image:"kfb.jpg"},
+  {slug:"merc",title:"MERC",date:"May 30, 2025",tags:["experience"],excerpt:"A WordPress website for a medical equipment consulting company.",image:"merc.png"},
+  {slug:"devlog-5-26-25",title:"Website Devlog 5.26.25",date:"May 26, 2025",tags:["website","devlog"],excerpt:"Early ideas for the site and its interactive homepage.",image:null},
+  {slug:"devlog-5-23-25",title:"Website Devlog 5.23.25",date:"May 23, 2025",tags:["website","devlog"],excerpt:"The beginning of the website development log.",image:null}
 ];
-
-const taglineElement = document.querySelector('#typed-tagline');
-const shuffleButton = document.querySelector('#shuffle-tagline');
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-let taglineIndex = 0;
-let typingTimer;
-
-function typeTagline(value) {
-  window.clearTimeout(typingTimer);
-  if (reducedMotion.matches) {
-    taglineElement.textContent = value;
-    return;
-  }
-  taglineElement.textContent = '';
-  let index = 0;
-  const step = () => {
-    taglineElement.textContent = value.slice(0, index + 1);
-    index += 1;
-    if (index < value.length) typingTimer = window.setTimeout(step, 31);
-  };
-  step();
+const projects = [
+  {title:"CQL",slug:"CQL",image:"cql.png",excerpt:"Commerce development work at an agency focused on scalable, secure online stores."},
+  {title:"Shopify Metadata Migrator",slug:"shopify-metadata-migrator",image:"shopify.png",excerpt:"A CLI for transferring Shopify metafield and metaobject definitions."},
+  {title:"Kentucky Farm Bureau Internship",slug:"kfb",image:"kfb.jpg",excerpt:"A six-week introduction to professional software engineering."},
+  {title:"MERC",slug:"merc",image:"merc.png",excerpt:"A WordPress site for a medical equipment consulting company."},
+  {title:"NanoHabits",slug:"nanoHabits",image:"nanohabits.png",excerpt:"A habit tracking app that helps people work toward bigger goals."},
+  {title:"NanoHabits Prototype",slug:"nanoHabits-prototype",image:"time-machine.jpg",excerpt:"A Discord bot used to test an early version of the idea."}
+];
+const tagCounts={experience:6,website:4,devlog:4,projects:3,seo:1,guide:1};
+const path=decodeURIComponent(location.pathname).replace(/\/+$/,"")||"/";
+const app=document.querySelector("#app");
+const icon={
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16.1 16.1 5 5"/></svg>',
+  mail:'<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2 5.9 10 10l8-4.1A2 2 0 0 0 16 4H4a2 2 0 0 0-2 1.9Z"/><path d="m18 8-8 4-8-4v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/></svg>',
+  github:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11 11 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg>',
+  linkedin:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.5v-5.6c0-1.3 0-3-1.9-3-1.8 0-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.2 2.4 4.2 5.5v6.3ZM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1Zm1.8 13.1H3.6V9h3.5v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7Z"/></svg>',
+  instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/></svg>'
+};
+function socialLinks(){return '<div class="social-links"><a aria-label="Email" href="mailto:zionemond.dev@gmail.com">'+icon.mail+'</a><a aria-label="GitHub" href="https://github.com/WarriorAchilles" target="_blank" rel="noopener noreferrer">'+icon.github+'</a><a aria-label="LinkedIn" href="https://www.linkedin.com/in/zion-emond-dev/" target="_blank" rel="noopener noreferrer">'+icon.linkedin+'</a><a aria-label="Instagram" href="https://www.instagram.com/zionemond.dev/" target="_blank" rel="noopener noreferrer">'+icon.instagram+'</a></div>'}
+function header(){return '<header class="site-header glass"><a class="brand" href="/" aria-label="Zion Emond home"><img src="/assets/reference-koi.png" alt=""><span>Zion Emond <span class="brand-role">| Software Engineer</span></span></a><nav class="nav-links" aria-label="Main navigation"><a href="/blog">Blog</a><a href="/portfolio">Portfolio</a><a href="/about">About</a></nav><button class="search-button" id="search-open" aria-label="Search">'+icon.search+'</button><button class="menu-button" id="menu-open" aria-label="Open menu" aria-expanded="false">☰</button></header>'}
+function footer(){return '<footer class="site-footer">'+socialLinks()+'<p>Zion Emond&nbsp; • &nbsp;© '+new Date().getFullYear()+'&nbsp; • &nbsp;Zion Emond | Senior Software Engineer</p><p class="theme-credit">Tailwind Nextjs Theme</p></footer>'}
+function tagLinks(tags){return '<span class="tag-list">'+tags.map(tag=>'<a href="/tags/'+tag+'">'+tag+'</a>').join('')+'</span>'}
+function postRow(post,home=false){return '<li class="post-row '+(home?'home-row':'')+'"><time>'+post.date+'</time><div class="post-main"><h3><a href="/blog/'+post.slug+'">'+post.title+'</a></h3>'+tagLinks(post.tags)+'<p>'+post.excerpt+'</p>'+(home?'<a class="text-link" href="/blog/'+post.slug+'">Read more →</a>':'')+'</div></li>'}
+function profileCard(){return '<div class="profile-card glass"><img class="portrait" src="/assets/reference-profile.png" alt="Portrait of Zion Emond"><h3>Zion Emond</h3><p>Senior Software Engineer</p><p>CQL LLC</p>'+socialLinks()+'</div>'}
+function home(){return '<canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas><main class="home-main"><section class="hero"><div class="hero-inner"><p class="hero-eyebrow"><span>Hi,</span> I’m</p><h1>Zion Emond</h1><p class="hero-tagline" aria-live="polite"><span id="typed-tagline">I wrangle AI agents into tools, sipping matcha in dark mode*</span><span class="typing-caret" aria-hidden="true"></span></p><div class="hero-actions"><a class="glass pill" href="/portfolio">My projects</a><button class="glass pill" id="tagline-button">Generate new tagline</button></div><label class="model-label" for="model-select">Select which AI generates my tagline:</label><select class="glass model-select" id="model-select"><option>ChatGPT</option><option>Claude</option><option>Gemini</option></select></div><p class="hero-disclaimer">*The tagline button and model picker demonstrate the reference interaction using sample lines. Click to generate another line and watch it type across the page. These lines are for the visual study and may or may not describe the person on the page.</p></section><section class="home-profile">'+profileCard()+'<p class="profile-summary">Senior Software Engineer with experience building scalable eCommerce applications in React, Next.js, Node.js, and TypeScript. Interested in AI-assisted workflows, backend services, and production systems.</p><img class="background-koi" src="/assets/reference-koi.png" alt="" aria-hidden="true"></section><section class="latest-section" id="latest"><h2>Latest</h2><p class="section-description">The portfolio and devlog of Zion Emond, a senior software engineer.</p><ul class="post-list">'+posts.slice(0,5).map(p=>postRow(p,true)).join('')+'</ul><a class="all-posts-link" href="/blog">All Posts →</a></section></main>'}
+function pageTitle(title,desc=''){return '<div class="page-heading"><h1>'+title+'</h1>'+(desc?'<p>'+desc+'</p>':'')+'</div>'}
+function blog(page=1,tag=null){const filtered=tag?posts.filter(p=>p.tags.includes(tag)):posts;const shown=tag?filtered:filtered.slice((page-1)*5,page*5);const title=tag?tag.charAt(0).toUpperCase()+tag.slice(1):'All Posts';return '<main class="inner-main blog-main">'+pageTitle(title)+'<div class="blog-layout"><aside class="tag-sidebar"><h2><a href="/blog">All Posts</a></h2><ul>'+Object.entries(tagCounts).map(([name,count])=>'<li><a class="'+(name===tag?'active':'')+'" href="/tags/'+name+'">'+name+' ('+count+')</a></li>').join('')+'</ul></aside><div class="blog-content"><ul class="blog-post-list">'+shown.map(p=>postRow(p)).join('')+'</ul>'+(tag?'':pagination(page))+'</div></div></main>'}
+function pagination(page){return '<nav class="pagination" aria-label="Blog pages">'+(page>1?'<a href="'+(page===2?'/blog':'/blog/page/'+(page-1))+'">Previous</a>':'<span class="disabled">Previous</span>')+'<span>'+page+' of 3</span>'+(page<3?'<a href="/blog/page/'+(page+1)+'">Next</a>':'<span class="disabled">Next</span>')+'</nav>'}
+function portfolio(){return '<main class="inner-main portfolio-main">'+pageTitle('Portfolio','A list of my personal projects, some contracted work, and fun little experiments.')+'<div class="project-grid">'+projects.map(p=>'<article class="project-card"><a href="/blog/'+p.slug+'"><img src="/assets/'+p.image+'" alt="'+p.title+'"></a><div><h2><a href="/blog/'+p.slug+'">'+p.title+'</a></h2><p>'+p.excerpt+'</p><a class="text-link" href="/blog/'+p.slug+'">Learn more →</a></div></article>').join('')+'</div></main>'}
+function about(){return '<main class="inner-main about-main">'+pageTitle('About')+'<div class="about-layout"><aside class="about-person"><img src="/assets/reference-profile.png" alt="Portrait of Zion Emond"><h3>Zion Emond</h3><p>Senior Software Engineer</p><p>CQL LLC</p>'+socialLinks()+'</aside><article class="about-prose"><p>Senior Software Engineer focused on scalable eCommerce applications, full-stack web development, and reliable production systems.</p><p>His work spans React, Next.js, Node.js, TypeScript, REST and GraphQL APIs, and cloud deployments on AWS and Azure.</p><p>Some examples of the work described on the reference site include:</p><ul><li>Improving frontend and backend performance during high-traffic launches.</li><li>Building a CLI tool that simplifies Shopify configuration transfers.</li><li>Developing billing services and APIs for customer support platforms.</li><li>Contributing to open-source projects.</li></ul><p>He enjoys learning, problem solving, music, travel, and collaborating with thoughtful teams.</p><p>For the complete original biography, visit <a href="https://www.zionemond.dev/about" target="_blank" rel="noopener noreferrer">the reference About page</a>.</p></article></div></main>'}
+function tagsPage(){return '<main class="inner-main tags-main">'+pageTitle('Tags')+'<div class="tags-cloud">'+Object.entries(tagCounts).map(([tag,count])=>'<a href="/tags/'+tag+'">'+tag+' <span>('+count+')</span></a>').join('')+'</div></main>'}
+function article(post){const index=posts.indexOf(post);const previous=posts[index+1],next=posts[index-1];return '<main class="inner-main article-main"><header class="article-heading"><time>Published on '+post.date+'</time><h1>'+post.title+'</h1></header><div class="article-layout"><aside class="article-side"><div class="author"><img src="/assets/reference-profile.png" alt=""><span>Zion Emond</span></div><div class="article-tags"><h2>Tags</h2>'+tagLinks(post.tags)+'</div><div class="article-pager">'+(previous?'<a href="/blog/'+previous.slug+'">← Previous Article<br><strong>'+previous.title+'</strong></a>':'')+(next?'<a href="/blog/'+next.slug+'">Next Article →<br><strong>'+next.title+'</strong></a>':'')+'</div></aside><article class="article-body">'+(post.image?'<img class="article-image" src="/assets/'+post.image+'" alt="'+post.title+'">':'')+'<p>'+post.excerpt+'</p><p>This page is included to preview the reference article layout and navigation. The full original article is available on the reference website.</p><p><a href="https://www.zionemond.dev/blog/'+post.slug+'" target="_blank" rel="noopener noreferrer">Read the original article →</a></p><div class="article-end">Discuss on Twitter&nbsp; • &nbsp;View on GitHub</div></article></div></main>'}
+function notFound(){return '<main class="inner-main not-found">'+pageTitle('Page not found')+'<p>That page is not part of this style study.</p><a class="text-link" href="/">Back to homepage →</a></main>'}
+function searchModal(){return '<div class="search-overlay" id="search-overlay" hidden><div class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-title"><div class="search-top"><h2 id="search-title">Search</h2><button id="search-close" aria-label="Close search">×</button></div><input id="search-input" type="search" placeholder="Search posts, projects, and pages..." autocomplete="off"><div id="search-results" class="search-results"></div></div></div>'}
+let content;if(path==='/')content=home();else if(path==='/about')content=about();else if(path==='/portfolio'||path==='/projects')content=portfolio();else if(path==='/blog')content=blog();else if(path==='/blog/page/2')content=blog(2);else if(path==='/blog/page/3')content=blog(3);else if(path==='/tags')content=tagsPage();else if(path.startsWith('/tags/'))content=tagCounts[path.split('/')[2]]?blog(1,path.split('/')[2]):notFound();else if(path.startsWith('/blog/')){const post=posts.find(p=>p.slug===path.split('/')[2]);content=post?article(post):notFound()}else content=notFound();
+app.innerHTML='<div class="site-wrap '+(path==='/'?'is-home':'is-inner')+'">'+header()+content+footer()+searchModal()+'</div>';
+document.title=path==='/'?'Zion Emond | Senior Software Engineer':(path==='/portfolio'?'Portfolio':path==='/about'?'About':path==='/blog'?'Blog':'Reference Style Study')+' | Zion Emond';
+const overlay=document.querySelector('#search-overlay'),input=document.querySelector('#search-input'),results=document.querySelector('#search-results');
+function renderSearch(){const query=input.value.trim().toLowerCase();const items=[{title:'Home',url:'/'},{title:'About',url:'/about'},{title:'Portfolio',url:'/portfolio'},{title:'All Posts',url:'/blog'},...posts.map(p=>({title:p.title,url:'/blog/'+p.slug}))];const found=query?items.filter(item=>item.title.toLowerCase().includes(query)):items.slice(0,7);results.innerHTML=found.length?found.map(item=>'<a href="'+item.url+'">'+item.title+' <span>↗</span></a>').join(''):'<p>No results found.</p>'}
+function openSearch(){overlay.hidden=false;document.body.classList.add('modal-open');input.value='';renderSearch();input.focus()}
+function closeSearch(){overlay.hidden=true;document.body.classList.remove('modal-open')}
+document.querySelector('#search-open').addEventListener('click',openSearch);
+document.querySelector('#search-close').addEventListener('click',closeSearch);
+overlay.addEventListener('click',event=>{if(event.target===overlay)closeSearch()});
+input.addEventListener('input',renderSearch);
+document.addEventListener('keydown',event=>{if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();overlay.hidden?openSearch():closeSearch()}if(event.key==='Escape')closeSearch()});
+document.querySelector('#menu-open').addEventListener('click',function(){const nav=document.querySelector('.nav-links');const opened=nav.classList.toggle('open');this.setAttribute('aria-expanded',String(opened))});
+if(path==='/'){
+  const lines={ChatGPT:["I wrangle AI agents into tools, sipping matcha in dark mode*","I build things for the web, one curious idea at a time*"],Claude:["I turn complex ideas into simple, useful experiences*","I enjoy making the details feel effortless*"],Gemini:["I connect ideas, code, and creativity*","I keep exploring what technology can make possible*"]};
+  const field=document.querySelector('#typed-tagline');const select=document.querySelector('#model-select');let positions={ChatGPT:0,Claude:0,Gemini:0};let timer;
+  function typeLine(value){clearTimeout(timer);if(matchMedia('(prefers-reduced-motion: reduce)').matches){field.textContent=value;return}field.textContent='';let i=0;const step=()=>{field.textContent=value.slice(0,++i);if(i<value.length)timer=setTimeout(step,37)};step()}
+  document.querySelector('#tagline-button').addEventListener('click',()=>{const model=select.value;positions[model]=(positions[model]+1)%lines[model].length;typeLine(lines[model][positions[model]])});
+  select.addEventListener('change',()=>typeLine(lines[select.value][positions[select.value]]));
+  drawAmbient(document.querySelector('#ambient-canvas'));
 }
-
-shuffleButton.addEventListener('click', () => {
-  taglineIndex = (taglineIndex + 1) % taglines.length;
-  typeTagline(taglines[taglineIndex]);
-});
-
-if (!reducedMotion.matches) typeTagline(taglines[0]);
-
-document.querySelector('#year').textContent = new Date().getFullYear();
-
-if ('IntersectionObserver' in window && !reducedMotion.matches) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
+function drawAmbient(canvas){
+  const ctx=canvas.getContext('2d',{alpha:false});if(!ctx)return;
+  const motion=matchMedia('(prefers-reduced-motion: reduce)');let w=0,h=0,dpr=1,mouseX=0,mouseY=0,frame=0;
+  const grain=document.createElement('canvas');grain.width=160;grain.height=160;
+  const grainContext=grain.getContext('2d');const grainPixels=grainContext.createImageData(160,160);
+  for(let i=0;i<grainPixels.data.length;i+=4){const value=Math.random();grainPixels.data[i]=108;grainPixels.data[i+1]=130;grainPixels.data[i+2]=46;grainPixels.data[i+3]=value>.46?Math.floor(value*53):0}
+  grainContext.putImageData(grainPixels,0,0);const grainPattern=ctx.createPattern(grain,'repeat');
+  const bands=[[-.25,.18,560,155,.35],[.18,.02,520,95,.43],[.40,-.08,600,80,.2],[.46,.35,550,170,.39],[.83,.16,440,74,.25],[-.12,.55,680,130,.28],[.10,.70,700,110,.47],[.58,.61,680,135,.43],[.75,.83,490,115,.31],[.03,1.05,650,120,.42]];
+  function resize(){dpr=Math.min(devicePixelRatio||1,1.5);w=innerWidth;h=innerHeight;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function render(){
+    frame++;ctx.fillStyle='#020302';ctx.fillRect(0,0,w,h);
+    const scale=Math.max(w/1600,h/900);
+    bands.forEach((band,i)=>{
+      const [x,y,length,width,opacity]=band;const drift=motion.matches?0:Math.sin(frame*.002+i*1.3)*18;
+      ctx.save();ctx.translate(x*w+mouseX*(i%3-1)*.012+drift,y*h+mouseY*(i%2?1:-1)*.01);ctx.rotate(.73);
+      const gradient=ctx.createLinearGradient(0,-width/2,0,width/2);
+      gradient.addColorStop(0,'rgba(21,36,3,0)');gradient.addColorStop(.18,'rgba(54,83,8,'+(opacity*.55)+')');gradient.addColorStop(.48,'rgba(92,126,24,'+opacity+')');gradient.addColorStop(.74,'rgba(57,87,11,'+(opacity*.68)+')');gradient.addColorStop(1,'rgba(18,31,2,0)');
+      ctx.fillStyle=gradient;ctx.shadowColor='rgba(50,83,7,.32)';ctx.shadowBlur=40*scale;ctx.fillRect(-length*.2*scale,-width*.5*scale,length*scale,width*scale);ctx.restore();
     });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach((section) => observer.observe(section));
-} else {
-  document.querySelectorAll('.reveal').forEach((section) => section.classList.add('is-visible'));
+    const shade=ctx.createRadialGradient(w*.48,h*.48,w*.15,w*.48,h*.48,w*.8);shade.addColorStop(0,'rgba(0,0,0,.02)');shade.addColorStop(1,'rgba(0,0,0,.82)');ctx.fillStyle=shade;ctx.fillRect(0,0,w,h);
+    ctx.globalAlpha=.28;ctx.fillStyle=grainPattern;ctx.fillRect(0,0,w,h);ctx.globalAlpha=1;
+    if(!motion.matches)requestAnimationFrame(render);
+  }
+  resize();addEventListener('resize',resize);addEventListener('pointermove',e=>{mouseX=e.clientX-w/2;mouseY=e.clientY-h/2},{passive:true});render();
 }
