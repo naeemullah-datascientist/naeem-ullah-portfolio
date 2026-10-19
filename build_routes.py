@@ -10,10 +10,14 @@ routes = [
     "portfolio",
     "projects",
     "publications",
+    "publications/beyond-the-naked-eye",
     "contact",
     "portfolio/xploiteye",
     "portfolio/voice-authenticity",
     "portfolio/cricket-vision",
+    "portfolio/legal-ai",
+    "portfolio/incident-escalation",
+    "portfolio/fulfillment-workflows",
 ]
 
 for route in routes:

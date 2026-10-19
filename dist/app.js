@@ -10,62 +10,118 @@ const links = {
 const projects = [
   {
     slug: 'xploiteye', title: 'XploitEye', year: '2026', type: 'AI security platform',
-    tags: ['Multi-agent systems', 'FastAPI', 'Security'], theme: 'security',
-    excerpt: 'A multi-agent platform for authorized security assessment, red and blue team workflows, and clearer vulnerability reporting.',
-    problem: 'Security assessments often involve separate tools, manual handoffs, and a large amount of work turning findings into useful reports. XploitEye explores how an AI-assisted workflow can bring these steps together for authorized testing.',
-    contribution: 'For my final year project, I built a full-stack platform that coordinates red and blue team workflows, runs approved assessment tools, provides retrieval-based guidance, and turns findings into reports that are easier to review.',
+    tags: ['Agentic AI', 'Cybersecurity', 'Full stack'], image: 'xploiteye-concept.png', role: 'AI systems & full-stack engineering',
+    excerpt: 'One security workspace linking network reconnaissance, controlled validation, remediation, web assessment, and a scan-aware AI advisor.',
+    problem: 'Security teams often move between disconnected scanners, exploit tools, vulnerability databases, and ticketing systems. The costly part is the handoff: carrying context from a detected service to a verified finding, a useful fix, and a report someone can act on.',
+    contribution: 'XploitEye unifies that cycle in a full-stack product. A Next.js interface connects to a FastAPI control plane, streams operation output, and keeps assessment records together. In the recorded walkthrough, the team demonstrates a network scan, controlled validation in a deliberately vulnerable lab, blue-agent remediation, web findings, and a retrieval-backed security advisor.',
     approach: [
-      'Connected specialized agent workflows to assessment tools including Nmap, OWASP ZAP, and SQLMap.',
-      'Built Python and FastAPI services with RabbitMQ for task coordination and ChromaDB for retrieval-based assistance.',
-      'Created a Next.js interface for running workflows and reviewing results.'
+      'The operator authenticates, defines an authorized target, and starts assessment from a unified dashboard. Explicit API routes and validation keep scans, agent runs, and chat separate.',
+      'Nmap fingerprints open services; detected versions are correlated with CVE and severity data. Findings are stored and streamed into the browser through WebSockets.',
+      'A LangGraph red-agent workflow branches on runtime results. The video demonstrates controlled exploit validation against a deliberately vulnerable lab machine, behind an additional authentication step.',
+      'A LangChain blue-agent workflow turns verified context into a remediation plan and a packaged handoff containing a plain-language report and hardening scripts.',
+      'Web assessment runs checks concurrently and distinguishes passive checks on real sites from active demonstrations on intentionally vulnerable applications.',
+      'A RAG security advisor retrieves CVE knowledge and the current session’s scan records, so answers refer to the actual environment instead of generic security advice.'
     ],
-    stack: ['Python', 'FastAPI', 'Next.js', 'ChromaDB', 'RabbitMQ', 'Docker', 'Nmap', 'OWASP ZAP', 'SQLMap'],
-    links: [{label: 'Watch the project demo ↗', href: 'https://youtu.be/9R0QUzMMXsA'}]
+    outcome: 'The recorded product walkthrough shows a connected path from discovery to validated risk, remediation delivery, and contextual answers. Its active security demonstration uses a controlled lab environment.',
+    stack: ['Python', 'FastAPI', 'Next.js', 'LangGraph', 'LangChain', 'MongoDB', 'Qdrant', 'MCP', 'WebSockets', 'Nmap'],
+    links: [{label: 'Watch the product walkthrough ↓', href: '#demo'}], demo: 'video'
   },
   {
     slug: 'voice-authenticity', title: 'AI-Generated Voice Detection', year: '2026', type: 'Audio AI research',
-    tags: ['PyTorch', 'Audio AI', 'FastAPI'], theme: 'voice',
-    excerpt: 'A research and engineering prototype for distinguishing human speech from synthetic audio, with an interactive demo and API inference.',
-    problem: 'Synthetic speech is increasingly convincing. A useful detector must do more than classify familiar samples: it should also be tested against speech from sources it has not seen before.',
-    contribution: 'I compared model approaches, fine-tuned a compact RawNetLite classifier, built audio visualizations, and exposed inference through an API and Gradio demo. I also investigated how performance changes across voice sources.',
+    tags: ['PyTorch', 'Speech AI', 'FastAPI'], image: 'voice-detection-concept.png', role: 'Model research & inference engineering',
+    excerpt: 'A voice-authenticity system that evaluates real and synthetic speech, visualizes the audio signal, and serves predictions through an interactive demo.',
+    problem: 'Synthetic speech can sound convincing, yet detectors often learn artifacts from one voice generator instead of general signs of manipulation. The engineering challenge is to build a usable classifier while testing how it behaves on speech sources outside its training distribution.',
+    contribution: 'I built an end-to-end evaluation and inference workflow: preparing audio, comparing model approaches, fine-tuning a compact RawNetLite classifier, and connecting inference to an API and a Gradio interface. The work also examined threshold selection, model size, and performance on unseen TTS sources.',
     approach: [
-      'Prepared speech data and explored mel spectrograms, CQT features, and model inputs.',
-      'Fine-tuned a compact classifier and evaluated held-out and unseen-source cases separately.',
-      'Built a usable inference flow with FastAPI, Gradio, and model export experiments.'
+      'Prepared speech from different real and synthetic sources and inspected waveform, mel-spectrogram, and CQT representations.',
+      'Compared candidate architectures, then fine-tuned a compact RawNetLite model for the classification task.',
+      'Separated held-out evaluation from tests on unseen generators to expose where a model does and does not generalize.',
+      'Built sliding-window inference, audio visualizations, a FastAPI endpoint, and a Gradio demo so a visitor can test a clip.'
     ],
+    outcome: 'The public demo makes the research tangible; the evaluation keeps its limitations visible instead of reducing performance to one headline score.',
     stack: ['Python', 'PyTorch', 'RawNetLite', 'Wav2Vec2', 'FastAPI', 'Gradio', 'ONNX'],
-    links: [{label: 'Open the interactive demo ↗', href: 'https://huggingface.co/spaces/naeemullah11111/deepfake-voice-qa-lite'}]
+    links: [{label: 'Try the interactive demo ↓', href: '#demo'}], demo: 'voice'
   },
   {
     slug: 'cricket-vision', title: 'Cricket Ball Tracking & Delivery Analysis', year: '2025', type: 'Computer vision research',
-    tags: ['Computer Vision', 'YOLOv5', 'IEEE research'], theme: 'cricket',
-    excerpt: 'A vision pipeline that follows a cricket ball through a delivery and helps analyze where it lands. The work led to an IEEE publication.',
-    problem: 'Delivery analysis is usually done by close visual inspection or specialist systems. This project investigates an automated way to detect a ball, maintain its trajectory, and classify delivery length.',
-    contribution: 'I worked on a computer vision pipeline using YOLOv5s for detection, Kalman filtering for tracking, homography to map image coordinates, and delivery-length analysis.',
+    tags: ['Computer Vision', 'YOLOv5', 'IEEE research'], image: 'cricket-vision-concept.png', role: 'Computer vision research & engineering',
+    excerpt: 'A single-camera vision pipeline that tracks a cricket ball, maps its path onto the pitch, and analyzes delivery length.',
+    problem: 'Professional ball-tracking systems rely on expensive synchronized cameras and specialist hardware. Coaches and smaller clubs need a more accessible way to turn ordinary video into useful, objective delivery analysis.',
+    contribution: 'The research combines ball detection, temporal tracking, perspective mapping, and delivery classification in a single-camera pipeline. The work was published at IEEE FIT 2025 as “Beyond the Naked Eye: Automated Delivery Analysis in Cricket with Computer Vision.”',
     approach: [
-      'Detected the ball across video frames with a YOLOv5s-based model.',
-      'Used Kalman filtering to maintain a useful track when detections were inconsistent.',
-      'Mapped coordinates with homography and analyzed the delivery location.'
+      'OpenCV extracts frames from a fixed-camera video; YOLOv5s identifies likely ball positions.',
+      'A Kalman filter predicts and updates the trajectory through blur or short detection gaps.',
+      'Homography maps image coordinates to a top-down pitch plane after camera calibration.',
+      'The mapped landing position supports delivery-length classification and a reviewable visual result.'
     ],
-    stack: ['Python', 'YOLOv5s', 'Kalman filtering', 'Homography', 'Computer Vision'],
+    outcome: 'The paper reports approximately 50 frames per second and 8.2 cm mean pitch-distance error in its evaluation. It also explains that homography calibration limits precision when camera geometry changes.',
+    stack: ['Python', 'OpenCV', 'YOLOv5s', 'Kalman filtering', 'Homography'],
     links: [
-      {label: 'Read the IEEE paper ↗', href: links.paper},
-      {label: 'View the code ↗', href: 'https://github.com/naeemullah-datascientist/cricket-ball-tracking-system'}
-    ]
+      {label: 'Read the paper here →', href: '/publications/beyond-the-naked-eye'},
+      {label: 'View the code ↗', href: 'https://github.com/naeemullah-datascientist/cricket-ball-tracking-system', external: true}
+    ],
+    note: 'The paper is co-authored research. The code link opens the public repository.'
+  },
+  {
+    slug: 'legal-ai', title: 'Legal AI & Document Retrieval', year: 'Professional work', type: 'Internal AI system',
+    tags: ['RAG', 'Document AI', 'Python'], image: 'legal-ai-concept.png', role: 'AI & backend engineering',
+    excerpt: 'A knowledge-grounded assistant that helps turn legal documents into more useful search and question-answering workflows.',
+    problem: 'Legal teams work across dense documents where the relevant answer may be spread over multiple files. Plain keyword search can miss the context needed to interpret a passage responsibly.',
+    contribution: 'Worked on legal-domain retrieval and question-answering capabilities, connecting document processing, knowledge relationships, and grounded responses through Python backend services.',
+    approach: [
+      'Prepared source documents for extraction and retrieval while keeping source context available.',
+      'Explored RAG and graph-oriented retrieval to connect related passages and concepts.',
+      'Designed assistant workflows that return useful context alongside an answer rather than an unsupported response.'
+    ],
+    outcome: 'The work demonstrates a practical pattern for domain-specific AI: retrieve trustworthy context first, then use it to support a more useful answer.',
+    stack: ['Python', 'RAG', 'GraphRAG', 'LLMs', 'Document processing', 'APIs'],
+    note: 'Internal work. The visual is conceptual and project details are generalized; no client material or private code is shown.', links: []
+  },
+  {
+    slug: 'incident-escalation', title: 'Incident Triage & Escalation', year: 'Client engagement', type: 'Client system',
+    tags: ['AI workflows', 'Backend APIs', 'Automation'], image: 'incident-escalation-concept.png', role: 'AI workflow & backend engineering',
+    excerpt: 'An incident-management workflow that classifies incoming reports, tracks acknowledgement, and escalates unresolved cases.',
+    problem: 'Urgent reports need a dependable path from intake to the right person. Manual triage and follow-up can leave a case waiting without a clear status or ownership.',
+    contribution: 'Built a prototype that structures incoming reports, creates case references, routes incidents by severity, records acknowledgement, and escalates unresolved items according to time and level.',
+    approach: [
+      'Turned incoming messages into structured incidents with severity and an auditable reference.',
+      'Connected notification and acknowledgement steps to an operator-facing workflow.',
+      'Applied timed escalation rules when an incident remained unresolved.',
+      'Maintained a dashboard and activity history so the case status stayed visible.'
+    ],
+    outcome: 'The flow makes responsibility and progress easier to follow from first report through escalation.',
+    stack: ['Python', 'Backend APIs', 'LLM integrations', 'Webhooks', 'Automation'],
+    note: 'Client engagement. Details are intentionally generalized; no client name, messages, operational data, or internal code are shown.', links: []
+  },
+  {
+    slug: 'fulfillment-workflows', title: 'AI-Assisted Fulfillment Workflows', year: 'Client engagement', type: 'Client product',
+    tags: ['Workflow design', 'API integration', 'AI assistance'], image: 'fulfillment-concept.png', role: 'Full-stack product engineering',
+    excerpt: 'A product workflow connecting purchase-order review, shipments, tracking, activity history, and conversational changes.',
+    problem: 'Fulfillment work often crosses order details, shipment state, contacts, and change history. When these are separate, operators spend time rebuilding context before they can act.',
+    contribution: 'Worked on multi-step fulfillment flows spanning purchase orders, shipment review, tracking, contact information, activity logging, and conversational editing of confirmed product details.',
+    approach: [
+      'Connected order and shipment views to backend data and status transitions.',
+      'Handled multi-select actions and review steps while preserving the state of each order.',
+      'Integrated change history and contact details into the workflow.',
+      'Explored conversational editing as a controlled way to update already-confirmed products.'
+    ],
+    outcome: 'The work brings complex operational actions into a more coherent product experience.',
+    stack: ['Frontend state', 'API integration', 'Backend persistence', 'Workflow testing', 'AI assistance'],
+    note: 'Client product. The case study describes my work at a high level and uses conceptual art; no proprietary interface or customer data are included.', links: []
   }
 ];
 
 const questions = [
-  {q: 'What does Naeem build?', a: 'I build AI applications, Python backends, APIs, and automation. My recent public work includes a multi-agent security platform, synthetic voice detection, and computer vision research.'},
-  {q: 'Why hire Naeem?', a: 'I bring together hands-on AI engineering, backend development, and research. I can take a problem from experimentation to a working interface and API, then explain the tradeoffs clearly.'},
-  {q: 'What is his current role?', a: 'I am an Associate AI Engineer at AB Ark Private Limited in Lahore, where I work on practical AI and backend engineering.'},
-  {q: 'Which AI tools does he use?', a: 'My work includes LLM applications, RAG, agent workflows, PyTorch, computer vision, speech models, and Python services built with FastAPI.'},
-  {q: 'Can he build backends?', a: 'Yes. I work with Python, FastAPI, REST APIs, data processing, Docker, and integrations that connect AI systems to usable products.'},
-  {q: 'What is XploitEye?', a: 'XploitEye is my final year project: a full-stack, multi-agent platform for authorized vulnerability assessment and red and blue team workflows. A video demo is linked from its project page.'},
-  {q: 'Has he published research?', a: 'Yes. My cricket delivery analysis research was published at IEEE FIT 2025. You can find the title, DOI, and paper link on the Publications page.'},
-  {q: 'Does he work with voice AI?', a: 'Yes. I built an AI-generated voice detection prototype, including model evaluation, visualizations, an inference API, and an interactive demo.'},
-  {q: 'What is his education?', a: 'I completed a BS in Data Science at the University of the Punjab, PUCIT/FCIT, in 2026.'},
-  {q: 'How can I contact him?', a: 'Email me at naeem.ullah@gmail.com or connect through LinkedIn. Both links are on the Contact Me page.'}
+  {group: 'client', q: 'What can Naeem build for my team?', a: 'AI products, Python APIs, retrieval systems, document workflows, and automation that connect models to actual user needs. The portfolio shows security, voice, vision, and client-facing workflow examples.', href: '/portfolio', cta: 'Explore the work →'},
+  {group: 'client', q: 'Why work with Naeem?', a: 'He combines model experimentation with the backend and interface work needed to make an idea usable. That range helps a team move from an uncertain AI concept to a defined workflow and working product.', href: '/about', cta: 'See his approach →'},
+  {group: 'client', q: 'Has he worked on client products?', a: 'Yes. His experience includes client-facing fulfillment and incident-escalation workflows, alongside internal document and retrieval systems. Those case studies keep private code and customer data out of view.', href: '/portfolio/fulfillment-workflows', cta: 'View a client case study →'},
+  {group: 'client', q: 'Can he integrate AI with existing software?', a: 'His work connects LLM and model capabilities to FastAPI services, backend data, web interfaces, and automation. The key is defining where AI adds value and keeping the surrounding workflow dependable.', href: '/portfolio/legal-ai', cta: 'See an integration example →'},
+  {group: 'client', q: 'How can we discuss a project?', a: 'Send the problem, the current workflow, and the result you need to naeem.ullah@gmail.com. LinkedIn is also available on the contact page.', href: '/contact', cta: 'Contact Naeem →'},
+  {group: 'recruiter', q: 'What is Naeem’s professional focus?', a: 'AI engineering with a strong Python backend foundation. His portfolio spans agentic systems, RAG, document intelligence, computer vision, audio AI, and full-stack product delivery.', href: '/about', cta: 'Read the profile →'},
+  {group: 'recruiter', q: 'What is his current work?', a: 'He works on AI applications and Python backend services at AB Ark Private Limited, with experience across internal products, client engagements, and independent freelance work.', href: '/about', cta: 'Read more →'},
+  {group: 'recruiter', q: 'What is his technical stack?', a: 'Python, FastAPI, PyTorch, RAG and agent orchestration, REST APIs, Next.js, Docker, and model integration. Project pages show which tools were used in each context.', href: '/portfolio', cta: 'See projects →'},
+  {group: 'recruiter', q: 'Has he published research?', a: 'Yes. Naeem co-authored an IEEE FIT 2025 paper on single-camera cricket delivery analysis. The full PDF can be read in this portfolio.', href: '/publications/beyond-the-naked-eye', cta: 'Read the paper →'},
+  {group: 'recruiter', q: 'Where is the strongest proof of work?', a: 'Start with XploitEye for agentic AI and full-stack security workflows, voice detection for model evaluation and inference, and the IEEE cricket work for computer vision research.', href: '/portfolio', cta: 'Browse selected work →'}
 ];
 
 const path = decodeURIComponent(location.pathname).replace(/\/+$/, '') || '/';
@@ -80,7 +136,7 @@ const icons = {
 };
 
 function avatar(className = '') {
-  return `<span class="avatar ${className}" role="img" aria-label="Naeem Ullah portrait placeholder"><span>NU</span></span>`;
+  return `<img class="avatar ${className}" src="/assets/naeem-portrait.png" alt="Naeem Ullah" width="192" height="192">`;
 }
 function socials(extra = '') {
   return `<div class="social-links ${extra}"><a href="${links.email}" class="social-icon" aria-label="Email Naeem">${icons.mail}</a><a href="${links.github}" class="social-icon" aria-label="Naeem on GitHub" target="_blank" rel="noopener noreferrer">${icons.github}</a><a href="${links.linkedin}" class="social-icon" aria-label="Naeem on LinkedIn" target="_blank" rel="noopener noreferrer">${icons.linkedin}</a><a href="/publications" class="social-icon" aria-label="Publications">${icons.paper}</a></div>`;
@@ -89,45 +145,56 @@ function header() {
   return `<header class="site-header glass"><a class="brand" href="/" aria-label="Naeem Ullah home">${avatar('nav-avatar')}<span>Naeem Ullah <span class="brand-role">| AI Engineer</span></span></a><nav class="nav-links" id="main-nav" aria-label="Main navigation"><a href="/portfolio">Portfolio</a><a href="/about">About</a><a href="/publications">Publications</a><a class="nav-contact" href="/contact">Contact Me</a></nav><button class="menu-button" id="menu-open" aria-label="Open menu" aria-controls="main-nav" aria-expanded="false">☰</button></header>`;
 }
 function footer() {
-  return `<footer class="site-footer">${socials()}<p>Naeem Ullah&nbsp; • &nbsp;© ${new Date().getFullYear()}&nbsp; • &nbsp;Associate AI Engineer</p></footer>`;
+  return `<footer class="site-footer">${socials()}<p>Naeem Ullah&nbsp; • &nbsp;© ${new Date().getFullYear()}&nbsp; • &nbsp;AI Engineer & Python Backend Developer</p></footer>`;
 }
 function qaPanel() {
-  return `<div class="qa-wrap"><button id="qa-toggle" class="qa-toggle glass" aria-label="Open quick answers about Naeem" aria-controls="qa-panel" aria-expanded="false">${icons.chat}<span>Ask about Naeem</span></button><section id="qa-panel" class="qa-panel glass" aria-label="Quick answers about Naeem" hidden><div class="qa-heading"><div><span class="eyebrow">QUICK ANSWERS</span><h2>Get to know Naeem</h2></div><button id="qa-close" aria-label="Close quick answers">×</button></div><p class="qa-intro">Choose a question. These are curated answers from my portfolio.</p><div class="qa-questions">${questions.map((item, index) => `<button type="button" class="qa-question" data-question="${index}">${item.q}<span aria-hidden="true">↗</span></button>`).join('')}</div><div class="qa-answer" hidden aria-live="polite"><button class="qa-back" type="button">← All questions</button><h3></h3><p></p></div></section></div>`;
+  return `<div class="qa-wrap"><button id="qa-toggle" class="qa-toggle glass" aria-label="Open quick answers about Naeem" aria-controls="qa-panel" aria-expanded="false">${icons.chat}<span>Ask about Naeem</span></button><section id="qa-panel" class="qa-panel glass" aria-label="Quick answers about Naeem" hidden><div class="qa-heading"><div><span class="eyebrow">A SHORT CONVERSATION</span><h2>Ask about the work.</h2></div><button id="qa-close" aria-label="Close quick answers">×</button></div><p class="qa-intro">Useful answers for the people I work with.</p><div class="qa-audience" role="group" aria-label="Choose an audience"><button type="button" aria-pressed="true" data-group="client">For clients</button><button type="button" aria-pressed="false" data-group="recruiter">For recruiters</button></div><div class="qa-questions">${questions.map((item, index) => `<button type="button" class="qa-question" data-question="${index}" data-group="${item.group}" ${item.group === 'client' ? '' : 'hidden'}>${item.q}<span aria-hidden="true">↗</span></button>`).join('')}</div><div class="qa-answer" hidden aria-live="polite"><button class="qa-back" type="button">← All questions</button><div class="qa-answer-bubble"><span class="eyebrow">NAEEM’S ANSWER</span><h3></h3><p></p><a class="qa-action text-link" href="#"></a></div></div></section></div>`;
 }
 function projectVisual(project, detail = false) {
-  return `<div class="project-visual ${project.theme} ${detail ? 'visual-large' : ''}" aria-hidden="true"><div class="visual-grid"></div>${project.theme === 'security' ? '<div class="visual-shield">◇</div><div class="visual-top">XPLOITEYE <span>SECURITY SYSTEMS</span></div><div class="visual-nodes"><span>RED TEAM</span><i>↔</i><span>BLUE TEAM</span></div><div class="visual-bottom">SCAN · ANALYZE · REPORT</div>' : project.theme === 'voice' ? '<div class="visual-top">VOICE / AUTHENTICITY <span>01 — 02</span></div><div class="visual-wave">' + [20,35,52,74,45,65,95,56,81,44,67,90,39,72,50,83,46,62,92,57,34,68,49,25].map((n, i) => `<i style="height:${n}%;animation-delay:${i * 35}ms"></i>`).join('') + '</div><div class="visual-bottom">REAL SPEECH / SYNTHETIC AUDIO</div>' : '<div class="visual-top">CRICKET / VISION <span>FRAME 024</span></div><div class="pitch"><span class="crease crease-one"></span><span class="crease crease-two"></span><span class="ball ball-one"></span><span class="ball ball-two"></span><span class="ball ball-three"></span><span class="trajectory"></span></div><div class="visual-bottom">DETECT · TRACK · ANALYZE</div>'}</div>`;
+  return `<div class="project-visual ${detail ? 'visual-large' : ''}"><img src="/assets/${project.image}" alt="Concept artwork for ${project.title}" ${detail ? 'fetchpriority="high"' : 'loading="lazy"'}><span class="visual-caption">PROJECT CONCEPT / ${project.type.toUpperCase()}</span></div>`;
+}
+function projectLink(item, className = '') {
+  return item.external ? external(item.href, item.label, className) : `<a class="${className}" href="${item.href}">${item.label}</a>`;
 }
 function projectRow(project) {
   return `<li class="post-row"><div class="row-meta"><span>${project.year}</span><span>${project.type}</span></div><div class="post-main"><h3><a href="/portfolio/${project.slug}">${project.title}</a></h3><div class="tag-list">${project.tags.map(tag => `<span>${tag}</span>`).join('')}</div><p>${project.excerpt}</p><a class="text-link" href="/portfolio/${project.slug}">Read the case study <span aria-hidden="true">→</span></a></div></li>`;
 }
 function profileCard() {
-  return `<div class="profile-card glass">${avatar('portrait')}<h3>Naeem Ullah</h3><p>Associate AI Engineer</p><p>AB Ark Private Limited</p>${socials()}<a class="card-publication" href="/publications">View my publication <span aria-hidden="true">↗</span></a></div>`;
+  return `<div class="profile-card glass">${avatar('portrait')}<h3>Naeem Ullah</h3><p>AI Engineer · Python Backend Developer</p><p>AB Ark Private Limited</p>${socials()}<a class="card-publication" href="/publications">View my publication <span aria-hidden="true">↗</span></a></div>`;
 }
 function contactClosing() {
   return `<section class="contact-closing" id="contact"><span class="eyebrow">HAVE A PROBLEM WORTH SOLVING?</span><h2>Let’s build something useful.</h2><p>AI products, Python backends, or research-driven prototypes — I’m open to thoughtful conversations.</p><div class="closing-actions"><a class="glass pill primary-pill" href="${links.email}">Email me ↗</a><a class="glass pill" href="/contact">Contact details →</a></div></section>`;
 }
 function home() {
-  return `<canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas><main class="home-main"><section class="hero"><div class="hero-inner"><p class="hero-eyebrow"><span>Hi,</span> I’m</p><h1>Naeem Ullah</h1><p class="hero-tagline" aria-live="polite"><span id="typed-tagline">I build practical AI systems, from research to reliable APIs.</span><span class="typing-caret" aria-hidden="true"></span></p><div class="hero-actions"><a class="glass pill" href="/portfolio">Explore my projects</a><button class="glass pill" id="tagline-button">Another line ↻</button></div><p class="tagline-note">Curated lines about my work, shown without an API.</p></div></section><section class="home-profile">${profileCard()}<div class="profile-copy"><span class="eyebrow">THE PERSON BEHIND THE WORK</span><p class="profile-summary">I’m an Associate AI Engineer at AB Ark, and a Data Science graduate from the University of the Punjab. I build AI applications and Python backends that turn complex ideas into tools people can use.</p><a class="text-link" href="/about">More about me →</a></div></section><section class="latest-section" id="featured"><div class="section-heading"><span class="eyebrow">SELECTED WORK</span><h2>Featured Projects</h2><p class="section-description">Real problems, deliberate engineering, and research you can explore.</p></div><ul class="post-list">${projects.map(projectRow).join('')}</ul><a class="all-posts-link" href="/portfolio">All Projects →</a></section>${contactClosing()}</main>`;
+  return `<canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas><main class="home-main"><section class="hero"><div class="hero-inner"><p class="hero-eyebrow"><span>Hi,</span> I’m</p><h1>Naeem Ullah</h1><p class="hero-tagline" aria-live="polite"><span id="typed-tagline">Building AI products where research meets working software.</span><span class="typing-caret" aria-hidden="true"></span></p><div class="hero-actions"><a class="glass pill" href="/portfolio">Explore my projects</a><button class="glass pill" id="tagline-button">Another line ↻</button></div><p class="tagline-note">A few ways to describe the work — no API required.</p></div></section><section class="home-profile">${profileCard()}<div class="profile-copy"><span class="eyebrow">THE ENGINEER BEHIND THE WORK</span><p class="profile-summary">AI Engineer building useful products and Python backends across company, client, and freelance work. Projects span agentic systems, document intelligence, voice AI, and computer vision, with research published through IEEE.</p><a class="text-link" href="/about">More about Naeem →</a></div></section><section class="latest-section" id="featured"><div class="section-heading"><span class="eyebrow">SELECTED WORK</span><h2>Featured Projects</h2><p class="section-description">Products, client workflows, and research with a clear problem behind each build.</p></div><ul class="post-list">${projects.map(projectRow).join('')}</ul><a class="all-posts-link" href="/portfolio">All Projects →</a></section>${contactClosing()}</main>`;
 }
 function pageTitle(title, description = '', eyebrow = '') {
   return `<div class="page-heading">${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ''}<h1>${title}</h1>${description ? `<p>${description}</p>` : ''}</div>`;
 }
 function portfolio() {
-  return `<main class="inner-main portfolio-main">${pageTitle('Portfolio', 'Selected AI, backend, and research work. Each project has a fuller story behind the result.', 'SELECTED WORK')}<div class="project-grid">${projects.map(project => `<article class="project-card"><a class="visual-link" href="/portfolio/${project.slug}" aria-label="Read about ${project.title}">${projectVisual(project)}</a><div class="project-card-copy"><span class="eyebrow">${project.type} · ${project.year}</span><h2><a href="/portfolio/${project.slug}">${project.title}</a></h2><p>${project.excerpt}</p><a class="text-link" href="/portfolio/${project.slug}">Read the case study →</a></div></article>`).join('')}</div>${contactClosing()}</main>`;
+  return `<main class="inner-main portfolio-main">${pageTitle('Portfolio', 'Selected products, research, and client work. Each case study explains the problem, engineering decisions, and result.', 'SELECTED WORK')}<div class="project-grid">${projects.map(project => `<article class="project-card"><a class="visual-link" href="/portfolio/${project.slug}" aria-label="Read about ${project.title}">${projectVisual(project)}</a><div class="project-card-copy"><span class="eyebrow">${project.type} · ${project.year}</span><h2><a href="/portfolio/${project.slug}">${project.title}</a></h2><p>${project.excerpt}</p><a class="text-link" href="/portfolio/${project.slug}">Read the case study →</a></div></article>`).join('')}</div>${contactClosing()}</main>`;
 }
 function about() {
-  return `<main class="inner-main about-main">${pageTitle('About', 'AI engineering grounded in software development and research.', 'THE JOURNEY')}<div class="about-layout"><aside class="about-person">${avatar('portrait')}<h3>Naeem Ullah</h3><p>Associate AI Engineer</p><p>Lahore, Pakistan</p>${socials()}</aside><article class="about-prose"><h2>Making AI useful in the real world.</h2><p>I’m a Data Science graduate from the University of the Punjab (PUCIT/FCIT) and an Associate AI Engineer at AB Ark Private Limited. My work focuses on Python backend development, AI applications, and intelligent automation.</p><p>I’ve built projects across multi-agent security workflows, synthetic voice detection, and computer vision. I enjoy connecting the research side of a problem with the engineering needed to make it usable: APIs, data flows, interfaces, and careful evaluation.</p><div class="about-facts"><div><span class="eyebrow">CURRENT ROLE</span><strong>Associate AI Engineer</strong><p>AB Ark Private Limited, Lahore</p></div><div><span class="eyebrow">EDUCATION</span><strong>BS Data Science</strong><p>University of the Punjab · 2026</p></div><div><span class="eyebrow">RESEARCH</span><strong>IEEE FIT 2025</strong><p>Computer vision for cricket delivery analysis</p></div></div><h2>Areas I work in</h2><div class="skill-groups"><span>Python & FastAPI</span><span>Generative AI & RAG</span><span>Agentic systems</span><span>PyTorch</span><span>Computer vision</span><span>Audio AI</span><span>Backend APIs</span><span>Docker</span></div><p class="about-next">Explore <a href="/portfolio">my projects</a>, read <a href="/publications">the publication</a>, or <a href="/contact">get in touch</a>.</p></article></div>${contactClosing()}</main>`;
+  return `<main class="inner-main about-main">${pageTitle('About', 'AI engineering backed by product delivery, client work, and published research.', 'THE JOURNEY')}<div class="about-layout"><aside class="about-person">${avatar('portrait')}<h3>Naeem Ullah</h3><p>AI Engineer</p><p>Lahore, Pakistan</p>${socials()}</aside><article class="about-prose"><h2>Making AI useful in the real world.</h2><p>Naeem Ullah builds AI applications and Python backend systems for teams and clients. His work spans agentic workflows, knowledge retrieval, document intelligence, voice AI, computer vision, and the APIs that make those capabilities usable.</p><p>At AB Ark Private Limited, he works across AI applications, backend services, and client-focused software. Independent freelance projects have added hands-on experience translating a client’s operational problem into a working product. His approach connects research, implementation, and clear delivery.</p><div class="about-facts"><div><span class="eyebrow">PROFESSIONAL WORK</span><strong>AI Engineering</strong><p>AB Ark Private Limited · client & freelance engagements</p></div><div><span class="eyebrow">BACKGROUND</span><strong>BS Data Science</strong><p>University of the Punjab · PUCIT/FCIT</p></div><div><span class="eyebrow">RESEARCH</span><strong>IEEE FIT 2025</strong><p>Computer vision for cricket delivery analysis</p></div></div><h2>Areas of focus</h2><div class="skill-groups"><span>Python & FastAPI</span><span>Generative AI & RAG</span><span>Agentic systems</span><span>PyTorch</span><span>Computer vision</span><span>Audio AI</span><span>Backend APIs</span><span>Docker</span></div><p class="about-next">Explore <a href="/portfolio">the projects</a>, read <a href="/publications/beyond-the-naked-eye">the paper</a>, or <a href="/contact">get in touch</a>.</p></article></div>${contactClosing()}</main>`;
 }
 function publications() {
-  return `<main class="inner-main publications-main">${pageTitle('Publications', 'Peer-reviewed research and the engineering behind it.', 'RESEARCH')}<article class="publication-card"><span class="publication-index">01 / 01</span><div><div class="publication-meta">IEEE FIT 2025 <span>•</span> COMPUTER VISION</div><h2>Beyond the Naked Eye: Automated Delivery Analysis in Cricket with Computer Vision</h2><p>A computer vision approach to analyzing cricket deliveries using YOLOv5s object detection, Kalman filtering, coordinate transformation with homography, and delivery-length analysis.</p><p class="publication-doi">DOI: 10.1109/FIT67061.2025.11333604</p><div class="publication-actions">${external(links.paper, 'Read on IEEE Xplore ↗', 'text-link')}${external(links.doi, 'Open DOI ↗', 'text-link')}<a class="text-link" href="/portfolio/cricket-vision">Explore the project →</a></div></div></article><p class="research-note">Other investigations, including voice AI and AI security, appear as projects. This page lists formal publications only.</p>${contactClosing()}</main>`;
+  return `<main class="inner-main publications-main">${pageTitle('Publications', 'Peer-reviewed research and the engineering behind it.', 'RESEARCH')}<article class="publication-card"><span class="publication-index">01 / 01</span><div><div class="publication-meta">IEEE FIT 2025 <span>•</span> COMPUTER VISION</div><h2><a href="/publications/beyond-the-naked-eye">Beyond the Naked Eye: Automated Delivery Analysis in Cricket with Computer Vision</a></h2><p>Single-camera cricket delivery analysis using YOLOv5s detection, Kalman filtering, and pitch-coordinate mapping through homography.</p><p class="publication-doi">DOI: 10.1109/FIT67061.2025.11333604</p><div class="publication-actions"><a href="/publications/beyond-the-naked-eye" class="text-link">Read the full paper here →</a>${external(links.paper, 'View on IEEE Xplore ↗', 'text-link')}<a class="text-link" href="/portfolio/cricket-vision">Explore the project →</a></div></div></article><p class="research-note">The full six-page paper is available to read in this portfolio. Other technical investigations appear as projects.</p>${contactClosing()}</main>`;
+}
+function paperPage() {
+  return `<main class="inner-main paper-main"><a class="back-link" href="/publications">← All publications</a><header class="paper-heading"><span class="eyebrow">IEEE FIT 2025 · COMPUTER VISION</span><h1>Beyond the Naked Eye: Automated Delivery Analysis in Cricket with Computer Vision</h1><p class="paper-authors">Muhammad Shoaib Ahmad · Rana Umer Riaz · Naeem Ullah · Faisal Bukhari</p><p>Single-camera ball detection, tracking, pitch mapping, and delivery classification for more accessible cricket analysis.</p><div class="paper-actions"><a class="glass pill" href="#paper-reader">Read the paper below ↓</a>${external(links.paper, 'View on IEEE Xplore ↗', 'glass pill')}</div></header><div class="paper-summary"><div><span class="eyebrow">THE QUESTION</span><p>Can a single standard camera provide useful delivery analysis without the cost and complexity of a multi-camera tracking system?</p></div><div><span class="eyebrow">THE METHOD</span><p>YOLOv5s detects the ball, a Kalman filter maintains the trajectory, and homography maps positions onto the pitch for delivery-length analysis.</p></div><div><span class="eyebrow">THE LIMIT</span><p>The paper reports approximately 50 FPS and 8.2 cm mean pitch-distance error in its evaluation, while noting sensitivity to camera calibration.</p></div></div><section id="paper-reader" class="paper-reader"><div class="reader-heading"><div><span class="eyebrow">FULL PAPER</span><h2>Read in the portfolio</h2></div><a class="text-link" href="/assets/beyond-the-naked-eye.pdf" target="_blank" rel="noopener noreferrer">Open full-size PDF ↗</a></div><iframe title="Beyond the Naked Eye research paper PDF" src="/assets/beyond-the-naked-eye.pdf#view=FitH" loading="lazy"></iframe><p>If your browser does not display embedded PDFs, <a href="/assets/beyond-the-naked-eye.pdf">open the PDF directly</a>.</p></section>${contactClosing()}</main>`;
 }
 function contact() {
   return `<main class="inner-main contact-main">${pageTitle('Contact Me', 'Let’s talk about an idea, a project, or an opportunity.', 'GET IN TOUCH')}<div class="contact-card glass"><span class="eyebrow">OPEN TO CONVERSATIONS</span><h2>Tell me what you’re building.</h2><p>For AI engineering, Python backend work, research collaboration, or a role that brings them together, connect with me through the links below.</p><div class="contact-options"><a class="contact-option" href="${links.email}">${icons.mail}<span><strong>Email</strong><small>naeem.ullah@gmail.com ↗</small></span></a>${external(links.linkedin, `${icons.linkedin}<span><strong>LinkedIn</strong><small>Message me about work or collaboration ↗</small></span>`, 'contact-option')}${external(links.github, `${icons.github}<span><strong>GitHub</strong><small>Explore my public code ↗</small></span>`, 'contact-option')}<a class="contact-option" href="/publications">${icons.paper}<span><strong>Publications</strong><small>Read my IEEE research ↗</small></span></a></div></div></main>`;
 }
+function demoSection(project) {
+  if (project.demo === 'video') return `<section class="case-demo" id="demo"><span class="eyebrow">RECORDED PRODUCT WALKTHROUGH</span><h2>See the complete workflow</h2><p>The demonstration shows XploitEye moving from reconnaissance to a controlled lab validation, remediation handoff, web assessment, and scan-aware answers.</p><div class="demo-chapters" aria-label="Jump to a video chapter"><button type="button" data-start="498"><span>08:18</span> Network assessment</button><button type="button" data-start="674"><span>11:14</span> Red agent</button><button type="button" data-start="972"><span>16:12</span> Blue remediation</button><button type="button" data-start="1165"><span>19:25</span> Web assessment</button><button type="button" data-start="1522"><span>25:22</span> Security advisor</button></div><div class="embed-shell video-embed"><iframe src="https://www.youtube-nocookie.com/embed/9R0QUzMMXsA?rel=0" title="XploitEye product walkthrough" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="embed-fallback">If the video cannot play here, ${external('https://youtu.be/9R0QUzMMXsA', 'open it on YouTube ↗', 'text-link')}.</p></section>`;
+  if (project.demo === 'voice') return `<section class="case-demo" id="demo"><span class="eyebrow">INTERACTIVE DEMO</span><h2>Test a voice sample</h2><p>Use the embedded research demo to explore the inference workflow. Results are experimental and should not be treated as a definitive authenticity judgment.</p><div class="embed-shell voice-embed"><iframe src="https://naeemullah11111-deepfake-voice-qa-lite.hf.space" title="AI-generated voice detection interactive demo" loading="lazy" allow="microphone; clipboard-read; clipboard-write"></iframe></div><p class="embed-fallback">If the embedded demo is unavailable, ${external('https://huggingface.co/spaces/naeemullah11111/deepfake-voice-qa-lite', 'open the Space on Hugging Face ↗', 'text-link')}.</p></section>`;
+  return '';
+}
 function caseStudy(project) {
   const index = projects.indexOf(project);
   const next = projects[(index + 1) % projects.length];
-  return `<main class="inner-main case-main"><a class="back-link" href="/portfolio">← All projects</a><div class="case-heading"><span class="eyebrow">${project.type} · ${project.year}</span><h1>${project.title}</h1><p>${project.excerpt}</p></div>${projectVisual(project, true)}<div class="case-layout"><aside class="case-side"><div class="case-side-block"><span class="eyebrow">ROLE</span><p>Research, engineering & implementation</p></div><div class="case-side-block"><span class="eyebrow">STACK</span><div class="stack-list">${project.stack.map(item => `<span>${item}</span>`).join('')}</div></div><div class="case-side-block"><span class="eyebrow">EXPLORE</span>${project.links.map(item => external(item.href, item.label, 'side-link')).join('')}</div></aside><article class="case-body"><section><span class="eyebrow">01 / THE PROBLEM</span><h2>What needed solving</h2><p>${project.problem}</p></section><section><span class="eyebrow">02 / MY WORK</span><h2>What I built</h2><p>${project.contribution}</p></section><section><span class="eyebrow">03 / THE APPROACH</span><h2>How it works</h2><ul>${project.approach.map(item => `<li>${item}</li>`).join('')}</ul></section><div class="case-links">${project.links.map(item => external(item.href, item.label, 'glass pill')).join('')}</div></article></div><div class="case-next"><span class="eyebrow">NEXT PROJECT</span><a href="/portfolio/${next.slug}">${next.title} <span aria-hidden="true">↗</span></a></div>${contactClosing()}</main>`;
+  return `<main class="inner-main case-main"><a class="back-link" href="/portfolio">← All projects</a><div class="case-heading"><span class="eyebrow">${project.type} · ${project.year}</span><h1>${project.title}</h1><p>${project.excerpt}</p></div>${projectVisual(project, true)}<div class="case-layout"><aside class="case-side"><div class="case-side-block"><span class="eyebrow">ENGINEERING FOCUS</span><p>${project.role}</p></div><div class="case-side-block"><span class="eyebrow">STACK</span><div class="stack-list">${project.stack.map(item => `<span>${item}</span>`).join('')}</div></div>${project.links.length ? `<div class="case-side-block"><span class="eyebrow">EXPLORE</span>${project.links.map(item => projectLink(item, 'side-link')).join('')}</div>` : ''}${project.note ? `<p class="case-note">${project.note}</p>` : ''}</aside><article class="case-body"><section><span class="eyebrow">01 / THE PROBLEM</span><h2>What needed solving</h2><p>${project.problem}</p></section><section><span class="eyebrow">02 / THE BUILD</span><h2>What was built</h2><p>${project.contribution}</p></section><section><span class="eyebrow">03 / THE APPROACH</span><h2>How it works</h2><ol>${project.approach.map(item => `<li>${item}</li>`).join('')}</ol></section><section><span class="eyebrow">04 / THE RESULT</span><h2>What it delivers</h2><p>${project.outcome}</p></section></article></div>${demoSection(project)}<div class="case-next"><span class="eyebrow">NEXT PROJECT</span><a href="/portfolio/${next.slug}">${next.title} <span aria-hidden="true">↗</span></a></div>${contactClosing()}</main>`;
 }
 function notFound() {
   return `<main class="inner-main not-found">${pageTitle('Page not found')}<p>That page isn’t part of this portfolio.</p><a class="text-link" href="/">Back to homepage →</a></main>`;
@@ -138,16 +205,17 @@ if (path === '/') content = home();
 else if (path === '/portfolio' || path === '/projects') content = portfolio();
 else if (path === '/about') content = about();
 else if (path === '/publications') content = publications();
+else if (path === '/publications/beyond-the-naked-eye') content = paperPage();
 else if (path === '/contact') content = contact();
 else if (path.startsWith('/portfolio/')) {
   const project = projects.find(item => item.slug === path.split('/')[2]);
   content = project ? caseStudy(project) : notFound();
 } else content = notFound();
 app.innerHTML = `<div class="site-wrap ${path === '/' ? 'is-home' : 'is-inner'}">${header()}${content}${footer()}${qaPanel()}</div>`;
-const pageName = path === '/about' ? 'About' : path === '/publications' ? 'Publications' : path === '/contact' ? 'Contact' : path === '/portfolio' ? 'Portfolio' : projects.find(item => path === `/portfolio/${item.slug}`)?.title || 'Portfolio';
+const pageName = path === '/about' ? 'About' : path === '/publications' ? 'Publications' : path === '/publications/beyond-the-naked-eye' ? 'Beyond the Naked Eye' : path === '/contact' ? 'Contact' : path === '/portfolio' ? 'Portfolio' : projects.find(item => path === `/portfolio/${item.slug}`)?.title || 'Portfolio';
 document.title = path === '/' ? 'Naeem Ullah | AI Engineer' : `${pageName} | Naeem Ullah`;
 document.querySelectorAll('.nav-links a').forEach(link => {
-  if (link.getAttribute('href') === path || (path.startsWith('/portfolio/') && link.getAttribute('href') === '/portfolio')) link.setAttribute('aria-current', 'page');
+  if (link.getAttribute('href') === path || (path.startsWith('/portfolio/') && link.getAttribute('href') === '/portfolio') || (path.startsWith('/publications/') && link.getAttribute('href') === '/publications')) link.setAttribute('aria-current', 'page');
 });
 
 document.querySelector('#menu-open').addEventListener('click', function () {
@@ -169,10 +237,21 @@ function setQaOpen(open) {
 }
 qaToggle.addEventListener('click', () => setQaOpen(qaPanelElement.hidden));
 document.querySelector('#qa-close').addEventListener('click', () => setQaOpen(false));
+document.querySelectorAll('.qa-audience button').forEach(tab => tab.addEventListener('click', () => {
+  const group = tab.dataset.group;
+  document.querySelectorAll('.qa-audience button').forEach(item => item.setAttribute('aria-pressed', String(item === tab)));
+  document.querySelectorAll('.qa-question').forEach(button => { button.hidden = button.dataset.group !== group; });
+  answerBox.hidden = true;
+  questionList.hidden = false;
+  tab.focus();
+}));
 document.querySelectorAll('.qa-question').forEach(button => button.addEventListener('click', () => {
   const item = questions[Number(button.dataset.question)];
   answerBox.querySelector('h3').textContent = item.q;
   answerBox.querySelector('p').textContent = item.a;
+  const action = answerBox.querySelector('.qa-action');
+  action.href = item.href;
+  action.textContent = item.cta;
   questionList.hidden = true;
   answerBox.hidden = false;
   answerBox.querySelector('button').focus();
@@ -185,13 +264,19 @@ document.querySelector('.qa-back').addEventListener('click', () => {
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && !qaPanelElement.hidden) setQaOpen(false);
 });
+document.querySelectorAll('.demo-chapters button').forEach(button => button.addEventListener('click', () => {
+  const frame = document.querySelector('.video-embed iframe');
+  frame.src = `https://www.youtube-nocookie.com/embed/9R0QUzMMXsA?rel=0&start=${Number(button.dataset.start)}&autoplay=1`;
+  document.querySelectorAll('.demo-chapters button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  frame.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center'});
+}));
 
 if (path === '/') {
   const lines = [
-    'I build practical AI systems, from research to reliable APIs.',
-    'I turn complex AI ideas into tools people can actually use.',
-    'I connect machine learning, backend engineering, and real problems.',
-    'I explore AI deeply, then make it useful in the real world.'
+    'Building AI products where research meets working software.',
+    'Turning complex workflows into intelligent, usable systems.',
+    'Connecting applied AI, reliable backends, and real problems.',
+    'From model experiments to products people can actually use.'
   ];
   const field = document.querySelector('#typed-tagline');
   let position = 0;
