@@ -1,9 +1,14 @@
-# Reference style study
+# Naeem Ullah portfolio
 
-Private, static reproduction of the visual direction at [zionemond.dev](https://www.zionemond.dev/) for Naeem to review before building his own portfolio. The supplied Naeem master profile has not been incorporated.
+A static portfolio preview built around Naeem's supplied master profile. The visual direction keeps the dark olive animated background, glass navigation, and clear typography from the reference study. The content and interactions now describe Naeem's actual work.
 
-The study includes the homepage, Blog pages 1–3, Portfolio, About, tag pages, and article routes. It recreates the floating glass navigation, Space Grotesk typography, olive canvas background, typing tagline, profile presentation, dated post list, and project grid. Search, navigation, pagination, model selection, and tagline refresh work locally.
+## Pages
 
-The public reference's portrait, koi artwork, project thumbnails, and font are used in this private visual study. Replace them and the Zion-specific text when building Naeem's portfolio. Article bodies and some summaries are abbreviated; the tagline interaction uses local sample lines rather than a live AI service.
+- Home, Portfolio, About, Publications, and Contact
+- Project case studies for XploitEye, AI-Generated Voice Detection, and Cricket Ball Tracking & Delivery Analysis
+- Ten curated quick answers for clients and recruiters; no LLM API or key is required
+- Rotating, hand-written hero taglines
 
-Run `python3 build_routes.py` after changing route definitions, then serve `dist/` with a static HTTP server for local preview.
+The current avatar is an **NU placeholder**. Replace it with Naeem's portrait when supplied. Only public project and research details appear; private client work is intentionally absent.
+
+Run `python3 build_routes.py` after editing `dist/index.html`, then serve `dist/` with a static HTTP server for local preview.

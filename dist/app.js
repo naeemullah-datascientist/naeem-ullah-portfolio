@@ -1,69 +1,211 @@
-const posts = [
-  {slug:"prepping-your-ecomm-site-for-agentic-apocalypse",title:"Prepping Your Ecommerce Site for the Agentic Apocalypse",date:"September 30, 2025",tags:["seo","guide"],excerpt:"A guide to preparing an online store for AI-assisted search and shopping.",image:null},
-  {slug:"shopify-metadata-migrator",title:"Shopify Metadata Migrator",date:"August 15, 2025",tags:["experience","projects"],excerpt:"A CLI tool for moving Shopify metafield and metaobject definitions between stores.",image:"shopify.png"},
-  {slug:"nanoHabits",title:"NanoHabits",date:"June 23, 2025",tags:["experience","projects"],excerpt:"An AI-assisted habit tracker for turning bigger goals into smaller actions.",image:"nanohabits.png"},
-  {slug:"nanoHabits-prototype",title:"NanoHabits Prototype",date:"June 22, 2025",tags:["experience","projects"],excerpt:"An early Discord bot prototype that tested the idea behind NanoHabits.",image:"time-machine.jpg"},
-  {slug:"devlog-6-2-25",title:"Website Devlog 6.2.25",date:"June 2, 2025",tags:["website","devlog"],excerpt:"A note on adding a generated tagline and typing effect to the homepage.",image:null},
-  {slug:"CQL",title:"CQL - Senior Software Engineer",date:"May 30, 2025",tags:["experience"],excerpt:"A look at building commerce applications with a collaborative engineering team.",image:"cql.png"},
-  {slug:"devlog-5-30-25",title:"Website Devlog 5.30.25",date:"May 30, 2025",tags:["website","devlog"],excerpt:"Progress on the homepage and portfolio layout.",image:null},
-  {slug:"kfb",title:"Kentucky Farm Bureau Internship",date:"May 30, 2025",tags:["experience"],excerpt:"An internship that introduced the rhythms of corporate software engineering.",image:"kfb.jpg"},
-  {slug:"merc",title:"MERC",date:"May 30, 2025",tags:["experience"],excerpt:"A WordPress website for a medical equipment consulting company.",image:"merc.png"},
-  {slug:"devlog-5-26-25",title:"Website Devlog 5.26.25",date:"May 26, 2025",tags:["website","devlog"],excerpt:"Early ideas for the site and its interactive homepage.",image:null},
-  {slug:"devlog-5-23-25",title:"Website Devlog 5.23.25",date:"May 23, 2025",tags:["website","devlog"],excerpt:"The beginning of the website development log.",image:null}
-];
-const projects = [
-  {title:"CQL",slug:"CQL",image:"cql.png",excerpt:"Commerce development work at an agency focused on scalable, secure online stores."},
-  {title:"Shopify Metadata Migrator",slug:"shopify-metadata-migrator",image:"shopify.png",excerpt:"A CLI for transferring Shopify metafield and metaobject definitions."},
-  {title:"Kentucky Farm Bureau Internship",slug:"kfb",image:"kfb.jpg",excerpt:"A six-week introduction to professional software engineering."},
-  {title:"MERC",slug:"merc",image:"merc.png",excerpt:"A WordPress site for a medical equipment consulting company."},
-  {title:"NanoHabits",slug:"nanoHabits",image:"nanohabits.png",excerpt:"A habit tracking app that helps people work toward bigger goals."},
-  {title:"NanoHabits Prototype",slug:"nanoHabits-prototype",image:"time-machine.jpg",excerpt:"A Discord bot used to test an early version of the idea."}
-];
-const tagCounts={experience:6,website:4,devlog:4,projects:3,seo:1,guide:1};
-const path=decodeURIComponent(location.pathname).replace(/\/+$/,"")||"/";
-const app=document.querySelector("#app");
-const icon={
-  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16.1 16.1 5 5"/></svg>',
-  mail:'<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2 5.9 10 10l8-4.1A2 2 0 0 0 16 4H4a2 2 0 0 0-2 1.9Z"/><path d="m18 8-8 4-8-4v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/></svg>',
-  github:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11 11 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg>',
-  linkedin:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.5v-5.6c0-1.3 0-3-1.9-3-1.8 0-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.2 2.4 4.2 5.5v6.3ZM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1Zm1.8 13.1H3.6V9h3.5v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7Z"/></svg>',
-  instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/></svg>'
+const links = {
+  email: 'mailto:naeem.ullah@gmail.com',
+  github: 'https://github.com/naeemullah-datascientist',
+  linkedin: 'https://www.linkedin.com/in/naeemm-ullah/',
+  orcid: 'https://orcid.org/0009-0004-5921-3884',
+  paper: 'https://ieeexplore.ieee.org/document/11333604',
+  doi: 'https://doi.org/10.1109/FIT67061.2025.11333604'
 };
-function socialLinks(){return '<div class="social-links"><a aria-label="Email" href="mailto:zionemond.dev@gmail.com">'+icon.mail+'</a><a aria-label="GitHub" href="https://github.com/WarriorAchilles" target="_blank" rel="noopener noreferrer">'+icon.github+'</a><a aria-label="LinkedIn" href="https://www.linkedin.com/in/zion-emond-dev/" target="_blank" rel="noopener noreferrer">'+icon.linkedin+'</a><a aria-label="Instagram" href="https://www.instagram.com/zionemond.dev/" target="_blank" rel="noopener noreferrer">'+icon.instagram+'</a></div>'}
-function header(){return '<header class="site-header glass"><a class="brand" href="/" aria-label="Zion Emond home"><img src="/assets/reference-koi.png" alt=""><span>Zion Emond <span class="brand-role">| Software Engineer</span></span></a><nav class="nav-links" aria-label="Main navigation"><a href="/blog">Blog</a><a href="/portfolio">Portfolio</a><a href="/about">About</a></nav><button class="search-button" id="search-open" aria-label="Search">'+icon.search+'</button><button class="menu-button" id="menu-open" aria-label="Open menu" aria-expanded="false">☰</button></header>'}
-function footer(){return '<footer class="site-footer">'+socialLinks()+'<p>Zion Emond&nbsp; • &nbsp;© '+new Date().getFullYear()+'&nbsp; • &nbsp;Zion Emond | Senior Software Engineer</p><p class="theme-credit">Tailwind Nextjs Theme</p></footer>'}
-function tagLinks(tags){return '<span class="tag-list">'+tags.map(tag=>'<a href="/tags/'+tag+'">'+tag+'</a>').join('')+'</span>'}
-function postRow(post,home=false){return '<li class="post-row '+(home?'home-row':'')+'"><time>'+post.date+'</time><div class="post-main"><h3><a href="/blog/'+post.slug+'">'+post.title+'</a></h3>'+tagLinks(post.tags)+'<p>'+post.excerpt+'</p>'+(home?'<a class="text-link" href="/blog/'+post.slug+'">Read more →</a>':'')+'</div></li>'}
-function profileCard(){return '<div class="profile-card glass"><img class="portrait" src="/assets/reference-profile.png" alt="Portrait of Zion Emond"><h3>Zion Emond</h3><p>Senior Software Engineer</p><p>CQL LLC</p>'+socialLinks()+'</div>'}
-function home(){return '<canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas><main class="home-main"><section class="hero"><div class="hero-inner"><p class="hero-eyebrow"><span>Hi,</span> I’m</p><h1>Zion Emond</h1><p class="hero-tagline" aria-live="polite"><span id="typed-tagline">I wrangle AI agents into tools, sipping matcha in dark mode*</span><span class="typing-caret" aria-hidden="true"></span></p><div class="hero-actions"><a class="glass pill" href="/portfolio">My projects</a><button class="glass pill" id="tagline-button">Generate new tagline</button></div><label class="model-label" for="model-select">Select which AI generates my tagline:</label><select class="glass model-select" id="model-select"><option>ChatGPT</option><option>Claude</option><option>Gemini</option></select></div><p class="hero-disclaimer">*The tagline button and model picker demonstrate the reference interaction using sample lines. Click to generate another line and watch it type across the page. These lines are for the visual study and may or may not describe the person on the page.</p></section><section class="home-profile">'+profileCard()+'<p class="profile-summary">Senior Software Engineer with experience building scalable eCommerce applications in React, Next.js, Node.js, and TypeScript. Interested in AI-assisted workflows, backend services, and production systems.</p><img class="background-koi" src="/assets/reference-koi.png" alt="" aria-hidden="true"></section><section class="latest-section" id="latest"><h2>Latest</h2><p class="section-description">The portfolio and devlog of Zion Emond, a senior software engineer.</p><ul class="post-list">'+posts.slice(0,5).map(p=>postRow(p,true)).join('')+'</ul><a class="all-posts-link" href="/blog">All Posts →</a></section></main>'}
-function pageTitle(title,desc=''){return '<div class="page-heading"><h1>'+title+'</h1>'+(desc?'<p>'+desc+'</p>':'')+'</div>'}
-function blog(page=1,tag=null){const filtered=tag?posts.filter(p=>p.tags.includes(tag)):posts;const shown=tag?filtered:filtered.slice((page-1)*5,page*5);const title=tag?tag.charAt(0).toUpperCase()+tag.slice(1):'All Posts';return '<main class="inner-main blog-main">'+pageTitle(title)+'<div class="blog-layout"><aside class="tag-sidebar"><h2><a href="/blog">All Posts</a></h2><ul>'+Object.entries(tagCounts).map(([name,count])=>'<li><a class="'+(name===tag?'active':'')+'" href="/tags/'+name+'">'+name+' ('+count+')</a></li>').join('')+'</ul></aside><div class="blog-content"><ul class="blog-post-list">'+shown.map(p=>postRow(p)).join('')+'</ul>'+(tag?'':pagination(page))+'</div></div></main>'}
-function pagination(page){return '<nav class="pagination" aria-label="Blog pages">'+(page>1?'<a href="'+(page===2?'/blog':'/blog/page/'+(page-1))+'">Previous</a>':'<span class="disabled">Previous</span>')+'<span>'+page+' of 3</span>'+(page<3?'<a href="/blog/page/'+(page+1)+'">Next</a>':'<span class="disabled">Next</span>')+'</nav>'}
-function portfolio(){return '<main class="inner-main portfolio-main">'+pageTitle('Portfolio','A list of my personal projects, some contracted work, and fun little experiments.')+'<div class="project-grid">'+projects.map(p=>'<article class="project-card"><a href="/blog/'+p.slug+'"><img src="/assets/'+p.image+'" alt="'+p.title+'"></a><div><h2><a href="/blog/'+p.slug+'">'+p.title+'</a></h2><p>'+p.excerpt+'</p><a class="text-link" href="/blog/'+p.slug+'">Learn more →</a></div></article>').join('')+'</div></main>'}
-function about(){return '<main class="inner-main about-main">'+pageTitle('About')+'<div class="about-layout"><aside class="about-person"><img src="/assets/reference-profile.png" alt="Portrait of Zion Emond"><h3>Zion Emond</h3><p>Senior Software Engineer</p><p>CQL LLC</p>'+socialLinks()+'</aside><article class="about-prose"><p>Senior Software Engineer focused on scalable eCommerce applications, full-stack web development, and reliable production systems.</p><p>His work spans React, Next.js, Node.js, TypeScript, REST and GraphQL APIs, and cloud deployments on AWS and Azure.</p><p>Some examples of the work described on the reference site include:</p><ul><li>Improving frontend and backend performance during high-traffic launches.</li><li>Building a CLI tool that simplifies Shopify configuration transfers.</li><li>Developing billing services and APIs for customer support platforms.</li><li>Contributing to open-source projects.</li></ul><p>He enjoys learning, problem solving, music, travel, and collaborating with thoughtful teams.</p><p>For the complete original biography, visit <a href="https://www.zionemond.dev/about" target="_blank" rel="noopener noreferrer">the reference About page</a>.</p></article></div></main>'}
-function tagsPage(){return '<main class="inner-main tags-main">'+pageTitle('Tags')+'<div class="tags-cloud">'+Object.entries(tagCounts).map(([tag,count])=>'<a href="/tags/'+tag+'">'+tag+' <span>('+count+')</span></a>').join('')+'</div></main>'}
-function article(post){const index=posts.indexOf(post);const previous=posts[index+1],next=posts[index-1];return '<main class="inner-main article-main"><header class="article-heading"><time>Published on '+post.date+'</time><h1>'+post.title+'</h1></header><div class="article-layout"><aside class="article-side"><div class="author"><img src="/assets/reference-profile.png" alt=""><span>Zion Emond</span></div><div class="article-tags"><h2>Tags</h2>'+tagLinks(post.tags)+'</div><div class="article-pager">'+(previous?'<a href="/blog/'+previous.slug+'">← Previous Article<br><strong>'+previous.title+'</strong></a>':'')+(next?'<a href="/blog/'+next.slug+'">Next Article →<br><strong>'+next.title+'</strong></a>':'')+'</div></aside><article class="article-body">'+(post.image?'<img class="article-image" src="/assets/'+post.image+'" alt="'+post.title+'">':'')+'<p>'+post.excerpt+'</p><p>This page is included to preview the reference article layout and navigation. The full original article is available on the reference website.</p><p><a href="https://www.zionemond.dev/blog/'+post.slug+'" target="_blank" rel="noopener noreferrer">Read the original article →</a></p><div class="article-end">Discuss on Twitter&nbsp; • &nbsp;View on GitHub</div></article></div></main>'}
-function notFound(){return '<main class="inner-main not-found">'+pageTitle('Page not found')+'<p>That page is not part of this style study.</p><a class="text-link" href="/">Back to homepage →</a></main>'}
-function searchModal(){return '<div class="search-overlay" id="search-overlay" hidden><div class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-title"><div class="search-top"><h2 id="search-title">Search</h2><button id="search-close" aria-label="Close search">×</button></div><input id="search-input" type="search" placeholder="Search posts, projects, and pages..." autocomplete="off"><div id="search-results" class="search-results"></div></div></div>'}
-let content;if(path==='/')content=home();else if(path==='/about')content=about();else if(path==='/portfolio'||path==='/projects')content=portfolio();else if(path==='/blog')content=blog();else if(path==='/blog/page/2')content=blog(2);else if(path==='/blog/page/3')content=blog(3);else if(path==='/tags')content=tagsPage();else if(path.startsWith('/tags/'))content=tagCounts[path.split('/')[2]]?blog(1,path.split('/')[2]):notFound();else if(path.startsWith('/blog/')){const post=posts.find(p=>p.slug===path.split('/')[2]);content=post?article(post):notFound()}else content=notFound();
-app.innerHTML='<div class="site-wrap '+(path==='/'?'is-home':'is-inner')+'">'+header()+content+footer()+searchModal()+'</div>';
-document.title=path==='/'?'Zion Emond | Senior Software Engineer':(path==='/portfolio'?'Portfolio':path==='/about'?'About':path==='/blog'?'Blog':'Reference Style Study')+' | Zion Emond';
-const overlay=document.querySelector('#search-overlay'),input=document.querySelector('#search-input'),results=document.querySelector('#search-results');
-function renderSearch(){const query=input.value.trim().toLowerCase();const items=[{title:'Home',url:'/'},{title:'About',url:'/about'},{title:'Portfolio',url:'/portfolio'},{title:'All Posts',url:'/blog'},...posts.map(p=>({title:p.title,url:'/blog/'+p.slug}))];const found=query?items.filter(item=>item.title.toLowerCase().includes(query)):items.slice(0,7);results.innerHTML=found.length?found.map(item=>'<a href="'+item.url+'">'+item.title+' <span>↗</span></a>').join(''):'<p>No results found.</p>'}
-function openSearch(){overlay.hidden=false;document.body.classList.add('modal-open');input.value='';renderSearch();input.focus()}
-function closeSearch(){overlay.hidden=true;document.body.classList.remove('modal-open')}
-document.querySelector('#search-open').addEventListener('click',openSearch);
-document.querySelector('#search-close').addEventListener('click',closeSearch);
-overlay.addEventListener('click',event=>{if(event.target===overlay)closeSearch()});
-input.addEventListener('input',renderSearch);
-document.addEventListener('keydown',event=>{if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();overlay.hidden?openSearch():closeSearch()}if(event.key==='Escape')closeSearch()});
-document.querySelector('#menu-open').addEventListener('click',function(){const nav=document.querySelector('.nav-links');const opened=nav.classList.toggle('open');this.setAttribute('aria-expanded',String(opened))});
-if(path==='/'){
-  const lines={ChatGPT:["I wrangle AI agents into tools, sipping matcha in dark mode*","I build things for the web, one curious idea at a time*"],Claude:["I turn complex ideas into simple, useful experiences*","I enjoy making the details feel effortless*"],Gemini:["I connect ideas, code, and creativity*","I keep exploring what technology can make possible*"]};
-  const field=document.querySelector('#typed-tagline');const select=document.querySelector('#model-select');let positions={ChatGPT:0,Claude:0,Gemini:0};let timer;
-  function typeLine(value){clearTimeout(timer);if(matchMedia('(prefers-reduced-motion: reduce)').matches){field.textContent=value;return}field.textContent='';let i=0;const step=()=>{field.textContent=value.slice(0,++i);if(i<value.length)timer=setTimeout(step,37)};step()}
-  document.querySelector('#tagline-button').addEventListener('click',()=>{const model=select.value;positions[model]=(positions[model]+1)%lines[model].length;typeLine(lines[model][positions[model]])});
-  select.addEventListener('change',()=>typeLine(lines[select.value][positions[select.value]]));
+
+const projects = [
+  {
+    slug: 'xploiteye', title: 'XploitEye', year: '2026', type: 'AI security platform',
+    tags: ['Multi-agent systems', 'FastAPI', 'Security'], theme: 'security',
+    excerpt: 'A multi-agent platform for authorized security assessment, red and blue team workflows, and clearer vulnerability reporting.',
+    problem: 'Security assessments often involve separate tools, manual handoffs, and a large amount of work turning findings into useful reports. XploitEye explores how an AI-assisted workflow can bring these steps together for authorized testing.',
+    contribution: 'For my final year project, I built a full-stack platform that coordinates red and blue team workflows, runs approved assessment tools, provides retrieval-based guidance, and turns findings into reports that are easier to review.',
+    approach: [
+      'Connected specialized agent workflows to assessment tools including Nmap, OWASP ZAP, and SQLMap.',
+      'Built Python and FastAPI services with RabbitMQ for task coordination and ChromaDB for retrieval-based assistance.',
+      'Created a Next.js interface for running workflows and reviewing results.'
+    ],
+    stack: ['Python', 'FastAPI', 'Next.js', 'ChromaDB', 'RabbitMQ', 'Docker', 'Nmap', 'OWASP ZAP', 'SQLMap'],
+    links: [{label: 'Watch the project demo ↗', href: 'https://youtu.be/9R0QUzMMXsA'}]
+  },
+  {
+    slug: 'voice-authenticity', title: 'AI-Generated Voice Detection', year: '2026', type: 'Audio AI research',
+    tags: ['PyTorch', 'Audio AI', 'FastAPI'], theme: 'voice',
+    excerpt: 'A research and engineering prototype for distinguishing human speech from synthetic audio, with an interactive demo and API inference.',
+    problem: 'Synthetic speech is increasingly convincing. A useful detector must do more than classify familiar samples: it should also be tested against speech from sources it has not seen before.',
+    contribution: 'I compared model approaches, fine-tuned a compact RawNetLite classifier, built audio visualizations, and exposed inference through an API and Gradio demo. I also investigated how performance changes across voice sources.',
+    approach: [
+      'Prepared speech data and explored mel spectrograms, CQT features, and model inputs.',
+      'Fine-tuned a compact classifier and evaluated held-out and unseen-source cases separately.',
+      'Built a usable inference flow with FastAPI, Gradio, and model export experiments.'
+    ],
+    stack: ['Python', 'PyTorch', 'RawNetLite', 'Wav2Vec2', 'FastAPI', 'Gradio', 'ONNX'],
+    links: [{label: 'Open the interactive demo ↗', href: 'https://huggingface.co/spaces/naeemullah11111/deepfake-voice-qa-lite'}]
+  },
+  {
+    slug: 'cricket-vision', title: 'Cricket Ball Tracking & Delivery Analysis', year: '2025', type: 'Computer vision research',
+    tags: ['Computer Vision', 'YOLOv5', 'IEEE research'], theme: 'cricket',
+    excerpt: 'A vision pipeline that follows a cricket ball through a delivery and helps analyze where it lands. The work led to an IEEE publication.',
+    problem: 'Delivery analysis is usually done by close visual inspection or specialist systems. This project investigates an automated way to detect a ball, maintain its trajectory, and classify delivery length.',
+    contribution: 'I worked on a computer vision pipeline using YOLOv5s for detection, Kalman filtering for tracking, homography to map image coordinates, and delivery-length analysis.',
+    approach: [
+      'Detected the ball across video frames with a YOLOv5s-based model.',
+      'Used Kalman filtering to maintain a useful track when detections were inconsistent.',
+      'Mapped coordinates with homography and analyzed the delivery location.'
+    ],
+    stack: ['Python', 'YOLOv5s', 'Kalman filtering', 'Homography', 'Computer Vision'],
+    links: [
+      {label: 'Read the IEEE paper ↗', href: links.paper},
+      {label: 'View the code ↗', href: 'https://github.com/naeemullah-datascientist/cricket-ball-tracking-system'}
+    ]
+  }
+];
+
+const questions = [
+  {q: 'What does Naeem build?', a: 'I build AI applications, Python backends, APIs, and automation. My recent public work includes a multi-agent security platform, synthetic voice detection, and computer vision research.'},
+  {q: 'Why hire Naeem?', a: 'I bring together hands-on AI engineering, backend development, and research. I can take a problem from experimentation to a working interface and API, then explain the tradeoffs clearly.'},
+  {q: 'What is his current role?', a: 'I am an Associate AI Engineer at AB Ark Private Limited in Lahore, where I work on practical AI and backend engineering.'},
+  {q: 'Which AI tools does he use?', a: 'My work includes LLM applications, RAG, agent workflows, PyTorch, computer vision, speech models, and Python services built with FastAPI.'},
+  {q: 'Can he build backends?', a: 'Yes. I work with Python, FastAPI, REST APIs, data processing, Docker, and integrations that connect AI systems to usable products.'},
+  {q: 'What is XploitEye?', a: 'XploitEye is my final year project: a full-stack, multi-agent platform for authorized vulnerability assessment and red and blue team workflows. A video demo is linked from its project page.'},
+  {q: 'Has he published research?', a: 'Yes. My cricket delivery analysis research was published at IEEE FIT 2025. You can find the title, DOI, and paper link on the Publications page.'},
+  {q: 'Does he work with voice AI?', a: 'Yes. I built an AI-generated voice detection prototype, including model evaluation, visualizations, an inference API, and an interactive demo.'},
+  {q: 'What is his education?', a: 'I completed a BS in Data Science at the University of the Punjab, PUCIT/FCIT, in 2026.'},
+  {q: 'How can I contact him?', a: 'Email me at naeem.ullah@gmail.com or connect through LinkedIn. Both links are on the Contact Me page.'}
+];
+
+const path = decodeURIComponent(location.pathname).replace(/\/+$/, '') || '/';
+const app = document.querySelector('#app');
+const external = (href, label, className = '') => `<a class="${className}" href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+const icons = {
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>',
+  github: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11 11 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg>',
+  linkedin: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.5v-5.6c0-1.3 0-3-1.9-3-1.8 0-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.2 2.4 4.2 5.5v6.3ZM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1Zm1.8 13.1H3.6V9h3.5v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7Z"/></svg>',
+  paper: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h10l4 4v13H5z"/><path d="M15 3.5v4h4M8 12h8M8 16h8"/></svg>',
+  chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8 8.4 8.4 0 0 1-3.4-.7L4 20l1.2-4.6A8 8 0 1 1 20 11.5Z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg>'
+};
+
+function avatar(className = '') {
+  return `<span class="avatar ${className}" role="img" aria-label="Naeem Ullah portrait placeholder"><span>NU</span></span>`;
+}
+function socials(extra = '') {
+  return `<div class="social-links ${extra}"><a href="${links.email}" class="social-icon" aria-label="Email Naeem">${icons.mail}</a><a href="${links.github}" class="social-icon" aria-label="Naeem on GitHub" target="_blank" rel="noopener noreferrer">${icons.github}</a><a href="${links.linkedin}" class="social-icon" aria-label="Naeem on LinkedIn" target="_blank" rel="noopener noreferrer">${icons.linkedin}</a><a href="/publications" class="social-icon" aria-label="Publications">${icons.paper}</a></div>`;
+}
+function header() {
+  return `<header class="site-header glass"><a class="brand" href="/" aria-label="Naeem Ullah home">${avatar('nav-avatar')}<span>Naeem Ullah <span class="brand-role">| AI Engineer</span></span></a><nav class="nav-links" id="main-nav" aria-label="Main navigation"><a href="/portfolio">Portfolio</a><a href="/about">About</a><a href="/publications">Publications</a><a class="nav-contact" href="/contact">Contact Me</a></nav><button class="menu-button" id="menu-open" aria-label="Open menu" aria-controls="main-nav" aria-expanded="false">☰</button></header>`;
+}
+function footer() {
+  return `<footer class="site-footer">${socials()}<p>Naeem Ullah&nbsp; • &nbsp;© ${new Date().getFullYear()}&nbsp; • &nbsp;Associate AI Engineer</p></footer>`;
+}
+function qaPanel() {
+  return `<div class="qa-wrap"><button id="qa-toggle" class="qa-toggle glass" aria-label="Open quick answers about Naeem" aria-controls="qa-panel" aria-expanded="false">${icons.chat}<span>Ask about Naeem</span></button><section id="qa-panel" class="qa-panel glass" aria-label="Quick answers about Naeem" hidden><div class="qa-heading"><div><span class="eyebrow">QUICK ANSWERS</span><h2>Get to know Naeem</h2></div><button id="qa-close" aria-label="Close quick answers">×</button></div><p class="qa-intro">Choose a question. These are curated answers from my portfolio.</p><div class="qa-questions">${questions.map((item, index) => `<button type="button" class="qa-question" data-question="${index}">${item.q}<span aria-hidden="true">↗</span></button>`).join('')}</div><div class="qa-answer" hidden aria-live="polite"><button class="qa-back" type="button">← All questions</button><h3></h3><p></p></div></section></div>`;
+}
+function projectVisual(project, detail = false) {
+  return `<div class="project-visual ${project.theme} ${detail ? 'visual-large' : ''}" aria-hidden="true"><div class="visual-grid"></div>${project.theme === 'security' ? '<div class="visual-shield">◇</div><div class="visual-top">XPLOITEYE <span>SECURITY SYSTEMS</span></div><div class="visual-nodes"><span>RED TEAM</span><i>↔</i><span>BLUE TEAM</span></div><div class="visual-bottom">SCAN · ANALYZE · REPORT</div>' : project.theme === 'voice' ? '<div class="visual-top">VOICE / AUTHENTICITY <span>01 — 02</span></div><div class="visual-wave">' + [20,35,52,74,45,65,95,56,81,44,67,90,39,72,50,83,46,62,92,57,34,68,49,25].map((n, i) => `<i style="height:${n}%;animation-delay:${i * 35}ms"></i>`).join('') + '</div><div class="visual-bottom">REAL SPEECH / SYNTHETIC AUDIO</div>' : '<div class="visual-top">CRICKET / VISION <span>FRAME 024</span></div><div class="pitch"><span class="crease crease-one"></span><span class="crease crease-two"></span><span class="ball ball-one"></span><span class="ball ball-two"></span><span class="ball ball-three"></span><span class="trajectory"></span></div><div class="visual-bottom">DETECT · TRACK · ANALYZE</div>'}</div>`;
+}
+function projectRow(project) {
+  return `<li class="post-row"><div class="row-meta"><span>${project.year}</span><span>${project.type}</span></div><div class="post-main"><h3><a href="/portfolio/${project.slug}">${project.title}</a></h3><div class="tag-list">${project.tags.map(tag => `<span>${tag}</span>`).join('')}</div><p>${project.excerpt}</p><a class="text-link" href="/portfolio/${project.slug}">Read the case study <span aria-hidden="true">→</span></a></div></li>`;
+}
+function profileCard() {
+  return `<div class="profile-card glass">${avatar('portrait')}<h3>Naeem Ullah</h3><p>Associate AI Engineer</p><p>AB Ark Private Limited</p>${socials()}<a class="card-publication" href="/publications">View my publication <span aria-hidden="true">↗</span></a></div>`;
+}
+function contactClosing() {
+  return `<section class="contact-closing" id="contact"><span class="eyebrow">HAVE A PROBLEM WORTH SOLVING?</span><h2>Let’s build something useful.</h2><p>AI products, Python backends, or research-driven prototypes — I’m open to thoughtful conversations.</p><div class="closing-actions"><a class="glass pill primary-pill" href="${links.email}">Email me ↗</a><a class="glass pill" href="/contact">Contact details →</a></div></section>`;
+}
+function home() {
+  return `<canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas><main class="home-main"><section class="hero"><div class="hero-inner"><p class="hero-eyebrow"><span>Hi,</span> I’m</p><h1>Naeem Ullah</h1><p class="hero-tagline" aria-live="polite"><span id="typed-tagline">I build practical AI systems, from research to reliable APIs.</span><span class="typing-caret" aria-hidden="true"></span></p><div class="hero-actions"><a class="glass pill" href="/portfolio">Explore my projects</a><button class="glass pill" id="tagline-button">Another line ↻</button></div><p class="tagline-note">Curated lines about my work, shown without an API.</p></div></section><section class="home-profile">${profileCard()}<div class="profile-copy"><span class="eyebrow">THE PERSON BEHIND THE WORK</span><p class="profile-summary">I’m an Associate AI Engineer at AB Ark, and a Data Science graduate from the University of the Punjab. I build AI applications and Python backends that turn complex ideas into tools people can use.</p><a class="text-link" href="/about">More about me →</a></div></section><section class="latest-section" id="featured"><div class="section-heading"><span class="eyebrow">SELECTED WORK</span><h2>Featured Projects</h2><p class="section-description">Real problems, deliberate engineering, and research you can explore.</p></div><ul class="post-list">${projects.map(projectRow).join('')}</ul><a class="all-posts-link" href="/portfolio">All Projects →</a></section>${contactClosing()}</main>`;
+}
+function pageTitle(title, description = '', eyebrow = '') {
+  return `<div class="page-heading">${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ''}<h1>${title}</h1>${description ? `<p>${description}</p>` : ''}</div>`;
+}
+function portfolio() {
+  return `<main class="inner-main portfolio-main">${pageTitle('Portfolio', 'Selected AI, backend, and research work. Each project has a fuller story behind the result.', 'SELECTED WORK')}<div class="project-grid">${projects.map(project => `<article class="project-card"><a class="visual-link" href="/portfolio/${project.slug}" aria-label="Read about ${project.title}">${projectVisual(project)}</a><div class="project-card-copy"><span class="eyebrow">${project.type} · ${project.year}</span><h2><a href="/portfolio/${project.slug}">${project.title}</a></h2><p>${project.excerpt}</p><a class="text-link" href="/portfolio/${project.slug}">Read the case study →</a></div></article>`).join('')}</div>${contactClosing()}</main>`;
+}
+function about() {
+  return `<main class="inner-main about-main">${pageTitle('About', 'AI engineering grounded in software development and research.', 'THE JOURNEY')}<div class="about-layout"><aside class="about-person">${avatar('portrait')}<h3>Naeem Ullah</h3><p>Associate AI Engineer</p><p>Lahore, Pakistan</p>${socials()}</aside><article class="about-prose"><h2>Making AI useful in the real world.</h2><p>I’m a Data Science graduate from the University of the Punjab (PUCIT/FCIT) and an Associate AI Engineer at AB Ark Private Limited. My work focuses on Python backend development, AI applications, and intelligent automation.</p><p>I’ve built projects across multi-agent security workflows, synthetic voice detection, and computer vision. I enjoy connecting the research side of a problem with the engineering needed to make it usable: APIs, data flows, interfaces, and careful evaluation.</p><div class="about-facts"><div><span class="eyebrow">CURRENT ROLE</span><strong>Associate AI Engineer</strong><p>AB Ark Private Limited, Lahore</p></div><div><span class="eyebrow">EDUCATION</span><strong>BS Data Science</strong><p>University of the Punjab · 2026</p></div><div><span class="eyebrow">RESEARCH</span><strong>IEEE FIT 2025</strong><p>Computer vision for cricket delivery analysis</p></div></div><h2>Areas I work in</h2><div class="skill-groups"><span>Python & FastAPI</span><span>Generative AI & RAG</span><span>Agentic systems</span><span>PyTorch</span><span>Computer vision</span><span>Audio AI</span><span>Backend APIs</span><span>Docker</span></div><p class="about-next">Explore <a href="/portfolio">my projects</a>, read <a href="/publications">the publication</a>, or <a href="/contact">get in touch</a>.</p></article></div>${contactClosing()}</main>`;
+}
+function publications() {
+  return `<main class="inner-main publications-main">${pageTitle('Publications', 'Peer-reviewed research and the engineering behind it.', 'RESEARCH')}<article class="publication-card"><span class="publication-index">01 / 01</span><div><div class="publication-meta">IEEE FIT 2025 <span>•</span> COMPUTER VISION</div><h2>Beyond the Naked Eye: Automated Delivery Analysis in Cricket with Computer Vision</h2><p>A computer vision approach to analyzing cricket deliveries using YOLOv5s object detection, Kalman filtering, coordinate transformation with homography, and delivery-length analysis.</p><p class="publication-doi">DOI: 10.1109/FIT67061.2025.11333604</p><div class="publication-actions">${external(links.paper, 'Read on IEEE Xplore ↗', 'text-link')}${external(links.doi, 'Open DOI ↗', 'text-link')}<a class="text-link" href="/portfolio/cricket-vision">Explore the project →</a></div></div></article><p class="research-note">Other investigations, including voice AI and AI security, appear as projects. This page lists formal publications only.</p>${contactClosing()}</main>`;
+}
+function contact() {
+  return `<main class="inner-main contact-main">${pageTitle('Contact Me', 'Let’s talk about an idea, a project, or an opportunity.', 'GET IN TOUCH')}<div class="contact-card glass"><span class="eyebrow">OPEN TO CONVERSATIONS</span><h2>Tell me what you’re building.</h2><p>For AI engineering, Python backend work, research collaboration, or a role that brings them together, connect with me through the links below.</p><div class="contact-options"><a class="contact-option" href="${links.email}">${icons.mail}<span><strong>Email</strong><small>naeem.ullah@gmail.com ↗</small></span></a>${external(links.linkedin, `${icons.linkedin}<span><strong>LinkedIn</strong><small>Message me about work or collaboration ↗</small></span>`, 'contact-option')}${external(links.github, `${icons.github}<span><strong>GitHub</strong><small>Explore my public code ↗</small></span>`, 'contact-option')}<a class="contact-option" href="/publications">${icons.paper}<span><strong>Publications</strong><small>Read my IEEE research ↗</small></span></a></div></div></main>`;
+}
+function caseStudy(project) {
+  const index = projects.indexOf(project);
+  const next = projects[(index + 1) % projects.length];
+  return `<main class="inner-main case-main"><a class="back-link" href="/portfolio">← All projects</a><div class="case-heading"><span class="eyebrow">${project.type} · ${project.year}</span><h1>${project.title}</h1><p>${project.excerpt}</p></div>${projectVisual(project, true)}<div class="case-layout"><aside class="case-side"><div class="case-side-block"><span class="eyebrow">ROLE</span><p>Research, engineering & implementation</p></div><div class="case-side-block"><span class="eyebrow">STACK</span><div class="stack-list">${project.stack.map(item => `<span>${item}</span>`).join('')}</div></div><div class="case-side-block"><span class="eyebrow">EXPLORE</span>${project.links.map(item => external(item.href, item.label, 'side-link')).join('')}</div></aside><article class="case-body"><section><span class="eyebrow">01 / THE PROBLEM</span><h2>What needed solving</h2><p>${project.problem}</p></section><section><span class="eyebrow">02 / MY WORK</span><h2>What I built</h2><p>${project.contribution}</p></section><section><span class="eyebrow">03 / THE APPROACH</span><h2>How it works</h2><ul>${project.approach.map(item => `<li>${item}</li>`).join('')}</ul></section><div class="case-links">${project.links.map(item => external(item.href, item.label, 'glass pill')).join('')}</div></article></div><div class="case-next"><span class="eyebrow">NEXT PROJECT</span><a href="/portfolio/${next.slug}">${next.title} <span aria-hidden="true">↗</span></a></div>${contactClosing()}</main>`;
+}
+function notFound() {
+  return `<main class="inner-main not-found">${pageTitle('Page not found')}<p>That page isn’t part of this portfolio.</p><a class="text-link" href="/">Back to homepage →</a></main>`;
+}
+
+let content;
+if (path === '/') content = home();
+else if (path === '/portfolio' || path === '/projects') content = portfolio();
+else if (path === '/about') content = about();
+else if (path === '/publications') content = publications();
+else if (path === '/contact') content = contact();
+else if (path.startsWith('/portfolio/')) {
+  const project = projects.find(item => item.slug === path.split('/')[2]);
+  content = project ? caseStudy(project) : notFound();
+} else content = notFound();
+app.innerHTML = `<div class="site-wrap ${path === '/' ? 'is-home' : 'is-inner'}">${header()}${content}${footer()}${qaPanel()}</div>`;
+const pageName = path === '/about' ? 'About' : path === '/publications' ? 'Publications' : path === '/contact' ? 'Contact' : path === '/portfolio' ? 'Portfolio' : projects.find(item => path === `/portfolio/${item.slug}`)?.title || 'Portfolio';
+document.title = path === '/' ? 'Naeem Ullah | AI Engineer' : `${pageName} | Naeem Ullah`;
+document.querySelectorAll('.nav-links a').forEach(link => {
+  if (link.getAttribute('href') === path || (path.startsWith('/portfolio/') && link.getAttribute('href') === '/portfolio')) link.setAttribute('aria-current', 'page');
+});
+
+document.querySelector('#menu-open').addEventListener('click', function () {
+  const open = document.querySelector('#main-nav').classList.toggle('open');
+  this.setAttribute('aria-expanded', String(open));
+  this.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+});
+
+const qaToggle = document.querySelector('#qa-toggle');
+const qaPanelElement = document.querySelector('#qa-panel');
+const questionList = document.querySelector('.qa-questions');
+const answerBox = document.querySelector('.qa-answer');
+function setQaOpen(open) {
+  qaPanelElement.hidden = !open;
+  qaToggle.setAttribute('aria-expanded', String(open));
+  qaToggle.setAttribute('aria-label', open ? 'Close quick answers about Naeem' : 'Open quick answers about Naeem');
+  if (open) document.querySelector('#qa-close').focus();
+  else qaToggle.focus();
+}
+qaToggle.addEventListener('click', () => setQaOpen(qaPanelElement.hidden));
+document.querySelector('#qa-close').addEventListener('click', () => setQaOpen(false));
+document.querySelectorAll('.qa-question').forEach(button => button.addEventListener('click', () => {
+  const item = questions[Number(button.dataset.question)];
+  answerBox.querySelector('h3').textContent = item.q;
+  answerBox.querySelector('p').textContent = item.a;
+  questionList.hidden = true;
+  answerBox.hidden = false;
+  answerBox.querySelector('button').focus();
+}));
+document.querySelector('.qa-back').addEventListener('click', () => {
+  answerBox.hidden = true;
+  questionList.hidden = false;
+  questionList.querySelector('button').focus();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && !qaPanelElement.hidden) setQaOpen(false);
+});
+
+if (path === '/') {
+  const lines = [
+    'I build practical AI systems, from research to reliable APIs.',
+    'I turn complex AI ideas into tools people can actually use.',
+    'I connect machine learning, backend engineering, and real problems.',
+    'I explore AI deeply, then make it useful in the real world.'
+  ];
+  const field = document.querySelector('#typed-tagline');
+  let position = 0;
+  let timer;
+  document.querySelector('#tagline-button').addEventListener('click', () => {
+    position = (position + 1) % lines.length;
+    clearTimeout(timer);
+    const value = lines[position];
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { field.textContent = value; return; }
+    field.textContent = '';
+    let index = 0;
+    const step = () => { field.textContent = value.slice(0, ++index); if (index < value.length) timer = setTimeout(step, 33); };
+    step();
+  });
   drawAmbient(document.querySelector('#ambient-canvas'));
 }
 function drawAmbient(canvas){

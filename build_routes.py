@@ -1,4 +1,4 @@
-"""Create static route entrypoints for the reference style study."""
+"""Create static entrypoints for Naeem's portfolio routes."""
 
 from pathlib import Path
 
@@ -9,27 +9,11 @@ routes = [
     "about",
     "portfolio",
     "projects",
-    "blog",
-    "blog/page/2",
-    "blog/page/3",
-    "tags",
-    "tags/experience",
-    "tags/website",
-    "tags/devlog",
-    "tags/projects",
-    "tags/seo",
-    "tags/guide",
-    "blog/prepping-your-ecomm-site-for-agentic-apocalypse",
-    "blog/shopify-metadata-migrator",
-    "blog/nanoHabits",
-    "blog/nanoHabits-prototype",
-    "blog/devlog-6-2-25",
-    "blog/CQL",
-    "blog/devlog-5-30-25",
-    "blog/kfb",
-    "blog/merc",
-    "blog/devlog-5-26-25",
-    "blog/devlog-5-23-25",
+    "publications",
+    "contact",
+    "portfolio/xploiteye",
+    "portfolio/voice-authenticity",
+    "portfolio/cricket-vision",
 ]
 
 for route in routes:
