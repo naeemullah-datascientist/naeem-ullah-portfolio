@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080c17" />
+    <meta name="description" content="A visual style preview for Naeem's future portfolio." />
+    <title>Naeem — Portfolio Style Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-glow" aria-hidden="true"></div>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Naeem, back to top"><span class="brand-symbol">N<span class="brand-dot">.</span></span><span class="brand-label">NAEEM / PORTFOLIO</span></a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="#about">Profile</a>
+          <a href="#work">Latest</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="header-cta" href="#work">EXPLORE <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-grid" aria-hidden="true"></div>
+          <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+          <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+          <div class="hero-inner">
+            <div class="hero-copy">
+              <div class="eyebrow"><span class="status-light"></span> PORTFOLIO STYLE PREVIEW <span class="eyebrow-line"></span> 001 / 003</div>
+              <p class="intro">Hi, I'm</p>
+              <h1 id="hero-title">Naeem<span class="title-period">.</span></h1>
+              <div class="tagline-wrap">
+                <span class="tagline-kicker">AN INTRODUCTION IN MOTION</span>
+                <p class="tagline"><span id="typed-tagline">I build thoughtful digital experiences.</span><span class="cursor" aria-hidden="true"></span></p>
+              </div>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#work">Explore the preview <span aria-hidden="true">↗</span></a>
+                <button class="button button-ghost" id="shuffle-tagline" type="button" aria-label="Show another introduction"><span class="shuffle-icon" aria-hidden="true">↻</span> Another line</button>
+              </div>
+              <p class="hero-note">Interactive style demo. The words and projects are placeholders.</p>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <div class="art-cross art-cross-top">✳</div>
+              <div class="art-cross art-cross-bottom">✳</div>
+              <div class="orbit orbit-outer"></div>
+              <div class="orbit orbit-inner"></div>
+              <div class="art-core"><span class="core-monogram">N</span><span class="core-glint"></span></div>
+              <div class="art-coordinate art-coordinate-one">CURIOUS / ALWAYS</div>
+              <div class="art-coordinate art-coordinate-two">IDEAS IN MOTION / 2026</div>
+              <div class="art-label art-label-top">CREATIVE<br>SPACE</div>
+              <div class="art-label art-label-bottom">DESIGN × DEVELOPMENT</div>
+            </div>
+          </div>
+          <a href="#about" class="scroll-cue"><span class="scroll-line" aria-hidden="true"></span> SCROLL TO EXPLORE</a>
+          <span class="hero-index">01 / INTRODUCTION</span>
+        </section>
+
+        <section id="about" class="section about-section reveal" aria-labelledby="about-title">
+          <div class="section-heading"><span class="section-number">01 / PROFILE</span><span class="section-rule"></span><span class="section-side">A PLACE FOR THE PERSONAL STORY</span></div>
+          <div class="profile-layout">
+            <div class="profile-card">
+              <div class="profile-card-top"><span>PROFILE / PREVIEW</span><span class="profile-star" aria-hidden="true">✳</span></div>
+              <div class="profile-avatar" aria-hidden="true"><span>N</span></div>
+              <p class="profile-card-name">Naeem Ullah</p>
+              <p class="profile-card-role">Your title will go here</p>
+              <div class="profile-card-meta"><span><span class="status-light"></span> STORY TO BE ADDED</span><span>↗</span></div>
+            </div>
+            <div class="profile-story">
+              <p class="overline">THE STORY BEHIND THE WORK</p>
+              <h2 id="about-title">More than<br>a <em>headline.</em></h2>
+              <p class="profile-lead">A profile section where your journey can become a story people remember.</p>
+              <p>This is a visual placeholder. Your background, experience, and voice will shape this section in the next stage.</p>
+              <span class="profile-footnote">YOUR STORY / COMING IN THE NEXT STAGE</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="work" class="section work-section reveal" aria-labelledby="work-title">
+          <div class="section-heading"><span class="section-number">02 / LATEST</span><span class="section-rule"></span><span class="section-side">PROJECTS, IDEAS & NOTES</span></div>
+          <div class="work-intro"><div><p class="overline">A RUNNING RECORD</p><h2 id="work-title">The <em>latest.</em></h2></div><p>A flexible feed for projects, writing, experiments, and the ideas behind them.</p></div>
+          <div class="latest-grid">
+            <article class="latest-card latest-card-featured"><div class="latest-art latest-art-one"><span class="art-mini-orbit"></span><span class="art-number">01</span></div><div class="latest-card-body"><div class="latest-meta"><span>PROJECT PREVIEW</span><span>01 / 03</span></div><h3>Project story goes here</h3><p>A sample card showing how featured work can be introduced with a clear title, a short description, and visual space.</p><span class="latest-link">EXPLORE THE IDEA <span aria-hidden="true">↗</span></span></div></article>
+            <article class="latest-card"><div class="latest-art latest-art-two"><span class="art-number">02</span><span class="art-mini-grid"></span></div><div class="latest-card-body"><div class="latest-meta"><span>NOTE PREVIEW</span><span>02 / 03</span></div><h3>A thought worth sharing</h3><p>A place for writing about what you learned, built, or discovered along the way.</p><span class="latest-link">READ THE STORY <span aria-hidden="true">↗</span></span></div></article>
+            <article class="latest-card"><div class="latest-art latest-art-three"><span class="art-number">03</span><span class="art-mini-sun">✳</span></div><div class="latest-card-body"><div class="latest-meta"><span>EXPERIMENT PREVIEW</span><span>03 / 03</span></div><h3>Ideas in progress</h3><p>A visual preview for smaller experiments and the process behind them.</p><span class="latest-link">SEE THE PROCESS <span aria-hidden="true">↗</span></span></div></article>
+          </div>
+        </section>
+
+        <section id="contact" class="section contact-section reveal" aria-labelledby="contact-title"><div class="section-heading"><span class="section-number">03 / CONTACT</span><span class="section-rule"></span><span class="section-side">THE END OF THE PREVIEW</span></div><div class="contact-content"><p class="overline">YOUR FINAL CALL TO ACTION</p><h2 id="contact-title">Let's make<br><em>something</em> happen<span class="title-period">.</span></h2><p>This is where your preferred contact links and final invitation will live.</p><div class="contact-bottom"><span>STYLE PREVIEW / CONTENT TO FOLLOW</span><span class="contact-asterisk">✳</span></div></div></section>
+      </main>
+
+      <footer class="footer"><a class="brand footer-brand" href="#top"><span class="brand-symbol">N<span class="brand-dot">.</span></span><span class="brand-label">BACK TO TOP ↑</span></a><span>REFERENCE STYLE PREVIEW</span><span>© <span id="year">2026</span> NAEEM</span></footer>
+    </div>
+  </body>
+</html>
