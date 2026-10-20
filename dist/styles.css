@@ -246,9 +246,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--sky);outline-offset
 .paper-reader iframe{display:block;width:100%;height:820px;border:1px solid var(--line);border-radius:10px;background:#f4f4f4}
 .paper-reader>p{color:var(--muted);font-size:13px;margin:13px 0}
 .paper-reader>p a{color:var(--sky)}
-.qa-audience{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border:1px solid rgba(188,213,158,.16);border-radius:13px;background:rgba(7,13,7,.4);margin:15px 0}
-.qa-audience button{border:0;border-radius:9px;background:transparent;color:var(--body);padding:9px 8px;font-size:13px;font-weight:600}
-.qa-audience button[aria-pressed="true"]{background:rgba(126,160,78,.36);color:var(--paper);box-shadow:inset 0 1px rgba(255,255,255,.1)}
 .qa-answer-bubble{border:1px solid rgba(178,205,145,.2);border-radius:14px;background:rgba(12,21,12,.56);padding:18px;margin-top:8px}
 .qa-answer-bubble h3{font-size:21px;margin:10px 0}
 .qa-answer-bubble p{font-size:15px}
@@ -316,3 +313,46 @@ body{font-family:Satoshi,"Space Grotesk",Arial,sans-serif}
 .research-figure a{color:#426c3d;text-decoration:underline}
 @media(max-width:760px){.visual-large .workflow-card{min-height:153px;padding:14px}.visual-large .workflow-card strong{font-size:16px}.visual-large .workflow-card small{font-size:12px}.visual-large .workflow-heading{font-size:13px}}
 @media(max-width:580px){.page-heading>.eyebrow,.case-heading>.eyebrow,.section-heading>.eyebrow{font-size:13px}.visual-workflow{padding:13px 12px 18px;gap:7px}.workflow-heading{font-size:10px}.workflow-flow{gap:4px}.workflow-card{min-height:112px;padding:7px;gap:3px}.workflow-card strong{font-size:11px}.workflow-card small{font-size:9px}.flow-icon{font-size:12px}.flow-arrow{font-size:12px}.visual-large .workflow-card{min-height:128px;padding:9px}.visual-large .workflow-card strong{font-size:12px}.visual-large .workflow-card small{font-size:10px}.visual-large .workflow-flow{gap:5px}.visual-large .flow-arrow{font-size:13px}.visual-large .flow-icon{font-size:15px}.visual-large .workflow-heading{font-size:11px}.visual-evidence{padding:9px 9px 20px}.evidence-bar{height:25px;font-size:9px}.visual-caption{font-size:10px}.research-figure{margin:34px auto 45px;padding:12px}}
+
+/* Product delivery and narrated quick answers */
+.delivery-section{width:min(1024px,calc(100% - 48px));margin:0 auto 86px;padding:32px 0 0}
+.delivery-section .section-heading h2{font-size:clamp(36px,4.2vw,54px)}
+.delivery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-top:24px}
+.delivery-grid article{padding:23px 20px 25px;min-width:0;border:1px solid rgba(189,211,158,.2);border-radius:15px;background:linear-gradient(155deg,rgba(37,49,34,.75),rgba(12,20,12,.58))}
+.delivery-grid article>span{color:var(--matcha);font:700 14px Doto,Satoshi,sans-serif}
+.delivery-grid h3{color:var(--paper);font-size:19px;line-height:1.25;letter-spacing:-.035em;margin:17px 0 9px}
+.delivery-grid p{font-size:14px;line-height:1.6;margin:0}
+.qa-panel{width:min(450px,calc(100vw - 34px));max-height:min(760px,calc(100dvh - 108px));padding:20px}
+.qa-presenter{display:flex;align-items:center;gap:14px;margin:19px 0 17px;padding:12px;border:1px solid rgba(186,216,154,.18);border-radius:16px;background:rgba(7,13,8,.47)}
+.qa-face{position:relative;flex:none;width:86px;height:86px;overflow:hidden;border-radius:50%;border:1px solid rgba(174,210,128,.43);background:#101810;box-shadow:0 0 22px rgba(125,167,80,.13)}
+.qa-face img{position:absolute;left:-30%;top:-10%;display:block;width:160%;height:160%;object-fit:cover;object-position:center 28%}
+.qa-face-blink{opacity:0;clip-path:ellipse(24% 7% at 50% 33%);animation:qa-blink 5.3s ease-in-out infinite}
+.qa-face-speaking{opacity:0;clip-path:ellipse(15% 6% at 50% 47%)}
+.qa-face.is-speaking .qa-face-speaking{animation:qa-talk .34s steps(1,end) infinite}
+.qa-face.has-recording .qa-face-speaking{animation:none;opacity:var(--mouth-open,0)}
+.qa-presenter-copy{display:flex;flex-direction:column;min-width:0;line-height:1.3}
+.qa-presenter-copy strong{color:var(--paper);font-size:16px}
+.qa-presenter-copy>span:nth-child(2){font-size:12px;color:var(--matcha);margin-top:3px}
+.qa-speech-status{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.35}
+.qa-bars{display:flex;align-items:center;gap:2px;height:21px;margin-left:auto;flex:none}
+.qa-bars i{display:block;width:2px;height:7px;border-radius:3px;background:var(--matcha);opacity:.5}
+.qa-face.is-speaking~.qa-bars i{animation:qa-wave .65s ease-in-out infinite alternate;opacity:1}
+.qa-face.is-speaking~.qa-bars i:nth-child(2){animation-delay:.12s}
+.qa-face.is-speaking~.qa-bars i:nth-child(3){animation-delay:.24s}
+.qa-face.is-speaking~.qa-bars i:nth-child(4){animation-delay:.08s}
+.qa-questions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.qa-question{min-height:62px;font-size:13px;line-height:1.3}
+.qa-answer{padding:0 0 5px}
+.qa-answer-bubble{margin-top:5px}
+.qa-answer-bubble p{font-size:15px;line-height:1.65}
+.qa-answer-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.qa-answer-actions button{color:var(--paper);background:rgba(96,127,67,.24);border:1px solid rgba(181,211,148,.34);border-radius:999px;padding:8px 12px;font-size:12px}
+.qa-answer-actions button:hover{background:rgba(96,127,67,.48)}
+.qa-disclosure{color:var(--muted);font-size:11px;line-height:1.4;margin:14px 2px 0}
+@keyframes qa-blink{0%,44%,48%,100%{opacity:0}45%,47%{opacity:1}}
+@keyframes qa-talk{0%,100%{opacity:0}50%{opacity:1}}
+@keyframes qa-wave{to{height:19px}}
+@media(max-width:940px){.delivery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.delivery-section{width:calc(100% - 36px);margin-bottom:59px}.delivery-grid{gap:10px}.delivery-grid article{padding:18px 15px}.delivery-grid h3{font-size:16px}.delivery-grid p{font-size:12px}.qa-panel{width:calc(100vw - 24px);max-height:calc(100dvh - 88px);padding:16px}.qa-presenter{gap:10px;margin:15px 0}.qa-face{width:70px;height:70px}.qa-questions{grid-template-columns:1fr}.qa-question{min-height:0;padding:11px 12px}}
+@media(max-width:390px){.delivery-grid{grid-template-columns:1fr}.qa-panel{padding:13px}.qa-face{width:62px;height:62px}}
+@media(prefers-reduced-motion:reduce){.qa-face-blink,.qa-face.is-speaking .qa-face-speaking,.qa-face.is-speaking~.qa-bars i{animation:none!important}.qa-face-speaking{opacity:0!important}}

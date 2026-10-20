@@ -112,16 +112,16 @@ const projects = [
 ];
 
 const questions = [
-  {group: 'client', q: 'What can Naeem build for my team?', a: 'AI products, Python APIs, retrieval systems, document workflows, and automation that connect models to actual user needs. The portfolio shows security, voice, vision, and client-facing workflow examples.', href: '/portfolio', cta: 'Explore the work →'},
-  {group: 'client', q: 'Why work with Naeem?', a: 'He combines model experimentation with the backend and interface work needed to make an idea usable. That range helps a team move from an uncertain AI concept to a defined workflow and working product.', href: '/about', cta: 'See his approach →'},
-  {group: 'client', q: 'Has he worked on client products?', a: 'Yes. His experience includes client-facing fulfillment and incident-escalation workflows, alongside internal document and retrieval systems. Those case studies keep private code and customer data out of view.', href: '/portfolio/fulfillment-workflows', cta: 'View a client case study →'},
-  {group: 'client', q: 'Can he integrate AI with existing software?', a: 'His work connects LLM and model capabilities to FastAPI services, backend data, web interfaces, and automation. The key is defining where AI adds value and keeping the surrounding workflow dependable.', href: '/portfolio/legal-ai', cta: 'See an integration example →'},
-  {group: 'client', q: 'How can we discuss a project?', a: 'Send the problem, the current workflow, and the result you need to naeem.ullah@gmail.com. LinkedIn is also available on the contact page.', href: '/contact', cta: 'Contact Naeem →'},
-  {group: 'recruiter', q: 'What is Naeem’s professional focus?', a: 'AI engineering with a strong Python backend foundation. His portfolio spans agentic systems, RAG, document intelligence, computer vision, audio AI, and full-stack product delivery.', href: '/about', cta: 'Read the profile →'},
-  {group: 'recruiter', q: 'What is his current work?', a: 'He works on AI applications and Python backend services at AB Ark Private Limited, with experience across internal products, client engagements, and independent freelance work.', href: '/about', cta: 'Read more →'},
-  {group: 'recruiter', q: 'What is his technical stack?', a: 'Python, FastAPI, PyTorch, RAG and agent orchestration, REST APIs, Next.js, Docker, and model integration. Project pages show which tools were used in each context.', href: '/portfolio', cta: 'See projects →'},
-  {group: 'recruiter', q: 'Has he published research?', a: 'Yes. Naeem co-authored an IEEE FIT 2025 paper on single-camera cricket delivery analysis. The full PDF can be read in this portfolio.', href: '/publications/beyond-the-naked-eye', cta: 'Read the paper →'},
-  {group: 'recruiter', q: 'Where is the strongest proof of work?', a: 'Start with XploitEye for agentic AI and full-stack security workflows, voice detection for model evaluation and inference, and the IEEE cricket work for computer vision research.', href: '/portfolio', cta: 'Browse selected work →'}
+  {q: 'What can Naeem build end to end?', a: 'I build AI products from a defined problem through a usable application: Python and FastAPI services, model or LLM workflows, databases, React or Next.js interfaces, integrations, and deployment. I have done this across company, client, and freelance work.', href: '/portfolio', cta: 'Explore the work →'},
+  {q: 'Can he take an MVP toward production?', a: 'Yes. My work extends beyond a demo. I design APIs and data flows, containerize services with Docker, set up delivery workflows with GitHub Actions, and work with Linux and Azure Container Apps. I also pay attention to testing, evaluation, observability, and handoff requirements as a product matures.', href: '/about', cta: 'See my approach →'},
+  {q: 'What is his AI and backend stack?', a: 'Python and FastAPI are my core backend tools. I also work with LLMs, retrieval-augmented generation, LangGraph, PyTorch, REST APIs, databases, Docker, and React or Next.js. Each case study names the technologies used in that project.', href: '/portfolio', cta: 'Browse the stack in context →'},
+  {q: 'Has he delivered work for clients?', a: 'Yes. My portfolio includes client-facing fulfillment and incident-escalation workflows, alongside internal legal-document AI work and independent freelance projects. Client details are generalized where the work is private.', href: '/portfolio/fulfillment-workflows', cta: 'See a client case study →'},
+  {q: 'Does he understand cybersecurity?', a: 'Security is part of my applied AI work. XploitEye connects authorized reconnaissance, controlled validation, vulnerability context, remediation, and reporting. I have worked with concepts and tools including OWASP, Nmap, ZAP, SQLMap, and prompt-injection testing.', href: '/portfolio/xploiteye', cta: 'Explore XploitEye →'},
+  {q: 'Does he work with generative video?', a: 'Yes. I have used Google Flow, Gemini, ComfyUI, ElevenLabs, and HeyGen in generative video and voice workflows. That experience complements my product engineering work; ask me about the specific workflow and outcome relevant to your project.', href: '/contact', cta: 'Discuss a video workflow →'},
+  {q: 'What research has he published?', a: 'I co-authored an IEEE FIT 2025 paper on single-camera cricket delivery analysis. It combines YOLOv5s ball detection, Kalman tracking, and homography. You can read the full paper inside this portfolio.', href: '/publications/beyond-the-naked-eye', cta: 'Read the IEEE paper →'},
+  {q: 'Where should I start reviewing his work?', a: 'Start with XploitEye for full-stack agentic security, voice authenticity for model evaluation and deployment, and the IEEE cricket project for computer vision research. Client workflow cases show how I approach operational products.', href: '/portfolio', cta: 'View selected projects →'},
+  {q: 'What is his current professional focus?', a: 'I work on AI applications and Python backend services at AB Ark Private Limited, with additional client and freelance delivery experience. My focus is turning AI capability into reliable software people can actually use.', href: '/about', cta: 'Read more about me →'},
+  {q: 'How can I contact Naeem?', a: 'Email me at naeem.ullah@gmail.com with the role or problem, the context, and what success would look like. You can also reach me through LinkedIn on the contact page.', href: '/contact', cta: 'Contact Naeem →'}
 ];
 
 const path = decodeURIComponent(location.pathname).replace(/\/+$/, '') || '/';
@@ -142,13 +142,13 @@ function socials(extra = '') {
   return `<div class="social-links ${extra}"><a href="${links.email}" class="social-icon" aria-label="Email Naeem">${icons.mail}</a><a href="${links.github}" class="social-icon" aria-label="Naeem on GitHub" target="_blank" rel="noopener noreferrer">${icons.github}</a><a href="${links.linkedin}" class="social-icon" aria-label="Naeem on LinkedIn" target="_blank" rel="noopener noreferrer">${icons.linkedin}</a><a href="/publications" class="social-icon" aria-label="Publications">${icons.paper}</a></div>`;
 }
 function header() {
-  return `<header class="site-header glass"><a class="brand" href="/" aria-label="Naeem Ullah home">${avatar('nav-avatar')}<span>Naeem Ullah <span class="brand-role">| AI Engineer</span></span></a><nav class="nav-links" id="main-nav" aria-label="Main navigation"><a href="/portfolio">Portfolio</a><a href="/about">About</a><a href="/publications">Publications</a><a class="nav-contact" href="/contact">Contact Me</a></nav><button class="menu-button" id="menu-open" aria-label="Open menu" aria-controls="main-nav" aria-expanded="false">☰</button></header>`;
+  return `<header class="site-header glass"><a class="brand" href="/" aria-label="Naeem Ullah home">${avatar('nav-avatar')}<span>Naeem Ullah <span class="brand-role">| Full-Stack AI Engineer</span></span></a><nav class="nav-links" id="main-nav" aria-label="Main navigation"><a href="/portfolio">Portfolio</a><a href="/about">About</a><a href="/publications">Publications</a><a class="nav-contact" href="/contact">Contact Me</a></nav><button class="menu-button" id="menu-open" aria-label="Open menu" aria-controls="main-nav" aria-expanded="false">☰</button></header>`;
 }
 function footer() {
-  return `<footer class="site-footer">${socials()}<p>Naeem Ullah&nbsp; • &nbsp;© ${new Date().getFullYear()}&nbsp; • &nbsp;AI Engineer & Python Backend Developer</p></footer>`;
+  return `<footer class="site-footer">${socials()}<p>Naeem Ullah&nbsp; • &nbsp;© ${new Date().getFullYear()}&nbsp; • &nbsp;Full-Stack AI Engineer</p></footer>`;
 }
 function qaPanel() {
-  return `<div class="qa-wrap"><button id="qa-toggle" class="qa-toggle glass" aria-label="Open quick answers about Naeem" aria-controls="qa-panel" aria-expanded="false">${icons.chat}<span>Ask about Naeem</span></button><section id="qa-panel" class="qa-panel glass" aria-label="Quick answers about Naeem" hidden><div class="qa-heading"><div><span class="eyebrow">A SHORT CONVERSATION</span><h2>Ask about the work.</h2></div><button id="qa-close" aria-label="Close quick answers">×</button></div><p class="qa-intro">Useful answers for the people I work with.</p><div class="qa-audience" role="group" aria-label="Choose an audience"><button type="button" aria-pressed="true" data-group="client">For clients</button><button type="button" aria-pressed="false" data-group="recruiter">For recruiters</button></div><div class="qa-questions">${questions.map((item, index) => `<button type="button" class="qa-question" data-question="${index}" data-group="${item.group}" ${item.group === 'client' ? '' : 'hidden'}>${item.q}<span aria-hidden="true">↗</span></button>`).join('')}</div><div class="qa-answer" hidden aria-live="polite"><button class="qa-back" type="button">← All questions</button><div class="qa-answer-bubble"><span class="eyebrow">NAEEM’S ANSWER</span><h3></h3><p></p><a class="qa-action text-link" href="#"></a></div></div></section></div>`;
+  return `<div class="qa-wrap"><button id="qa-toggle" class="qa-toggle glass" aria-label="Open quick answers about Naeem" aria-controls="qa-panel" aria-expanded="false">${icons.chat}<span>Ask about Naeem</span></button><section id="qa-panel" class="qa-panel glass" aria-label="Quick answers about Naeem" hidden><div class="qa-heading"><div><span class="eyebrow">QUICK ANSWERS</span><h2>Ask about Naeem.</h2></div><button id="qa-close" aria-label="Close quick answers">×</button></div><div class="qa-presenter"><div class="qa-face" role="img" aria-label="Animated portrait of Naeem Ullah"><img class="qa-face-base" src="/assets/naeem-portrait.png" alt=""><img class="qa-face-blink" src="/assets/naeem-blink.png" alt=""><img class="qa-face-speaking" src="/assets/naeem-speaking.png" alt=""></div><div class="qa-presenter-copy"><strong>Naeem Ullah</strong><span>Full-Stack AI Engineer</span><span class="qa-speech-status" id="qa-speech-status" role="status">Choose a question to hear an answer.</span></div><div class="qa-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div><div class="qa-questions">${questions.map((item, index) => `<button type="button" class="qa-question" data-question="${index}">${item.q}<span aria-hidden="true">↗</span></button>`).join('')}</div><div class="qa-answer" hidden><button class="qa-back" type="button">← All questions</button><div class="qa-answer-bubble"><span class="eyebrow">THE ANSWER</span><h3></h3><p></p><div class="qa-answer-actions"><button id="qa-replay" type="button">↻ Replay voice</button><button id="qa-stop" type="button">Stop</button></div><a class="qa-action text-link" href="#"></a></div></div><p class="qa-disclosure">Animated portrait · synthetic English narration. Curated answers from Naeem’s portfolio.</p></section></div>`;
 }
 function projectVisual(project, detail = false) {
   const evidence = {
@@ -171,13 +171,13 @@ function projectRow(project) {
   return `<li class="post-row"><div class="row-meta"><span>${project.year}</span><span>${project.type}</span></div><div class="post-main"><h3><a href="/portfolio/${project.slug}">${project.title}</a></h3><div class="tag-list">${project.tags.map(tag => `<span>${tag}</span>`).join('')}</div><p>${project.excerpt}</p><a class="text-link" href="/portfolio/${project.slug}">Read the case study <span aria-hidden="true">→</span></a></div></li>`;
 }
 function profileCard() {
-  return `<div class="profile-card glass">${avatar('portrait')}<h3>Naeem Ullah</h3><p>AI Engineer · Python Backend Developer</p><p>AB Ark Private Limited</p>${socials()}<a class="card-publication" href="/publications">View my publication <span aria-hidden="true">↗</span></a></div>`;
+  return `<div class="profile-card glass">${avatar('portrait')}<h3>Naeem Ullah</h3><p>Full-Stack AI Engineer</p><p>AB Ark Private Limited</p>${socials()}<a class="card-publication" href="/publications">View my publication <span aria-hidden="true">↗</span></a></div>`;
 }
 function contactClosing() {
-  return `<section class="contact-closing" id="contact"><span class="eyebrow">HAVE A PROBLEM WORTH SOLVING?</span><h2>Let’s build something useful.</h2><p>AI products, Python backends, or research-driven prototypes — I’m open to thoughtful conversations.</p><div class="closing-actions"><a class="glass pill primary-pill" href="${links.email}">Email me ↗</a><a class="glass pill" href="/contact">Contact details →</a></div></section>`;
+  return `<section class="contact-closing" id="contact"><span class="eyebrow">HAVE A PROBLEM WORTH SOLVING?</span><h2>Let’s build something useful.</h2><p>From an AI product idea to a working MVP, backend, and deployment — I’m open to thoughtful conversations.</p><div class="closing-actions"><a class="glass pill primary-pill" href="${links.email}">Email me ↗</a><a class="glass pill" href="/contact">Contact details →</a></div></section>`;
 }
 function home() {
-  return `<canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas><main class="home-main"><section class="hero"><div class="hero-inner"><p class="hero-eyebrow"><span>Hi,</span> I’m</p><h1>Naeem Ullah</h1><p class="hero-tagline" aria-live="polite"><span id="typed-tagline">Building AI products where research meets working software.</span><span class="typing-caret" aria-hidden="true"></span></p><div class="hero-actions"><a class="glass pill" href="/portfolio">Explore my projects</a><button class="glass pill" id="tagline-button">Another line ↻</button></div><p class="tagline-note">Different angles on the same work: practical AI, carefully engineered.</p></div></section><section class="home-profile">${profileCard()}<div class="profile-copy"><span class="eyebrow">THE ENGINEER BEHIND THE WORK</span><p class="profile-summary">AI Engineer building useful products and Python backends across company, client, and freelance work. Projects span agentic systems, document intelligence, voice AI, and computer vision, with research published through IEEE.</p><a class="text-link" href="/about">More about Naeem →</a></div></section><section class="latest-section" id="featured"><div class="section-heading"><span class="eyebrow">SELECTED WORK</span><h2>Featured Projects</h2><p class="section-description">Products, client workflows, and research with a clear problem behind each build.</p></div><ul class="post-list">${projects.map(projectRow).join('')}</ul><a class="all-posts-link" href="/portfolio">All Projects →</a></section>${contactClosing()}</main>`;
+  return `<canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas><main class="home-main"><section class="hero"><div class="hero-inner"><p class="hero-eyebrow"><span>Hi,</span> I’m</p><h1>Naeem Ullah</h1><p class="hero-tagline" aria-live="polite"><span id="typed-tagline">Building AI products from first idea to deployed software.</span><span class="typing-caret" aria-hidden="true"></span></p><div class="hero-actions"><a class="glass pill" href="/portfolio">Explore my projects</a><button class="glass pill" id="tagline-button">Another line ↻</button></div><p class="tagline-note">AI engineering, product delivery, and the systems that keep both useful.</p></div></section><section class="home-profile">${profileCard()}<div class="profile-copy"><span class="eyebrow">THE ENGINEER BEHIND THE WORK</span><p class="profile-summary">Full-stack AI engineer building products across company, client, and freelance work. Connecting models to Python backends, usable interfaces, and deployment workflows, with hands-on experience in security, voice AI, computer vision, and IEEE-published research.</p><a class="text-link" href="/about">More about Naeem →</a></div></section><section class="delivery-section"><div class="section-heading"><span class="eyebrow">FROM IDEA TO RELEASE</span><h2>More than a working demo.</h2><p class="section-description">I work across the layers that turn an AI idea into a product people can use and a team can maintain.</p></div><div class="delivery-grid"><article><span>01 / DEFINE</span><h3>Find the real workflow</h3><p>Clarify the user problem, data, constraints, and what success looks like before building.</p></article><article><span>02 / BUILD</span><h3>Connect the system</h3><p>Develop Python APIs, AI or retrieval workflows, data services, and clear web interfaces.</p></article><article><span>03 / SHIP</span><h3>Prepare for deployment</h3><p>Containerize with Docker, use CI/CD, and deploy on Linux or Azure Container Apps when the project calls for it.</p></article><article><span>04 / STRENGTHEN</span><h3>Evaluate and secure</h3><p>Test model behavior and failure cases, review security risks, and make the outcome understandable.</p></article></div></section><section class="latest-section" id="featured"><div class="section-heading"><span class="eyebrow">SELECTED WORK</span><h2>Featured Projects</h2><p class="section-description">Products, client workflows, and research with a clear problem behind each build.</p></div><ul class="post-list">${projects.map(projectRow).join('')}</ul><a class="all-posts-link" href="/portfolio">All Projects →</a></section>${contactClosing()}</main>`;
 }
 function pageTitle(title, description = '', eyebrow = '') {
   return `<div class="page-heading">${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ''}<h1>${title}</h1>${description ? `<p>${description}</p>` : ''}</div>`;
@@ -186,7 +186,7 @@ function portfolio() {
   return `<main class="inner-main portfolio-main">${pageTitle('Portfolio', 'Selected products, research, and client work. Each case study explains the problem, engineering decisions, and result.', 'SELECTED WORK')}<div class="project-grid">${projects.map(project => `<article class="project-card"><a class="visual-link" href="/portfolio/${project.slug}" aria-label="Read about ${project.title}">${projectVisual(project)}</a><div class="project-card-copy"><span class="eyebrow">${project.type} · ${project.year}</span><h2><a href="/portfolio/${project.slug}">${project.title}</a></h2><p>${project.excerpt}</p><a class="text-link" href="/portfolio/${project.slug}">Read the case study →</a></div></article>`).join('')}</div>${contactClosing()}</main>`;
 }
 function about() {
-  return `<main class="inner-main about-main">${pageTitle('About', 'AI engineering backed by product delivery, client work, and published research.', 'THE JOURNEY')}<div class="about-layout"><aside class="about-person">${avatar('portrait')}<h3>Naeem Ullah</h3><p>AI Engineer</p><p>Lahore, Pakistan</p>${socials()}</aside><article class="about-prose"><h2>Making AI useful in the real world.</h2><p>Naeem Ullah builds AI applications and Python backend systems for teams and clients. His work spans agentic workflows, knowledge retrieval, document intelligence, voice AI, computer vision, and the APIs that make those capabilities usable.</p><p>At AB Ark Private Limited, he works across AI applications, backend services, and client-focused software. Independent freelance projects have added hands-on experience translating a client’s operational problem into a working product. His approach connects research, implementation, and clear delivery.</p><div class="about-facts"><div><span class="eyebrow">PROFESSIONAL WORK</span><strong>AI Engineering</strong><p>AB Ark Private Limited · client & freelance engagements</p></div><div><span class="eyebrow">BACKGROUND</span><strong>BS Data Science</strong><p>University of the Punjab · PUCIT/FCIT</p></div><div><span class="eyebrow">RESEARCH</span><strong>IEEE FIT 2025</strong><p>Computer vision for cricket delivery analysis</p></div></div><h2>Areas of focus</h2><div class="skill-groups"><span>Python & FastAPI</span><span>Generative AI & RAG</span><span>Agentic systems</span><span>PyTorch</span><span>Computer vision</span><span>Audio AI</span><span>Backend APIs</span><span>Docker</span></div><p class="about-next">Explore <a href="/portfolio">the projects</a>, read <a href="/publications/beyond-the-naked-eye">the paper</a>, or <a href="/contact">get in touch</a>.</p></article></div>${contactClosing()}</main>`;
+  return `<main class="inner-main about-main">${pageTitle('About', 'AI engineering backed by product delivery, client work, security practice, and published research.', 'THE JOURNEY')}<div class="about-layout"><aside class="about-person">${avatar('portrait')}<h3>Naeem Ullah</h3><p>Full-Stack AI Engineer</p><p>Lahore, Pakistan</p>${socials()}</aside><article class="about-prose"><h2>Building AI that holds up beyond the demo.</h2><p>Naeem Ullah develops AI applications and Python backend systems for teams and clients. His work spans agentic systems, knowledge retrieval, document intelligence, voice AI, computer vision, and the APIs and interfaces that make those capabilities useful.</p><p>At AB Ark Private Limited and through client and freelance engagements, he has worked from problem definition through product implementation. He connects model behavior to backend services, web interfaces, integration, testing, containerization, and deployment workflows, so an MVP has a path toward a dependable product.</p><p>Security is a practical part of that work: XploitEye demonstrates authorized assessment, vulnerability context, controlled validation, remediation, and reporting. He also explores generative video and voice workflows with Google Flow, Gemini, ComfyUI, ElevenLabs, and HeyGen.</p><div class="about-facts"><div><span class="eyebrow">PROFESSIONAL WORK</span><strong>AI Engineering</strong><p>AB Ark Private Limited · client & freelance engagements</p></div><div><span class="eyebrow">BACKGROUND</span><strong>BS Data Science</strong><p>University of the Punjab · PUCIT/FCIT</p></div><div><span class="eyebrow">RESEARCH</span><strong>IEEE FIT 2025</strong><p>Computer vision for cricket delivery analysis</p></div></div><h2>Areas of focus</h2><div class="skill-groups"><span>Python & FastAPI</span><span>Generative AI & RAG</span><span>Agentic systems</span><span>React & Next.js</span><span>Docker & CI/CD</span><span>Azure Container Apps</span><span>AI security</span><span>Generative video</span><span>Computer vision</span><span>Audio AI</span></div><p class="about-next">Explore <a href="/portfolio">the projects</a>, read <a href="/publications/beyond-the-naked-eye">the paper</a>, or <a href="/contact">get in touch</a>.</p></article></div>${contactClosing()}</main>`;
 }
 function publications() {
   return `<main class="inner-main publications-main">${pageTitle('Publications', 'Peer-reviewed research and the engineering behind it.', 'RESEARCH')}<article class="publication-card"><span class="publication-index">01 / 01</span><div><div class="publication-meta">IEEE FIT 2025 <span>•</span> COMPUTER VISION</div><h2><a href="/publications/beyond-the-naked-eye">Beyond the Naked Eye: Automated Delivery Analysis in Cricket with Computer Vision</a></h2><p>Single-camera cricket delivery analysis using YOLOv5s detection, Kalman filtering, and pitch-coordinate mapping through homography.</p><p class="publication-doi">DOI: 10.1109/FIT67061.2025.11333604</p><div class="publication-actions"><a href="/publications/beyond-the-naked-eye" class="text-link">Read the full paper here →</a>${external(links.paper, 'View on IEEE Xplore ↗', 'text-link')}<a class="text-link" href="/portfolio/cricket-vision">Explore the project →</a></div></div></article><p class="research-note">The full six-page paper is available to read in this portfolio. Other technical investigations appear as projects.</p>${contactClosing()}</main>`;
@@ -224,7 +224,7 @@ else if (path.startsWith('/portfolio/')) {
 } else content = notFound();
 app.innerHTML = `<div class="site-wrap ${path === '/' ? 'is-home' : 'is-inner'}">${header()}${content}${footer()}${qaPanel()}</div>`;
 const pageName = path === '/about' ? 'About' : path === '/publications' ? 'Publications' : path === '/publications/beyond-the-naked-eye' ? 'Beyond the Naked Eye' : path === '/contact' ? 'Contact' : path === '/portfolio' ? 'Portfolio' : projects.find(item => path === `/portfolio/${item.slug}`)?.title || 'Portfolio';
-document.title = path === '/' ? 'Naeem Ullah | AI Engineer' : `${pageName} | Naeem Ullah`;
+document.title = path === '/' ? 'Naeem Ullah | Full-Stack AI Engineer' : `${pageName} | Naeem Ullah`;
 document.querySelectorAll('.nav-links a').forEach(link => {
   if (link.getAttribute('href') === path || (path.startsWith('/portfolio/') && link.getAttribute('href') === '/portfolio') || (path.startsWith('/publications/') && link.getAttribute('href') === '/publications')) link.setAttribute('aria-current', 'page');
 });
@@ -239,25 +239,134 @@ const qaToggle = document.querySelector('#qa-toggle');
 const qaPanelElement = document.querySelector('#qa-panel');
 const questionList = document.querySelector('.qa-questions');
 const answerBox = document.querySelector('.qa-answer');
+const qaFace = document.querySelector('.qa-face');
+const speechStatus = document.querySelector('#qa-speech-status');
+const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+let activeQuestion = null;
+let activeUtterance = null;
+let activeAudio = null;
+let mouthFrame = 0;
+let speechRun = 0;
+const narrationManifest = fetch('/assets/answers/manifest.json').then(response => response.ok ? response.json() : null).catch(() => null);
+const voicePreference = /google uk english male|microsoft guy|microsoft david|microsoft ryan|daniel|alex|aaron|male/i;
+function preferredEnglishVoice() {
+  const english = window.speechSynthesis.getVoices().filter(voice => /^en([_-]|$)/i.test(voice.lang));
+  return english.find(voice => voicePreference.test(voice.name)) || english.find(voice => /natural|neural|premium|enhanced/i.test(voice.name)) || english[0] || null;
+}
+function stopAnswerVoice(message = 'Voice stopped. The written answer is below.') {
+  speechRun += 1;
+  if (canSpeak) window.speechSynthesis.cancel();
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio.removeAttribute('src');
+    activeAudio.load();
+    activeAudio = null;
+  }
+  cancelAnimationFrame(mouthFrame);
+  activeUtterance = null;
+  qaFace.classList.remove('is-speaking', 'has-recording');
+  qaFace.style.removeProperty('--mouth-open');
+  speechStatus.textContent = message;
+}
+async function speakAnswer(item) {
+  stopAnswerVoice('Preparing the English voice…');
+  const run = speechRun;
+  const manifest = await narrationManifest;
+  if (run !== speechRun || qaPanelElement.hidden) return;
+  const recording = manifest?.answers[questions.indexOf(item)];
+  if (!recording || recording.text !== item.a) {
+    speakBrowserAnswer(item, run);
+    return;
+  }
+  const player = new Audio('/assets/answers/' + recording.file);
+  activeAudio = player;
+  const animateMouth = () => {
+    if (run !== speechRun || player.paused || player.ended) return;
+    const level = recording.levels[Math.floor(player.currentTime * manifest.fps)] || 0;
+    qaFace.style.setProperty('--mouth-open', level.toFixed(2));
+    mouthFrame = requestAnimationFrame(animateMouth);
+  };
+  player.onplaying = () => {
+    if (run !== speechRun) return;
+    qaFace.classList.add('is-speaking', 'has-recording');
+    speechStatus.textContent = 'Speaking the answer…';
+    cancelAnimationFrame(mouthFrame);
+    animateMouth();
+  };
+  player.onwaiting = () => {
+    if (run !== speechRun) return;
+    cancelAnimationFrame(mouthFrame);
+    qaFace.classList.remove('is-speaking');
+    qaFace.style.setProperty('--mouth-open', '0');
+    speechStatus.textContent = 'Loading the voice…';
+  };
+  player.onended = () => {
+    if (run !== speechRun) return;
+    cancelAnimationFrame(mouthFrame);
+    qaFace.classList.remove('is-speaking', 'has-recording');
+    qaFace.style.setProperty('--mouth-open', '0');
+    speechStatus.textContent = 'Answer complete. Replay or choose another question.';
+  };
+  player.onerror = () => {
+    if (run !== speechRun) return;
+    cancelAnimationFrame(mouthFrame);
+    qaFace.classList.remove('is-speaking', 'has-recording');
+    qaFace.style.setProperty('--mouth-open', '0');
+    speechStatus.textContent = 'Voice could not load. Replay to try again; the answer is below.';
+  };
+  try {
+    await player.play();
+  } catch (error) {
+    if (run !== speechRun) return;
+    qaFace.classList.remove('is-speaking', 'has-recording');
+    if (error.name === 'NotAllowedError') speechStatus.textContent = 'Tap Replay voice to listen. The full answer is below.';
+    else speakBrowserAnswer(item, run);
+  }
+}
+function speakBrowserAnswer(item, run) {
+  if (!canSpeak) {
+    speechStatus.textContent = 'Voice is unavailable in this browser. The full answer is below.';
+    return;
+  }
+  const utterance = new SpeechSynthesisUtterance(item.a);
+  const voice = preferredEnglishVoice();
+  if (voice) utterance.voice = voice;
+  utterance.lang = voice?.lang || 'en-US';
+  utterance.rate = .94;
+  utterance.pitch = .92;
+  utterance.onstart = () => {
+    if (run !== speechRun) return;
+    qaFace.classList.add('is-speaking');
+    speechStatus.textContent = 'Speaking the answer…';
+  };
+  utterance.onend = () => {
+    if (run !== speechRun) return;
+    qaFace.classList.remove('is-speaking');
+    speechStatus.textContent = 'Answer complete. Replay or choose another question.';
+  };
+  utterance.onerror = () => {
+    if (run !== speechRun) return;
+    qaFace.classList.remove('is-speaking');
+    speechStatus.textContent = 'Voice could not play. The full answer is below.';
+  };
+  activeUtterance = utterance;
+  window.speechSynthesis.speak(utterance);
+}
 function setQaOpen(open) {
   qaPanelElement.hidden = !open;
   qaToggle.setAttribute('aria-expanded', String(open));
   qaToggle.setAttribute('aria-label', open ? 'Close quick answers about Naeem' : 'Open quick answers about Naeem');
   if (open) document.querySelector('#qa-close').focus();
-  else qaToggle.focus();
+  else {
+    stopAnswerVoice('Choose a question to hear an answer.');
+    qaToggle.focus();
+  }
 }
 qaToggle.addEventListener('click', () => setQaOpen(qaPanelElement.hidden));
 document.querySelector('#qa-close').addEventListener('click', () => setQaOpen(false));
-document.querySelectorAll('.qa-audience button').forEach(tab => tab.addEventListener('click', () => {
-  const group = tab.dataset.group;
-  document.querySelectorAll('.qa-audience button').forEach(item => item.setAttribute('aria-pressed', String(item === tab)));
-  document.querySelectorAll('.qa-question').forEach(button => { button.hidden = button.dataset.group !== group; });
-  answerBox.hidden = true;
-  questionList.hidden = false;
-  tab.focus();
-}));
 document.querySelectorAll('.qa-question').forEach(button => button.addEventListener('click', () => {
   const item = questions[Number(button.dataset.question)];
+  activeQuestion = item;
   answerBox.querySelector('h3').textContent = item.q;
   answerBox.querySelector('p').textContent = item.a;
   const action = answerBox.querySelector('.qa-action');
@@ -266,12 +375,19 @@ document.querySelectorAll('.qa-question').forEach(button => button.addEventListe
   questionList.hidden = true;
   answerBox.hidden = false;
   answerBox.querySelector('button').focus();
+  speakAnswer(item);
 }));
 document.querySelector('.qa-back').addEventListener('click', () => {
+  stopAnswerVoice('Choose a question to hear an answer.');
   answerBox.hidden = true;
   questionList.hidden = false;
   questionList.querySelector('button').focus();
 });
+document.querySelector('#qa-replay').addEventListener('click', () => {
+  if (activeQuestion) speakAnswer(activeQuestion);
+});
+document.querySelector('#qa-stop').addEventListener('click', () => stopAnswerVoice());
+window.addEventListener('pagehide', () => stopAnswerVoice());
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && !qaPanelElement.hidden) setQaOpen(false);
 });
@@ -284,10 +400,10 @@ document.querySelectorAll('.demo-chapters button').forEach(button => button.addE
 
 if (path === '/') {
   const lines = [
-    'Building AI products where research meets working software.',
-    'Turning complex workflows into intelligent, usable systems.',
-    'Connecting applied AI, reliable backends, and real problems.',
-    'From model experiments to products people can actually use.'
+    'Building AI products from first idea to deployed software.',
+    'From prototype to product: AI, backend, interface, and deployment.',
+    'Making complex workflows useful, secure, and ready to grow.',
+    'Connecting generative AI to software people can actually use.'
   ];
   const field = document.querySelector('#typed-tagline');
   let position = 0;
