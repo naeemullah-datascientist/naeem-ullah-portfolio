@@ -10,7 +10,7 @@ const links = {
 const projects = [
   {
     slug: 'xploiteye', title: 'XploitEye', year: '2026', type: 'AI security platform',
-    tags: ['Agentic AI', 'Cybersecurity', 'Full stack'], image: 'xploiteye-concept.png', role: 'AI systems & full-stack engineering',
+    tags: ['Agentic AI', 'Cybersecurity', 'Full stack'], role: 'AI systems & full-stack engineering',
     excerpt: 'One security workspace linking network reconnaissance, controlled validation, remediation, web assessment, and a scan-aware AI advisor.',
     problem: 'Security teams often move between disconnected scanners, exploit tools, vulnerability databases, and ticketing systems. The costly part is the handoff: carrying context from a detected service to a verified finding, a useful fix, and a report someone can act on.',
     contribution: 'XploitEye unifies that cycle in a full-stack product. A Next.js interface connects to a FastAPI control plane, streams operation output, and keeps assessment records together. In the recorded walkthrough, the team demonstrates a network scan, controlled validation in a deliberately vulnerable lab, blue-agent remediation, web findings, and a retrieval-backed security advisor.',
@@ -28,7 +28,7 @@ const projects = [
   },
   {
     slug: 'voice-authenticity', title: 'AI-Generated Voice Detection', year: '2026', type: 'Audio AI research',
-    tags: ['PyTorch', 'Speech AI', 'FastAPI'], image: 'voice-detection-concept.png', role: 'Model research & inference engineering',
+    tags: ['PyTorch', 'Speech AI', 'FastAPI'], role: 'Model research & inference engineering',
     excerpt: 'A voice-authenticity system that evaluates real and synthetic speech, visualizes the audio signal, and serves predictions through an interactive demo.',
     problem: 'Synthetic speech can sound convincing, yet detectors often learn artifacts from one voice generator instead of general signs of manipulation. The engineering challenge is to build a usable classifier while testing how it behaves on speech sources outside its training distribution.',
     contribution: 'I built an end-to-end evaluation and inference workflow: preparing audio, comparing model approaches, fine-tuning a compact RawNetLite classifier, and connecting inference to an API and a Gradio interface. The work also examined threshold selection, model size, and performance on unseen TTS sources.',
@@ -44,7 +44,7 @@ const projects = [
   },
   {
     slug: 'cricket-vision', title: 'Cricket Ball Tracking & Delivery Analysis', year: '2025', type: 'Computer vision research',
-    tags: ['Computer Vision', 'YOLOv5', 'IEEE research'], image: 'cricket-vision-concept.png', role: 'Computer vision research & engineering',
+    tags: ['Computer Vision', 'YOLOv5', 'IEEE research'], role: 'Computer vision research & engineering',
     excerpt: 'A single-camera vision pipeline that tracks a cricket ball, maps its path onto the pitch, and analyzes delivery length.',
     problem: 'Professional ball-tracking systems rely on expensive synchronized cameras and specialist hardware. Coaches and smaller clubs need a more accessible way to turn ordinary video into useful, objective delivery analysis.',
     contribution: 'The research combines ball detection, temporal tracking, perspective mapping, and delivery classification in a single-camera pipeline. The work was published at IEEE FIT 2025 as “Beyond the Naked Eye: Automated Delivery Analysis in Cricket with Computer Vision.”',
@@ -64,7 +64,7 @@ const projects = [
   },
   {
     slug: 'legal-ai', title: 'Legal AI & Document Retrieval', year: 'Professional work', type: 'Internal AI system',
-    tags: ['RAG', 'Document AI', 'Python'], image: 'legal-ai-concept.png', role: 'AI & backend engineering',
+    tags: ['RAG', 'Document AI', 'Python'], role: 'AI & backend engineering',
     excerpt: 'A knowledge-grounded assistant that helps turn legal documents into more useful search and question-answering workflows.',
     problem: 'Legal teams work across dense documents where the relevant answer may be spread over multiple files. Plain keyword search can miss the context needed to interpret a passage responsibly.',
     contribution: 'Worked on legal-domain retrieval and question-answering capabilities, connecting document processing, knowledge relationships, and grounded responses through Python backend services.',
@@ -75,11 +75,11 @@ const projects = [
     ],
     outcome: 'The work demonstrates a practical pattern for domain-specific AI: retrieve trustworthy context first, then use it to support a more useful answer.',
     stack: ['Python', 'RAG', 'GraphRAG', 'LLMs', 'Document processing', 'APIs'],
-    note: 'Internal work. The visual is conceptual and project details are generalized; no client material or private code is shown.', links: []
+    note: 'Internal work. The workflow graphic is illustrative and project details are generalized; no client material or private code is shown.', links: []
   },
   {
     slug: 'incident-escalation', title: 'Incident Triage & Escalation', year: 'Client engagement', type: 'Client system',
-    tags: ['AI workflows', 'Backend APIs', 'Automation'], image: 'incident-escalation-concept.png', role: 'AI workflow & backend engineering',
+    tags: ['AI workflows', 'Backend APIs', 'Automation'], role: 'AI workflow & backend engineering',
     excerpt: 'An incident-management workflow that classifies incoming reports, tracks acknowledgement, and escalates unresolved cases.',
     problem: 'Urgent reports need a dependable path from intake to the right person. Manual triage and follow-up can leave a case waiting without a clear status or ownership.',
     contribution: 'Built a prototype that structures incoming reports, creates case references, routes incidents by severity, records acknowledgement, and escalates unresolved items according to time and level.',
@@ -95,7 +95,7 @@ const projects = [
   },
   {
     slug: 'fulfillment-workflows', title: 'AI-Assisted Fulfillment Workflows', year: 'Client engagement', type: 'Client product',
-    tags: ['Workflow design', 'API integration', 'AI assistance'], image: 'fulfillment-concept.png', role: 'Full-stack product engineering',
+    tags: ['Workflow design', 'API integration', 'AI assistance'], role: 'Full-stack product engineering',
     excerpt: 'A product workflow connecting purchase-order review, shipments, tracking, activity history, and conversational changes.',
     problem: 'Fulfillment work often crosses order details, shipment state, contacts, and change history. When these are separate, operators spend time rebuilding context before they can act.',
     contribution: 'Worked on multi-step fulfillment flows spanning purchase orders, shipment review, tracking, contact information, activity logging, and conversational editing of confirmed product details.',
@@ -107,7 +107,7 @@ const projects = [
     ],
     outcome: 'The work brings complex operational actions into a more coherent product experience.',
     stack: ['Frontend state', 'API integration', 'Backend persistence', 'Workflow testing', 'AI assistance'],
-    note: 'Client product. The case study describes my work at a high level and uses conceptual art; no proprietary interface or customer data are included.', links: []
+    note: 'Client product. The case study describes my work at a high level and uses an illustrative workflow; no proprietary interface or customer data are included.', links: []
   }
 ];
 
@@ -151,7 +151,18 @@ function qaPanel() {
   return `<div class="qa-wrap"><button id="qa-toggle" class="qa-toggle glass" aria-label="Open quick answers about Naeem" aria-controls="qa-panel" aria-expanded="false">${icons.chat}<span>Ask about Naeem</span></button><section id="qa-panel" class="qa-panel glass" aria-label="Quick answers about Naeem" hidden><div class="qa-heading"><div><span class="eyebrow">A SHORT CONVERSATION</span><h2>Ask about the work.</h2></div><button id="qa-close" aria-label="Close quick answers">×</button></div><p class="qa-intro">Useful answers for the people I work with.</p><div class="qa-audience" role="group" aria-label="Choose an audience"><button type="button" aria-pressed="true" data-group="client">For clients</button><button type="button" aria-pressed="false" data-group="recruiter">For recruiters</button></div><div class="qa-questions">${questions.map((item, index) => `<button type="button" class="qa-question" data-question="${index}" data-group="${item.group}" ${item.group === 'client' ? '' : 'hidden'}>${item.q}<span aria-hidden="true">↗</span></button>`).join('')}</div><div class="qa-answer" hidden aria-live="polite"><button class="qa-back" type="button">← All questions</button><div class="qa-answer-bubble"><span class="eyebrow">NAEEM’S ANSWER</span><h3></h3><p></p><a class="qa-action text-link" href="#"></a></div></div></section></div>`;
 }
 function projectVisual(project, detail = false) {
-  return `<div class="project-visual ${detail ? 'visual-large' : ''}"><img src="/assets/${project.image}" alt="Concept artwork for ${project.title}" ${detail ? 'fetchpriority="high"' : 'loading="lazy"'}><span class="visual-caption">PROJECT CONCEPT / ${project.type.toUpperCase()}</span></div>`;
+  const evidence = {
+    xploiteye: {file: 'xploiteye-walkthrough.jpg', alt: 'Red agent workflow shown in the XploitEye product walkthrough', label: 'FRAME FROM PRODUCT WALKTHROUGH'},
+    'voice-authenticity': {file: 'voice-demo-screen.png', alt: 'Actual interface of the public AI-generated voice detection demo', label: 'LIVE DEMO INTERFACE'},
+    'cricket-vision': {file: 'cricket-source-frame.png', alt: 'Cricket delivery video frame included in the public project repository', label: 'SOURCE VIDEO / PUBLIC REPOSITORY'}
+  }[project.slug];
+  if (evidence) return `<div class="project-visual visual-evidence visual-${project.slug} ${detail ? 'visual-large' : ''}"><div class="evidence-window"><div class="evidence-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>${project.title}</span></div><img src="/assets/${evidence.file}" alt="${evidence.alt}" ${detail ? 'fetchpriority="high"' : 'loading="lazy"'}></div><span class="visual-caption">${evidence.label}</span></div>`;
+  const workflow = {
+    'legal-ai': `<div class="workflow-flow legal-flow"><div class="workflow-card"><span class="flow-icon">01</span><strong>Source documents</strong><small>Extract · structure · index</small><div class="document-lines"><i></i><i></i><i></i></div></div><div class="flow-arrow" aria-hidden="true">→</div><div class="workflow-card"><span class="flow-icon">02</span><strong>Grounded retrieval</strong><small>Find relevant passages</small><div class="search-lines"><i></i><i></i></div></div><div class="flow-arrow" aria-hidden="true">→</div><div class="workflow-card"><span class="flow-icon">03</span><strong>Answer + context</strong><small>Source-aware response</small><div class="answer-line"></div></div></div>`,
+    'incident-escalation': `<div class="workflow-flow incident-flow"><div class="workflow-card"><span class="status-dot"></span><strong>Incoming report</strong><small>Intake + case reference</small></div><div class="flow-arrow" aria-hidden="true">→</div><div class="workflow-card"><span class="status-dot amber"></span><strong>Severity triage</strong><small>Route + notify owner</small></div><div class="flow-arrow" aria-hidden="true">→</div><div class="workflow-card"><span class="status-dot"></span><strong>Escalation</strong><small>Timed follow-up</small></div></div>`,
+    'fulfillment-workflows': `<div class="workflow-flow fulfillment-flow"><div class="workflow-card order-card"><span class="flow-icon">PO</span><strong>Purchase order</strong><small>Items · quantity · changes</small><div class="document-lines"><i></i><i></i><i></i></div></div><div class="flow-arrow" aria-hidden="true">→</div><div class="workflow-card order-card"><span class="flow-icon">SH</span><strong>Shipment review</strong><small>Tracking · contact · status</small><div class="progress-track"><i></i></div></div><div class="flow-arrow" aria-hidden="true">→</div><div class="workflow-card order-card"><span class="flow-icon">LOG</span><strong>Activity history</strong><small>Decisions in one place</small><div class="document-lines"><i></i><i></i></div></div></div>`
+  }[project.slug];
+  return `<div class="project-visual visual-workflow visual-${project.slug} ${detail ? 'visual-large' : ''}"><div class="workflow-heading"><span>WORKFLOW / ${project.type.toUpperCase()}</span><span aria-hidden="true">↗</span></div>${workflow}<span class="visual-caption">ILLUSTRATIVE WORKFLOW · NO PRIVATE DATA</span></div>`;
 }
 function projectLink(item, className = '') {
   return item.external ? external(item.href, item.label, className) : `<a class="${className}" href="${item.href}">${item.label}</a>`;
@@ -166,7 +177,7 @@ function contactClosing() {
   return `<section class="contact-closing" id="contact"><span class="eyebrow">HAVE A PROBLEM WORTH SOLVING?</span><h2>Let’s build something useful.</h2><p>AI products, Python backends, or research-driven prototypes — I’m open to thoughtful conversations.</p><div class="closing-actions"><a class="glass pill primary-pill" href="${links.email}">Email me ↗</a><a class="glass pill" href="/contact">Contact details →</a></div></section>`;
 }
 function home() {
-  return `<canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas><main class="home-main"><section class="hero"><div class="hero-inner"><p class="hero-eyebrow"><span>Hi,</span> I’m</p><h1>Naeem Ullah</h1><p class="hero-tagline" aria-live="polite"><span id="typed-tagline">Building AI products where research meets working software.</span><span class="typing-caret" aria-hidden="true"></span></p><div class="hero-actions"><a class="glass pill" href="/portfolio">Explore my projects</a><button class="glass pill" id="tagline-button">Another line ↻</button></div><p class="tagline-note">A few ways to describe the work — no API required.</p></div></section><section class="home-profile">${profileCard()}<div class="profile-copy"><span class="eyebrow">THE ENGINEER BEHIND THE WORK</span><p class="profile-summary">AI Engineer building useful products and Python backends across company, client, and freelance work. Projects span agentic systems, document intelligence, voice AI, and computer vision, with research published through IEEE.</p><a class="text-link" href="/about">More about Naeem →</a></div></section><section class="latest-section" id="featured"><div class="section-heading"><span class="eyebrow">SELECTED WORK</span><h2>Featured Projects</h2><p class="section-description">Products, client workflows, and research with a clear problem behind each build.</p></div><ul class="post-list">${projects.map(projectRow).join('')}</ul><a class="all-posts-link" href="/portfolio">All Projects →</a></section>${contactClosing()}</main>`;
+  return `<canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas><main class="home-main"><section class="hero"><div class="hero-inner"><p class="hero-eyebrow"><span>Hi,</span> I’m</p><h1>Naeem Ullah</h1><p class="hero-tagline" aria-live="polite"><span id="typed-tagline">Building AI products where research meets working software.</span><span class="typing-caret" aria-hidden="true"></span></p><div class="hero-actions"><a class="glass pill" href="/portfolio">Explore my projects</a><button class="glass pill" id="tagline-button">Another line ↻</button></div><p class="tagline-note">Different angles on the same work: practical AI, carefully engineered.</p></div></section><section class="home-profile">${profileCard()}<div class="profile-copy"><span class="eyebrow">THE ENGINEER BEHIND THE WORK</span><p class="profile-summary">AI Engineer building useful products and Python backends across company, client, and freelance work. Projects span agentic systems, document intelligence, voice AI, and computer vision, with research published through IEEE.</p><a class="text-link" href="/about">More about Naeem →</a></div></section><section class="latest-section" id="featured"><div class="section-heading"><span class="eyebrow">SELECTED WORK</span><h2>Featured Projects</h2><p class="section-description">Products, client workflows, and research with a clear problem behind each build.</p></div><ul class="post-list">${projects.map(projectRow).join('')}</ul><a class="all-posts-link" href="/portfolio">All Projects →</a></section>${contactClosing()}</main>`;
 }
 function pageTitle(title, description = '', eyebrow = '') {
   return `<div class="page-heading">${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ''}<h1>${title}</h1>${description ? `<p>${description}</p>` : ''}</div>`;
@@ -194,7 +205,7 @@ function demoSection(project) {
 function caseStudy(project) {
   const index = projects.indexOf(project);
   const next = projects[(index + 1) % projects.length];
-  return `<main class="inner-main case-main"><a class="back-link" href="/portfolio">← All projects</a><div class="case-heading"><span class="eyebrow">${project.type} · ${project.year}</span><h1>${project.title}</h1><p>${project.excerpt}</p></div>${projectVisual(project, true)}<div class="case-layout"><aside class="case-side"><div class="case-side-block"><span class="eyebrow">ENGINEERING FOCUS</span><p>${project.role}</p></div><div class="case-side-block"><span class="eyebrow">STACK</span><div class="stack-list">${project.stack.map(item => `<span>${item}</span>`).join('')}</div></div>${project.links.length ? `<div class="case-side-block"><span class="eyebrow">EXPLORE</span>${project.links.map(item => projectLink(item, 'side-link')).join('')}</div>` : ''}${project.note ? `<p class="case-note">${project.note}</p>` : ''}</aside><article class="case-body"><section><span class="eyebrow">01 / THE PROBLEM</span><h2>What needed solving</h2><p>${project.problem}</p></section><section><span class="eyebrow">02 / THE BUILD</span><h2>What was built</h2><p>${project.contribution}</p></section><section><span class="eyebrow">03 / THE APPROACH</span><h2>How it works</h2><ol>${project.approach.map(item => `<li>${item}</li>`).join('')}</ol></section><section><span class="eyebrow">04 / THE RESULT</span><h2>What it delivers</h2><p>${project.outcome}</p></section></article></div>${demoSection(project)}<div class="case-next"><span class="eyebrow">NEXT PROJECT</span><a href="/portfolio/${next.slug}">${next.title} <span aria-hidden="true">↗</span></a></div>${contactClosing()}</main>`;
+  return `<main class="inner-main case-main"><a class="back-link" href="/portfolio">← All projects</a><div class="case-heading"><span class="eyebrow">${project.type} · ${project.year}</span><h1>${project.title}</h1><p>${project.excerpt}</p></div>${projectVisual(project, true)}<div class="case-layout"><aside class="case-side"><div class="case-side-block"><span class="eyebrow">ENGINEERING FOCUS</span><p>${project.role}</p></div><div class="case-side-block"><span class="eyebrow">STACK</span><div class="stack-list">${project.stack.map(item => `<span>${item}</span>`).join('')}</div></div>${project.links.length ? `<div class="case-side-block"><span class="eyebrow">EXPLORE</span>${project.links.map(item => projectLink(item, 'side-link')).join('')}</div>` : ''}${project.note ? `<p class="case-note">${project.note}</p>` : ''}</aside><article class="case-body"><section><span class="eyebrow">01 / THE PROBLEM</span><h2>What needed solving</h2><p>${project.problem}</p></section><section><span class="eyebrow">02 / THE BUILD</span><h2>What was built</h2><p>${project.contribution}</p></section><section><span class="eyebrow">03 / THE APPROACH</span><h2>How it works</h2><ol>${project.approach.map(item => `<li>${item}</li>`).join('')}</ol></section><section><span class="eyebrow">04 / THE RESULT</span><h2>What it delivers</h2><p>${project.outcome}</p></section></article></div>${project.slug === 'cricket-vision' ? `<figure class="research-figure"><img src="/assets/cricket-paper-method.png" loading="lazy" alt="Frame extraction, YOLOv5 detection, Kalman tracking, and analytics pipeline from the published paper"><figcaption>System architecture from the co-authored IEEE FIT 2025 paper. <a href="/publications/beyond-the-naked-eye">Read the full paper →</a></figcaption></figure>` : ''}${demoSection(project)}<div class="case-next"><span class="eyebrow">NEXT PROJECT</span><a href="/portfolio/${next.slug}">${next.title} <span aria-hidden="true">↗</span></a></div>${contactClosing()}</main>`;
 }
 function notFound() {
   return `<main class="inner-main not-found">${pageTitle('Page not found')}<p>That page isn’t part of this portfolio.</p><a class="text-link" href="/">Back to homepage →</a></main>`;

@@ -10,6 +10,6 @@ A static portfolio preview built around Naeem's supplied master profile. The vis
 - Ten curated quick answers, organized for clients and recruiters; no LLM API or key is required
 - Rotating, hand-written hero taglines
 
-The header and profile card use an identity-preserving edit of Naeem's supplied portrait. Project visuals are generated concept artwork, not product screenshots. Internal and client descriptions are intentionally generalized; no private code, client names, or customer data are included.
+The header and profile card use an identity-preserving edit of Naeem's supplied portrait. Public project visuals use the XploitEye walkthrough thumbnail, a screenshot of the live voice demo, and a source video frame from the cricket repository. The cricket case also includes the original method figure extracted from Naeem's supplied paper. Internal and client cases use clearly labeled workflow diagrams drawn in HTML/CSS; no private code, client names, or customer data are included. Typography pairs Satoshi with Doto accents, falling back to the bundled Space Grotesk font.
 
 Run `python3 build_routes.py` after editing `dist/index.html`, then serve `dist/` with a static HTTP server for local preview.
