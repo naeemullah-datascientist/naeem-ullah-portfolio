@@ -10,7 +10,7 @@ shell = (root / "index.html").read_text()
 base_url = "https://naeem-ullah-ai-engineer.deep-crumb-6541.chatgpt.site"
 
 pages = {
-    "": ("Naeem Ullah | AI & Backend Engineer", "AI products, Python backends, secure workflows, and deployed systems built across professional, client, freelance, and research work."),
+    "": ("Naeem Ullah | Full-Stack AI Engineer", "AI products, Python backends, secure workflows, and deployed systems built across professional, client, freelance, and research work."),
     "about": ("About | Naeem Ullah", "Meet Naeem Ullah, an AI and backend engineer working across model workflows, APIs, interfaces, deployment, AI security, and published research."),
     "portfolio": ("AI & Backend Projects | Naeem Ullah", "Explore production-minded AI, backend, cybersecurity, audio AI, computer vision, and client workflow projects by Naeem Ullah."),
     "projects": ("AI & Backend Projects | Naeem Ullah", "Explore production-minded AI, backend, cybersecurity, audio AI, computer vision, and client workflow projects by Naeem Ullah."),

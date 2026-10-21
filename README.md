@@ -1,6 +1,6 @@
 # Naeem Ullah portfolio
 
-A static portfolio for Naeem Ullah, AI Engineer + Backend Engineer. The visual direction keeps the dark olive animated background, glass navigation, and clear typography from the reference study. The content and interactions describe Naeem's actual work.
+A static portfolio for Naeem Ullah, Full-Stack AI Engineer. The visual direction keeps the dark olive animated background, glass navigation, and clear typography from the reference study. The content and interactions describe Naeem's actual work.
 
 ## Pages
 
