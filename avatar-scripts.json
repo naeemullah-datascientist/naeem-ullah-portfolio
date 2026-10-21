@@ -1,0 +1,56 @@
+{
+  "portrait": "dist/assets/naeem-portrait.png",
+  "direction": "A calm, confident, conversational English male voice. Direct eye contact, natural blinking, restrained head movement, no exaggerated gestures, no presenter-style sales pitch. Preserve Naeem’s identity, suit, and dark olive setting. Match the exact script and review lip synchronization, pronunciation, and visual consistency before publishing.",
+  "answers": [
+    {
+      "id": "fit",
+      "question": "Why would you be a good fit for our team?",
+      "script": "I connect AI engineering with the backend and product work around it. That means I can work on the model workflow, the APIs, the interface, and deployment together. My experience includes company projects, freelance delivery, and published research. The case studies here show how I put those skills into practice."
+    },
+    {
+      "id": "build",
+      "question": "What could you build for us?",
+      "script": "I build AI applications, Python backends, document assistants, and automation around real workflows. For example, my work has covered legal document retrieval, incident escalation, and order fulfillment. I would start with the problem your team needs to solve, then define a focused product we can build and evaluate."
+    },
+    {
+      "id": "ownership",
+      "question": "What did you personally build?",
+      "script": "In my voice detection project, I compared model approaches, fine-tuned a compact classifier, and connected inference to an API and an interactive demo. I also evaluated speech from unfamiliar sources. That is a concrete example of my ownership across research and implementation. My cricket publication was collaborative work, which I describe separately."
+    },
+    {
+      "id": "production",
+      "question": "Can you take an MVP into production?",
+      "script": "Yes. I can work across the application, backend, integrations, and deployment. My toolkit includes Docker, GitHub Actions, Linux, and Azure Container Apps. I would agree on the production requirements with you early: testing, access control, configuration, failure handling, and a clear handoff. The scope and the evidence determine when a system is ready."
+    },
+    {
+      "id": "clients",
+      "question": "Have you worked on client projects?",
+      "script": "Yes. I have worked on fulfillment flows covering purchase orders, shipments, tracking, and activity history. I also built an incident-management prototype with classification, acknowledgements, and timed escalation. Those projects required connecting business rules to working interfaces and backend services. The case studies explain my work without exposing private client information."
+    },
+    {
+      "id": "security",
+      "question": "How do you approach security?",
+      "script": "I have worked on AI security through XploitEye, which brings authorized assessment, vulnerability context, remediation, and reporting into one workspace. I am familiar with tools such as Nmap and OWASP ZAP, as well as prompt-injection testing. For a product, I look at its permissions, data exposure, and failure cases as part of the engineering work."
+    },
+    {
+      "id": "evaluation",
+      "question": "How do you know an AI system is working?",
+      "script": "I want evidence from the situations the system will actually face. In my voice detection work, I evaluated held-out samples and unfamiliar voice sources separately. For a retrieval assistant, I look at the source context behind an answer. I make limitations visible, so we can decide what is ready and what still needs improvement."
+    },
+    {
+      "id": "creative",
+      "question": "Do you work with generative video and voice?",
+      "script": "Yes. I have used Google Flow, Gemini, ComfyUI, ElevenLabs, and HeyGen in video and voice workflows. I pay attention to the whole result: the script, visual consistency, voice, pacing, and how the experience fits into a product. If that is part of your project, we can discuss the specific outcome you want."
+    },
+    {
+      "id": "background",
+      "question": "What experience would you bring to the role?",
+      "script": "I work on AI applications and Python backend services at AB Ark Private Limited, alongside client and freelance experience. I studied Data Science at the University of the Punjab and co-authored an IEEE paper on cricket delivery analysis. That combination helps me connect technical investigation with practical software delivery."
+    },
+    {
+      "id": "start",
+      "question": "How would we start working together?",
+      "script": "Tell me what you are building, what is already in place, and where you need help. I would clarify the scope, constraints, and what success looks like, then discuss the first useful milestone. For a role, share the responsibilities you want me to own. You can reach me by email or LinkedIn below."
+    }
+  ]
+}

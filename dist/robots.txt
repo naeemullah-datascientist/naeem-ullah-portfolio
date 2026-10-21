@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://naeem-ullah-ai-engineer.deep-crumb-6541.chatgpt.site/sitemap.xml

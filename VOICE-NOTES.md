@@ -1,13 +1,33 @@
-# Portfolio narration
+# Question-and-answer videos
 
-The quick answers use pre-rendered English male narration from Piper's `en_US-joe-medium` voice. The voice model is a development input, not a browser download. The voice model card identifies its source dataset as CC0:
+The questions address Naeem directly, and every answer uses his first-person perspective. `dist/app.js` is the source of truth. Run `node scripts/export-avatar-scripts.mjs > avatar-scripts.json` after changing the copy.
 
-https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/joe/medium/MODEL_CARD
+The prior Piper narration and expression-frame animation are no longer used by the interface. The panel currently shows the portrait and written answers. Real talking-avatar clips have not yet been generated; the HeyGen connection is pending.
 
-Generate the files after changing answer text:
+## Production brief
 
-    python scripts/generate-narration.py /path/to/en_US-joe-medium.onnx
+- Use Naeem's supplied likeness and the portrait at `dist/assets/naeem-portrait.png`.
+- Create one short answer clip for each stable ID in `avatar-scripts.json`.
+- Use one consistent, natural male English voice, relaxed phrasing, measured pauses, and restrained facial movement.
+- Preserve identity, suit, framing, and the dark olive setting. Avoid exaggerated gestures or a sales-presenter delivery.
+- Generate and inspect one sample for face stability, pronunciation, lip timing, and voice quality before rendering the remaining answers.
+- Download final files into `dist/assets/answers/videos/`; use MP4 with broadly supported video/audio codecs. Add English VTT captions where available.
+- Use the exact answer script. If the script changes, regenerate that clip.
 
-The script needs `piper-tts`, `numpy`, `lameenc`, and Node.js. It writes MP3s and a compact amplitude envelope used to animate the portrait. The runtime compares the manifest's text with the displayed answer before using a recording. If the audio is unavailable or stale, it can fall back to the browser's English speech voice.
+## Integration
 
-The portrait uses generated eye and mouth expression frames based on Naeem's supplied photograph. Movement follows speech volume, not phoneme-level lip synchronization. The interface identifies the portrait and voice as synthetic.
+Add each reviewed clip to `dist/assets/answers/videos.json`:
+
+    {
+      "version": 1,
+      "answers": {
+        "fit": {
+          "text": "Exact answer from app.js",
+          "src": "/assets/answers/videos/fit.mp4",
+          "captions": "/assets/answers/videos/fit.vtt",
+          "reviewed": true
+        }
+      }
+    }
+
+The player only activates when a reviewed clip matches the displayed answer. It supports inline mobile playback, native media controls, replay, stop, and cancellation when closing or changing questions. The full text stays readable if a clip is missing or cannot load. Avatar disclosure appears with generated video. No browser speech fallback or simulated lip motion is used.
