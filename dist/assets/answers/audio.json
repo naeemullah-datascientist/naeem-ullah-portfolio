@@ -1,0 +1,49 @@
+{
+  "voice": "en-GB-RyanNeural",
+  "answers": {
+    "intro": {
+      "src": "/assets/answers/intro.mp3",
+      "text": "I\u2019m a full-stack AI engineer who enjoys turning complex ideas into software people can actually use. I work across AI workflows, Python backends, APIs, interfaces, testing, and deployment. My experience includes professional engineering work, client automation, freelance delivery, and published computer vision research."
+    },
+    "fit": {
+      "src": "/assets/answers/fit.mp3",
+      "text": "I connect AI engineering with the backend and product work around it. I can contribute to the model workflow, APIs, interface, integrations, and deployment instead of treating each part in isolation. I also communicate limitations clearly and focus on building something the team can test, maintain, and improve."
+    },
+    "ownership": {
+      "src": "/assets/answers/ownership.mp3",
+      "text": "I\u2019ve built across research and product engineering. In my voice detection work, I compared model approaches, fine-tuned a compact classifier, evaluated unfamiliar speech sources, and connected inference to an API and interactive demo. For a logistics client, I mapped and implemented an n8n dispatch workflow with calculations, status handling, and WhatsApp updates."
+    },
+    "production": {
+      "src": "/assets/answers/production.mp3",
+      "text": "Yes. I start by clarifying the real workflow, the data, and what success should look like. Then I can work across the AI layer, backend, integrations, interface, testing, containerization, and deployment. I use tools such as Docker, GitHub Actions, Linux, and Azure Container Apps when the project requires them."
+    },
+    "clients": {
+      "src": "/assets/answers/clients.mp3",
+      "text": "Yes. For a logistics client, I converted a manual truck-dispatch process into an n8n workflow covering validation, business calculations, dispatch tracking, WhatsApp updates, and final delivery. I handled process mapping, workflow logic, integrations, testing, and client-driven improvements while keeping the client\u2019s private rules confidential."
+    },
+    "systems": {
+      "src": "/assets/answers/systems.mp3",
+      "text": "My work includes retrieval-based document assistants, multi-agent security workflows, voice authenticity detection, computer vision, incident escalation, fulfillment systems, and business process automation. I\u2019ve connected models and business rules to Python APIs, n8n workflows, databases, web interfaces, and services such as WhatsApp."
+    },
+    "reliability": {
+      "src": "/assets/answers/reliability.mp3",
+      "text": "I make the evidence and failure cases visible. For model work, I separate normal evaluation from tests on unfamiliar data. For retrieval systems, I keep the source context behind an answer. I also consider permissions, input validation, data exposure, error handling, and controlled execution as part of the engineering work."
+    },
+    "challenge": {
+      "src": "/assets/answers/challenge.mp3",
+      "text": "XploitEye was technically challenging because it connects several security stages in one product: reconnaissance, vulnerability context, controlled validation, remediation, web assessment, and retrieval-based guidance. My work involved connecting AI workflows with backend services and a usable interface while keeping active security demonstrations inside an authorized lab environment."
+    },
+    "background": {
+      "src": "/assets/answers/background.mp3",
+      "text": "I bring professional AI and Python backend experience from AB Ark Private Limited, alongside client and freelance delivery. I\u2019ve worked on AI applications, integrations, workflow automation, security, voice AI, and computer vision. I also co-authored an IEEE paper, which strengthened how I evaluate technical claims and explain limitations."
+    },
+    "start": {
+      "src": "/assets/answers/start.mp3",
+      "text": "Tell me what you are building, what is already in place, and where you need help. I would clarify the scope, constraints, and what success looks like, then suggest the first useful milestone. For a role, share the responsibilities you want me to own. For a project, we can start from the most valuable workflow."
+    },
+    "fallback": {
+      "src": "/assets/answers/fallback.mp3",
+      "text": "I don\u2019t have enough verified information in my portfolio to answer that accurately, but you can contact me directly and I\u2019d be happy to discuss it."
+    }
+  }
+}

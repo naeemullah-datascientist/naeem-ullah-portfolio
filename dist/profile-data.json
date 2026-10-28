@@ -1,0 +1,34 @@
+{
+  "bio": "Naeem Ullah is a Full-Stack AI Engineer who builds AI products across model workflows, Python backends, APIs, interfaces, testing, automation, and deployment.",
+  "experience": {
+    "currentCompany": "AB Ark Private Limited",
+    "focus": ["AI applications", "Python backend engineering", "workflow automation", "systems integration"],
+    "otherWork": ["client delivery", "freelance projects", "published computer vision research"]
+  },
+  "skills": [
+    "Python", "FastAPI", "PyTorch", "LangChain", "LangGraph", "RAG", "Next.js", "REST APIs", "WebSockets", "n8n", "Docker", "GitHub Actions", "Linux", "Azure Container Apps"
+  ],
+  "projects": [
+    {"name": "XploitEye", "classification": "AI security platform", "summary": "Connects reconnaissance, authorized lab validation, remediation, web assessment, and retrieval-based security guidance."},
+    {"name": "End-to-End Truck Dispatch Automation", "classification": "confidential client engagement", "summary": "Uses n8n, APIs, business rules, status tracking, and WhatsApp updates to automate a logistics dispatch workflow."},
+    {"name": "AI-Generated Voice Detection", "classification": "research and engineering prototype", "summary": "Evaluates real and synthetic speech with a compact classifier, API inference, visualizations, and an interactive demo."},
+    {"name": "Cricket Ball Tracking & Delivery Analysis", "classification": "published research", "summary": "Uses YOLOv5s, Kalman filtering, homography, and delivery classification in a single-camera computer vision pipeline."},
+    {"name": "Legal AI & Document Retrieval", "classification": "generalized internal work", "summary": "Connects document processing and retrieval to grounded legal-domain question answering."},
+    {"name": "Incident Triage & Escalation", "classification": "generalized client work", "summary": "Structures incidents, routes them by severity, records acknowledgement, and escalates unresolved cases."},
+    {"name": "AI-Assisted Fulfillment Workflows", "classification": "generalized client product work", "summary": "Connects order review, shipments, tracking, activity history, and controlled conversational changes."}
+  ],
+  "research": {
+    "publication": "Beyond the Naked Eye: Automated Delivery Analysis in Cricket with Computer Vision",
+    "venue": "IEEE FIT 2025",
+    "role": "co-author"
+  },
+  "clientWork": "Naeem has delivered client and freelance work. Client names, private data, proprietary calculations, and internal business rules remain confidential.",
+  "automation": "Experience includes n8n workflows, API integrations, validation, conditional business logic, error handling, and WhatsApp operational updates.",
+  "security": "XploitEye demonstrates connected security workflows. Active validation is limited to authorized targets and deliberately vulnerable lab environments.",
+  "deployment": "Experience includes containerization, CI workflows, Linux, and Azure Container Apps where a project requires them.",
+  "contact": {
+    "email": "naeem.ullah@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/naeemm-ullah/",
+    "github": "https://github.com/naeemullah-datascientist"
+  }
+}

@@ -128,17 +128,19 @@ const projects = [
 ];
 
 const questions = [
-  {id: 'fit', q: 'Why would you be a good fit for our team?', a: 'I connect AI engineering with the backend and product work around it. That means I can work on the model workflow, the APIs, the interface, and deployment together. My experience includes company projects, freelance delivery, and published research. The case studies here show how I put those skills into practice.', href: '/portfolio', cta: 'See my work →'},
-  {id: 'build', q: 'What could you build for us?', a: 'I build AI applications, Python backends, document assistants, and automation around real workflows. My work has covered legal document retrieval, incident escalation, order fulfillment, and an n8n dispatch system connected to WhatsApp. I would start with the problem your team needs to solve, then define a focused product we can build and evaluate.', href: '/portfolio/truck-dispatch-automation', cta: 'Explore a client automation →'},
-  {id: 'ownership', q: 'What did you personally build?', a: 'In my voice detection project, I compared model approaches, fine-tuned a compact classifier, and connected inference to an API and an interactive demo. I also evaluated speech from unfamiliar sources. That is a concrete example of my ownership across research and implementation. My cricket publication was collaborative work, which I describe separately.', href: '/portfolio/voice-authenticity', cta: 'See my implementation →'},
-  {id: 'production', q: 'Can you take an MVP into production?', a: 'Yes. I can work across the application, backend, integrations, and deployment. My toolkit includes Docker, GitHub Actions, Linux, and Azure Container Apps. I would agree on the production requirements with you early: testing, access control, configuration, failure handling, and a clear handoff. The scope and the evidence determine when a system is ready.', href: '/about', cta: 'See my engineering background →'},
-  {id: 'clients', q: 'Have you worked on client projects?', a: 'Yes. For a logistics client, I converted a manual truck-dispatch process into an n8n workflow covering data validation, calculations, dispatch tracking, WhatsApp updates, and final delivery. I handled the process mapping, workflow logic, integrations, testing, and client-driven improvements. I have also worked on fulfillment and incident-escalation workflows. The case studies explain my ownership without exposing confidential client information.', href: '/portfolio/truck-dispatch-automation', cta: 'Read the dispatch case study →'},
-  {id: 'security', q: 'How do you approach security?', a: 'I have worked on AI security through XploitEye, which brings authorized assessment, vulnerability context, remediation, and reporting into one workspace. I am familiar with tools such as Nmap and OWASP ZAP, as well as prompt-injection testing. For a product, I look at its permissions, data exposure, and failure cases as part of the engineering work.', href: '/portfolio/xploiteye', cta: 'Explore the security workflow →'},
-  {id: 'evaluation', q: 'How do you know an AI system is working?', a: 'I want evidence from the situations the system will actually face. In my voice detection work, I evaluated held-out samples and unfamiliar voice sources separately. For a retrieval assistant, I look at the source context behind an answer. I make limitations visible, so we can decide what is ready and what still needs improvement.', href: '/portfolio/voice-authenticity', cta: 'See the evaluation approach →'},
-  {id: 'creative', q: 'Do you work with generative video and voice?', a: 'Yes. I have used Google Flow, Gemini, ComfyUI, ElevenLabs, and HeyGen in video and voice workflows. I pay attention to the whole result: the script, visual consistency, voice, pacing, and how the experience fits into a product. If that is part of your project, we can discuss the specific outcome you want.', href: '/contact', cta: 'Discuss your idea →'},
-  {id: 'background', q: 'What experience would you bring to the role?', a: 'I work on AI applications and Python backend services at AB Ark Private Limited, alongside client and freelance experience. I studied Data Science at the University of the Punjab and co-authored an IEEE paper on cricket delivery analysis. That combination helps me connect technical investigation with practical software delivery.', href: '/publications/beyond-the-naked-eye', cta: 'Read my published research →'},
-  {id: 'start', q: 'How would we start working together?', a: 'Tell me what you are building, what is already in place, and where you need help. I would clarify the scope, constraints, and what success looks like, then discuss the first useful milestone. For a role, share the responsibilities you want me to own. You can reach me by email or LinkedIn below.', href: '/contact', cta: 'Let’s talk →'}
+  {id: 'intro', q: 'Tell me about yourself.', a: 'I’m a full-stack AI engineer who enjoys turning complex ideas into software people can actually use. I work across AI workflows, Python backends, APIs, interfaces, testing, and deployment. My experience includes professional engineering work, client automation, freelance delivery, and published computer vision research.', href: '/about', cta: 'Read more about me →'},
+  {id: 'fit', q: 'Why would you be a good fit for our team?', a: 'I connect AI engineering with the backend and product work around it. I can contribute to the model workflow, APIs, interface, integrations, and deployment instead of treating each part in isolation. I also communicate limitations clearly and focus on building something the team can test, maintain, and improve.', href: '/portfolio', cta: 'See my work →'},
+  {id: 'ownership', q: 'What have you personally built?', a: 'I’ve built across research and product engineering. In my voice detection work, I compared model approaches, fine-tuned a compact classifier, evaluated unfamiliar speech sources, and connected inference to an API and interactive demo. For a logistics client, I mapped and implemented an n8n dispatch workflow with calculations, status handling, and WhatsApp updates.', href: '/portfolio/voice-authenticity', cta: 'See my implementation →'},
+  {id: 'production', q: 'Can you take an idea from MVP to production?', a: 'Yes. I start by clarifying the real workflow, the data, and what success should look like. Then I can work across the AI layer, backend, integrations, interface, testing, containerization, and deployment. I use tools such as Docker, GitHub Actions, Linux, and Azure Container Apps when the project requires them.', href: '/about', cta: 'See my engineering background →'},
+  {id: 'clients', q: 'Have you worked on real client projects?', a: 'Yes. For a logistics client, I converted a manual truck-dispatch process into an n8n workflow covering validation, business calculations, dispatch tracking, WhatsApp updates, and final delivery. I handled process mapping, workflow logic, integrations, testing, and client-driven improvements while keeping the client’s private rules confidential.', href: '/portfolio/truck-dispatch-automation', cta: 'Read the dispatch case study →'},
+  {id: 'systems', q: 'What kind of AI and automation systems have you built?', a: 'My work includes retrieval-based document assistants, multi-agent security workflows, voice authenticity detection, computer vision, incident escalation, fulfillment systems, and business process automation. I’ve connected models and business rules to Python APIs, n8n workflows, databases, web interfaces, and services such as WhatsApp.', href: '/portfolio', cta: 'Explore the projects →'},
+  {id: 'reliability', q: 'How do you make AI systems reliable and safe?', a: 'I make the evidence and failure cases visible. For model work, I separate normal evaluation from tests on unfamiliar data. For retrieval systems, I keep the source context behind an answer. I also consider permissions, input validation, data exposure, error handling, and controlled execution as part of the engineering work.', href: '/portfolio/xploiteye', cta: 'See the security approach →'},
+  {id: 'challenge', q: 'What is one technically challenging project you solved?', a: 'XploitEye was technically challenging because it connects several security stages in one product: reconnaissance, vulnerability context, controlled validation, remediation, web assessment, and retrieval-based guidance. My work involved connecting AI workflows with backend services and a usable interface while keeping active security demonstrations inside an authorized lab environment.', href: '/portfolio/xploiteye', cta: 'Explore XploitEye →'},
+  {id: 'background', q: 'What experience would you bring to this role?', a: 'I bring professional AI and Python backend experience from AB Ark Private Limited, alongside client and freelance delivery. I’ve worked on AI applications, integrations, workflow automation, security, voice AI, and computer vision. I also co-authored an IEEE paper, which strengthened how I evaluate technical claims and explain limitations.', href: '/publications/beyond-the-naked-eye', cta: 'Read my published research →'},
+  {id: 'start', q: 'How would we start working together?', a: 'Tell me what you are building, what is already in place, and where you need help. I would clarify the scope, constraints, and what success looks like, then suggest the first useful milestone. For a role, share the responsibilities you want me to own. For a project, we can start from the most valuable workflow.', href: '/contact', cta: 'Let’s talk →'}
 ];
+
+const fallbackAnswer = 'I don’t have enough verified information in my portfolio to answer that accurately, but you can contact me directly and I’d be happy to discuss it.';
 
 const path = decodeURIComponent(location.pathname).replace(/\/+$/, '') || '/';
 const app = document.querySelector('#app');
@@ -164,7 +166,7 @@ function footer() {
   return `<footer class="site-footer">${socials()}<p>Naeem Ullah&nbsp; • &nbsp;© ${new Date().getFullYear()}&nbsp; • &nbsp;Full-Stack AI Engineer</p></footer>`;
 }
 function qaPanel() {
-  return `<div class="qa-wrap"><button id="qa-toggle" class="qa-toggle glass" aria-label="Open answers from Naeem" aria-controls="qa-panel" aria-expanded="false">${icons.chat}<span>Ask Naeem</span></button><section id="qa-panel" class="qa-panel glass" aria-label="Answers from Naeem" hidden><div class="qa-heading"><div><span class="eyebrow">ASK NAEEM</span><h2>What would you like to know?</h2></div><button id="qa-close" aria-label="Close answers">×</button></div><div class="qa-presenter"><div class="qa-face"><img src="/assets/naeem-portrait.png" alt="Naeem Ullah"></div><div class="qa-presenter-copy"><strong>Naeem Ullah</strong><span>Full-Stack AI Engineer</span><span class="qa-introduction">Hiring, project ownership, production delivery, and how I work with teams and clients.</span></div></div><div class="qa-video-stage" hidden><video id="qa-video" controls playsinline preload="none" poster="/assets/naeem-portrait.png" aria-label="Naeem answers the selected question"></video><p class="qa-disclosure">AI-assisted avatar video · answer written and reviewed by me</p></div><p id="qa-media-status" class="qa-media-status" role="status" hidden></p><div class="qa-questions">${questions.map((item, index) => `<button type="button" class="qa-question" data-question="${index}">${item.q}<span aria-hidden="true">↗</span></button>`).join('')}</div><div class="qa-answer" hidden><button class="qa-back" type="button">← Choose another question</button><div class="qa-answer-bubble"><span class="eyebrow">MY ANSWER</span><h3 tabindex="-1"></h3><p></p><div class="qa-answer-actions" hidden><button id="qa-replay" type="button">↻ Replay answer</button><button id="qa-stop" type="button">Stop video</button></div><a class="qa-action text-link" href="#"></a></div></div><a class="qa-contact" href="/contact">Have a role or project in mind? Let’s talk →</a></section></div>`;
+  return `<div class="qa-wrap"><button id="qa-toggle" class="qa-toggle glass" aria-label="Open answers from Naeem" aria-controls="qa-panel" aria-expanded="false">${icons.chat}<span>Ask Naeem</span></button><section id="qa-panel" class="qa-panel glass" aria-label="Interactive answers from Naeem" hidden><div class="qa-heading"><div><span class="eyebrow">ASK NAEEM</span><h2>What would you like to know?</h2></div><button id="qa-close" aria-label="Close answers">×</button></div><div class="qa-presenter"><div class="qa-face"><span class="qa-ring" aria-hidden="true"></span><span class="qa-ring qa-ring-two" aria-hidden="true"></span><img src="/assets/naeem-portrait.png" alt="Naeem Ullah"><span class="qa-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div><div class="qa-presenter-copy"><strong>Naeem Ullah</strong><span>Full-Stack AI Engineer</span><span id="qa-status" class="qa-introduction" role="status">Ask about my work, projects, engineering approach, or how I can help your team.</span></div></div><audio id="qa-audio" preload="none"></audio><div class="qa-questions">${questions.map((item, index) => `<button type="button" class="qa-question" data-question="${index}">${item.q}<span aria-hidden="true">↗</span></button>`).join('')}</div><form class="qa-custom" id="qa-custom-form"><label for="qa-custom-input">Ask anything about my work</label><div><input id="qa-custom-input" maxlength="160" autocomplete="off" placeholder="Ask me something about my work…"><button type="submit">Ask</button></div><p>Answers stay grounded in verified portfolio information.</p></form><div class="qa-answer" hidden><div class="qa-answer-bubble"><span class="eyebrow">MY ANSWER</span><h3 tabindex="-1"></h3><p></p><div class="qa-answer-actions"><button id="qa-play-pause" type="button">Ⅱ Pause</button><button id="qa-replay" type="button">↻ Replay</button><button id="qa-mute" type="button">🔊 Sound</button><button id="qa-stop" type="button">■ Stop</button></div><a class="qa-action text-link" href="#"></a></div><button class="qa-back" type="button">← Ask another question</button><p class="qa-disclosure">AI-assisted voice · answers written and reviewed by Naeem</p></div><a class="qa-contact" href="/contact">Have a role or project in mind? Let’s talk →</a></section></div>`;
 }
 function projectVisual(project, detail = false) {
   const evidence = {
@@ -255,92 +257,118 @@ document.querySelector('#menu-open').addEventListener('click', function () {
 const qaToggle = document.querySelector('#qa-toggle');
 const qaPanelElement = document.querySelector('#qa-panel');
 const questionList = document.querySelector('.qa-questions');
+const customForm = document.querySelector('#qa-custom-form');
+const customInput = document.querySelector('#qa-custom-input');
 const answerBox = document.querySelector('.qa-answer');
-const qaPresenter = document.querySelector('.qa-presenter');
-const qaVideoStage = document.querySelector('.qa-video-stage');
-const qaVideo = document.querySelector('#qa-video');
-const mediaStatus = document.querySelector('#qa-media-status');
-const mediaActions = document.querySelector('.qa-answer-actions');
-const mediaManifest = fetch('/assets/answers/videos.json').then(response => response.ok ? response.json() : null).catch(() => null);
+const qaAudio = document.querySelector('#qa-audio');
+const qaStatus = document.querySelector('#qa-status');
+const playPauseButton = document.querySelector('#qa-play-pause');
+const replayButton = document.querySelector('#qa-replay');
+const muteButton = document.querySelector('#qa-mute');
+const stopButton = document.querySelector('#qa-stop');
+const audioManifest = fetch('/assets/answers/audio.json').then(response => response.ok ? response.json() : null).catch(() => null);
 let activeQuestion = null;
-let mediaRun = 0;
+let audioRun = 0;
 let lastQuestionButton = null;
-function setMediaStatus(message = '') {
-  mediaStatus.textContent = message;
-  mediaStatus.hidden = !message;
+function setQaStatus(message, state = 'idle') {
+  qaStatus.textContent = message;
+  qaPanelElement.dataset.state = state;
+  qaPanelElement.classList.toggle('is-speaking', state === 'speaking');
 }
-function stopAnswerVideo(reset = false) {
-  mediaRun += 1;
-  qaVideo.pause();
-  qaVideo.currentTime = 0;
-  if (reset) {
-    qaVideo.removeAttribute('src');
-    qaVideo.replaceChildren();
-    qaVideo.load();
-    qaVideoStage.hidden = true;
-    qaPresenter.hidden = false;
-    mediaActions.hidden = true;
-  }
-  setMediaStatus();
+function updateAudioControls() {
+  playPauseButton.textContent = qaAudio.paused ? (qaAudio.ended ? '▶ Play again' : '▶ Resume') : 'Ⅱ Pause';
+  muteButton.textContent = qaAudio.muted ? '🔇 Muted' : '🔊 Sound';
+  muteButton.setAttribute('aria-pressed', String(qaAudio.muted));
 }
-function localMediaPath(value) {
+function localAudioPath(value) {
   if (typeof value !== 'string') return null;
   try {
     const url = new URL(value, location.origin);
     return url.origin === location.origin && url.pathname.startsWith('/assets/answers/') ? url.href : null;
   } catch { return null; }
 }
-async function showAnswerVideo(item) {
-  stopAnswerVideo(true);
-  const run = mediaRun;
-  const manifest = await mediaManifest;
-  if (run !== mediaRun || qaPanelElement.hidden) return;
-  const recording = manifest?.answers?.[item.id];
-  // Only show reviewed video whose spoken script matches the visible answer.
-  if (!recording || recording.text !== item.a || recording.reviewed !== true) return;
-  const source = localMediaPath(recording.src);
-  if (!source) return;
-  qaVideo.src = source;
-  if (recording.captions && localMediaPath(recording.captions)) {
-    const captions = document.createElement('track');
-    captions.kind = 'captions';
-    captions.srclang = 'en';
-    captions.label = 'English';
-    captions.src = localMediaPath(recording.captions);
-    qaVideo.append(captions);
+function stopAnswer(reset = false) {
+  audioRun += 1;
+  qaAudio.pause();
+  qaAudio.currentTime = 0;
+  if (reset) {
+    qaAudio.removeAttribute('src');
+    qaAudio.load();
+    setQaStatus('Ask about my work, projects, engineering approach, or how I can help your team.');
+  } else {
+    setQaStatus('Answer stopped. Replay it whenever you’re ready.', 'finished');
   }
-  qaPresenter.hidden = true;
-  qaVideoStage.hidden = false;
-  mediaActions.hidden = false;
-  setMediaStatus('Loading my answer…');
+  updateAudioControls();
+}
+async function loadAndPlayAnswer(item) {
+  audioRun += 1;
+  const run = audioRun;
+  qaAudio.pause();
+  qaAudio.removeAttribute('src');
+  qaAudio.load();
+  setQaStatus('Preparing my answer…', 'loading');
+  const manifest = await audioManifest;
+  if (run !== audioRun || qaPanelElement.hidden || activeQuestion !== item) return;
+  const recording = manifest?.answers?.[item.id];
+  const source = recording && recording.text === item.a ? localAudioPath(recording.src) : null;
+  if (!source) {
+    setQaStatus('You can read my verified answer below.', 'finished');
+    playPauseButton.disabled = true;
+    replayButton.disabled = true;
+    stopButton.disabled = true;
+    return;
+  }
+  playPauseButton.disabled = false;
+  replayButton.disabled = false;
+  stopButton.disabled = false;
+  qaAudio.src = source;
+  qaAudio.load();
   try {
-    await qaVideo.play();
-    if (run === mediaRun) setMediaStatus();
+    await qaAudio.play();
   } catch (error) {
-    if (run !== mediaRun) return;
-    if (error.name === 'NotAllowedError') setMediaStatus('Press play to watch. My answer is also written below.');
-    else {
-      stopAnswerVideo(true);
-      setMediaStatus('The video could not load. You can read my full answer below.');
-    }
+    if (run !== audioRun) return;
+    setQaStatus(error.name === 'NotAllowedError' ? 'Press play to hear my answer.' : 'The audio is unavailable. You can read my answer below.', 'paused');
+    updateAudioControls();
   }
 }
-qaVideo.addEventListener('error', () => {
-  if (!qaVideo.getAttribute('src')) return;
-  stopAnswerVideo(true);
-  setMediaStatus('The video could not load. You can read my full answer below.');
-});
-qaVideo.addEventListener('ended', () => setMediaStatus('Choose another question, or replay this answer.'));
+function showAnswer(item, questionText = item.q) {
+  activeQuestion = item;
+  answerBox.querySelector('h3').textContent = questionText;
+  answerBox.querySelector('p').textContent = item.a;
+  const action = answerBox.querySelector('.qa-action');
+  action.href = item.href;
+  action.textContent = item.cta;
+  questionList.hidden = true;
+  customForm.hidden = true;
+  answerBox.hidden = false;
+  qaPanelElement.scrollTop = 0;
+  answerBox.querySelector('h3').focus({preventScroll: true});
+  loadAndPlayAnswer(item);
+}
+function matchCustomQuestion(value) {
+  const normalized = value.toLowerCase();
+  const rules = [
+    [/(tell.*yourself|about yourself|who are you|background)/, 'intro'],
+    [/(why.*(fit|hire)|good fit|your team)/, 'fit'],
+    [/(personally|ownership|what.*built)/, 'ownership'],
+    [/(mvp|production|deploy|devops|docker|azure)/, 'production'],
+    [/(client|freelanc|logistics|truck|dispatch)/, 'clients'],
+    [/(automation|n8n|whatsapp|rag|voice|computer vision|systems)/, 'systems'],
+    [/(reliable|safe|security|evaluation|risk|failure)/, 'reliability'],
+    [/(challeng|xploiteye)/, 'challenge'],
+    [/(experience|current role|research|ieee|education)/, 'background'],
+    [/(start|contact|work together|available)/, 'start']
+  ];
+  const match = rules.find(([pattern]) => pattern.test(normalized));
+  return match ? questions.find(item => item.id === match[1]) : null;
+}
 function setQaOpen(open) {
   qaPanelElement.hidden = !open;
   qaToggle.setAttribute('aria-expanded', String(open));
   qaToggle.setAttribute('aria-label', open ? 'Close quick answers about Naeem' : 'Open quick answers about Naeem');
-  if (open) {
-    document.querySelector('#qa-close').focus();
-    if (activeQuestion && !answerBox.hidden) showAnswerVideo(activeQuestion);
-  }
+  if (open) document.querySelector('#qa-close').focus();
   else {
-    stopAnswerVideo(true);
+    stopAnswer(true);
     qaToggle.focus();
   }
 }
@@ -348,33 +376,53 @@ qaToggle.addEventListener('click', () => setQaOpen(qaPanelElement.hidden));
 document.querySelector('#qa-close').addEventListener('click', () => setQaOpen(false));
 document.querySelectorAll('.qa-question').forEach(button => button.addEventListener('click', () => {
   const item = questions[Number(button.dataset.question)];
-  activeQuestion = item;
   lastQuestionButton = button;
-  answerBox.querySelector('h3').textContent = item.q;
-  answerBox.querySelector('p').textContent = item.a;
-  const action = answerBox.querySelector('.qa-action');
-  action.href = item.href;
-  action.textContent = item.cta;
-  questionList.hidden = true;
-  answerBox.hidden = false;
-  qaPanelElement.scrollTop = 0;
-  answerBox.querySelector('h3').focus({preventScroll: true});
-  showAnswerVideo(item);
+  showAnswer(item);
 }));
+customForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const questionText = customInput.value.trim();
+  if (!questionText) return customInput.focus();
+  const match = matchCustomQuestion(questionText);
+  const item = match || {id: 'fallback', q: questionText, a: fallbackAnswer, href: '/contact', cta: 'Contact me →'};
+  showAnswer(item, questionText);
+});
 document.querySelector('.qa-back').addEventListener('click', () => {
-  stopAnswerVideo(true);
+  stopAnswer(true);
   answerBox.hidden = true;
   questionList.hidden = false;
+  customForm.hidden = false;
   (lastQuestionButton || questionList.querySelector('button')).focus();
 });
-document.querySelector('#qa-replay').addEventListener('click', () => {
-  if (activeQuestion) showAnswerVideo(activeQuestion);
+playPauseButton.addEventListener('click', async () => {
+  if (!qaAudio.getAttribute('src')) return activeQuestion && loadAndPlayAnswer(activeQuestion);
+  if (qaAudio.ended || (qaAudio.duration && qaAudio.currentTime >= qaAudio.duration - .2)) qaAudio.currentTime = 0;
+  try { qaAudio.paused ? await qaAudio.play() : qaAudio.pause(); }
+  catch { setQaStatus('The audio is unavailable. You can read my answer below.', 'paused'); }
 });
-document.querySelector('#qa-stop').addEventListener('click', () => {
-  stopAnswerVideo();
-  setMediaStatus('Video stopped. Replay whenever you’re ready.');
+replayButton.addEventListener('click', async () => {
+  if (!qaAudio.getAttribute('src')) return activeQuestion && loadAndPlayAnswer(activeQuestion);
+  qaAudio.currentTime = 0;
+  try { await qaAudio.play(); } catch { setQaStatus('Press play to hear my answer.', 'paused'); }
 });
-window.addEventListener('pagehide', () => stopAnswerVideo(true));
+muteButton.addEventListener('click', () => { qaAudio.muted = !qaAudio.muted; updateAudioControls(); });
+stopButton.addEventListener('click', () => stopAnswer());
+qaAudio.addEventListener('play', () => { setQaStatus('Naeem is answering…', 'speaking'); updateAudioControls(); });
+qaAudio.addEventListener('pause', () => {
+  if (!qaAudio.ended && qaAudio.currentTime > 0 && qaPanelElement.dataset.state === 'speaking') setQaStatus('Answer paused.', 'paused');
+  updateAudioControls();
+});
+qaAudio.addEventListener('ended', () => { setQaStatus('Answer complete. Ask another question.', 'finished'); updateAudioControls(); });
+qaAudio.addEventListener('error', () => {
+  if (!qaAudio.getAttribute('src')) return;
+  setQaStatus('The audio is unavailable. You can read my answer below.', 'paused');
+  updateAudioControls();
+});
+qaAudio.addEventListener('timeupdate', () => {
+  const progress = qaAudio.duration ? qaAudio.currentTime / qaAudio.duration : 0;
+  qaPanelElement.style.setProperty('--voice-progress', String(progress));
+});
+window.addEventListener('pagehide', () => stopAnswer(true));
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && !qaPanelElement.hidden) setQaOpen(false);
 });
