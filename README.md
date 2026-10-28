@@ -5,7 +5,7 @@ A static portfolio for Naeem Ullah, Full-Stack AI Engineer. The visual direction
 ## Pages
 
 - Home, Portfolio, About, Publications, and Contact
-- Project case studies for XploitEye, AI-Generated Voice Detection, Cricket Ball Tracking & Delivery Analysis, and three generalized internal/client engagements
+- Project case studies for XploitEye, end-to-end truck dispatch automation, AI-Generated Voice Detection, Cricket Ball Tracking & Delivery Analysis, and three generalized internal/client engagements
 - The supplied IEEE manuscript can be read inside the portfolio; the XploitEye video and voice demo are embedded on their case-study pages
 - Ten hiring-focused questions addressed directly to Naeem, with first-person answers, concrete ownership examples, and links to supporting work
 - A video answer player prepared for reviewed talking-avatar clips, with text fallback and mobile playback controls; video generation is pending the HeyGen connection

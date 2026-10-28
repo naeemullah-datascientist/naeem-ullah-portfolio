@@ -10,7 +10,7 @@
     {
       "id": "build",
       "question": "What could you build for us?",
-      "script": "I build AI applications, Python backends, document assistants, and automation around real workflows. For example, my work has covered legal document retrieval, incident escalation, and order fulfillment. I would start with the problem your team needs to solve, then define a focused product we can build and evaluate."
+      "script": "I build AI applications, Python backends, document assistants, and automation around real workflows. My work has covered legal document retrieval, incident escalation, order fulfillment, and an n8n dispatch system connected to WhatsApp. I would start with the problem your team needs to solve, then define a focused product we can build and evaluate."
     },
     {
       "id": "ownership",
@@ -25,7 +25,7 @@
     {
       "id": "clients",
       "question": "Have you worked on client projects?",
-      "script": "Yes. I have worked on fulfillment flows covering purchase orders, shipments, tracking, and activity history. I also built an incident-management prototype with classification, acknowledgements, and timed escalation. Those projects required connecting business rules to working interfaces and backend services. The case studies explain my work without exposing private client information."
+      "script": "Yes. For a logistics client, I converted a manual truck-dispatch process into an n8n workflow covering data validation, calculations, dispatch tracking, WhatsApp updates, and final delivery. I handled the process mapping, workflow logic, integrations, testing, and client-driven improvements. I have also worked on fulfillment and incident-escalation workflows. The case studies explain my ownership without exposing confidential client information."
     },
     {
       "id": "security",

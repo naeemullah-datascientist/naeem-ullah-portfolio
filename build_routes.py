@@ -18,6 +18,7 @@ pages = {
     "publications/beyond-the-naked-eye": ("Beyond the Naked Eye | Naeem Ullah", "Read Naeem Ullah's IEEE FIT 2025 paper on single-camera cricket ball tracking and automated delivery analysis."),
     "contact": ("Contact | Naeem Ullah", "Contact Naeem Ullah about AI engineering roles, Python backend development, freelance projects, and product collaboration."),
     "portfolio/xploiteye": ("XploitEye | Naeem Ullah", "A multi-agent AI security platform connecting authorized assessment, vulnerability context, remediation, and reporting."),
+    "portfolio/truck-dispatch-automation": ("Truck Dispatch Automation | Naeem Ullah", "An end-to-end n8n automation connecting truck dispatch validation, calculations, order tracking, delivery stages, APIs, and WhatsApp updates."),
     "portfolio/voice-authenticity": ("AI-Generated Voice Detection | Naeem Ullah", "An audio AI system for evaluating real and synthetic speech through a Python API and interactive inference workflow."),
     "portfolio/cricket-vision": ("Cricket Ball Tracking | Naeem Ullah", "A published computer vision pipeline using YOLOv5s, Kalman filtering, and homography for cricket delivery analysis."),
     "portfolio/legal-ai": ("Legal AI & Document Retrieval | Naeem Ullah", "A knowledge-grounded legal document assistant using retrieval, document processing, and Python backend services."),
