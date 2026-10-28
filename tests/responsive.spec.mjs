@@ -139,6 +139,8 @@ test('interactive controls and every Ask Naeem question', async ({page}) => {
     await expect(page.locator('.qa-answer')).toBeVisible();
     await expect(page.locator('.qa-action')).not.toHaveAttribute('href', '#');
     await expect(page.locator('#qa-play-pause')).toBeEnabled();
+    await page.locator('#qa-play-pause').click();
+    await page.locator('#qa-play-pause').click();
     await page.locator('#qa-mute').click();
     await page.locator('#qa-stop').click();
     await page.locator('#qa-replay').click();
@@ -147,10 +149,14 @@ test('interactive controls and every Ask Naeem question', async ({page}) => {
   await page.locator('#qa-close').click();
 
   await page.goto('/portfolio/xploiteye');
-  const chapter = page.locator('.demo-chapters button').first();
-  await chapter.click();
-  await expect(chapter).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('.video-embed iframe')).toHaveAttribute('src', /start=498/);
+  const chapters = page.locator('.demo-chapters button');
+  const starts = ['498', '674', '972', '1165', '1522'];
+  expect(await chapters.count()).toBe(starts.length);
+  for (let index = 0; index < starts.length; index += 1) {
+    await chapters.nth(index).click();
+    await expect(chapters.nth(index)).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('.video-embed iframe')).toHaveAttribute('src', new RegExp(`start=${starts[index]}`));
+  }
 });
 
 test('link crawler and external destination behavior', async ({page, request, context, baseURL}) => {
