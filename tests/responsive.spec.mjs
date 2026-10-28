@@ -3,10 +3,10 @@ import fs from 'node:fs';
 
 const viewports = [320, 375, 390, 768, 1024, 1280, 1440, 1920];
 const routes = [
-  '/', '/portfolio', '/about', '/publications', '/publications/beyond-the-naked-eye', '/contact',
-  '/portfolio/xploiteye', '/portfolio/truck-dispatch-automation', '/portfolio/voice-authenticity',
-  '/portfolio/cricket-vision', '/portfolio/legal-ai', '/portfolio/incident-escalation',
-  '/portfolio/fulfillment-workflows'
+  '/', '/projects', '/about', '/publications', '/publications/beyond-the-naked-eye', '/contact',
+  '/projects/xploiteye', '/projects/truck-dispatch-automation', '/projects/deepfake-voice-detection',
+  '/projects/cricket-ball-tracking', '/projects/legal-ai-document-retrieval', '/projects/incident-triage-escalation',
+  '/projects/ai-assisted-fulfillment'
 ];
 const screenshots = process.env.PW_SCREENSHOT_DIR || '/tmp/naeem-playwright-screens';
 
@@ -108,7 +108,7 @@ for (const width of viewports) {
 test('header navigation and anchor offsets', async ({page}) => {
   await page.setViewportSize({width: 1280, height: 900});
   await prepare(page);
-  for (const [label, pathname] of [['Portfolio', '/portfolio'], ['About', '/about'], ['Publications', '/publications'], ['Contact Me', '/contact']]) {
+  for (const [label, pathname] of [['Projects', '/projects'], ['About', '/about'], ['Publications', '/publications'], ['Contact Me', '/contact']]) {
     await page.goto('/');
     await page.locator('.site-header').getByRole('link', {name: label, exact: true}).click();
     await expect(page).toHaveURL(new RegExp(`${pathname}/?$`));
@@ -148,7 +148,7 @@ test('interactive controls and every Ask Naeem question', async ({page}) => {
   }
   await page.locator('#qa-close').click();
 
-  await page.goto('/portfolio/xploiteye');
+  await page.goto('/projects/xploiteye');
   const chapters = page.locator('.demo-chapters button');
   const starts = ['498', '674', '972', '1165', '1522'];
   expect(await chapters.count()).toBe(starts.length);
