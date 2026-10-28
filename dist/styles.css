@@ -410,3 +410,82 @@ body{font-family:Satoshi,"Space Grotesk",Arial,sans-serif}
 }
 @media(max-width:390px){.qa-panel{padding:16px}.qa-heading{top:-16px;margin:-16px -16px 0;padding:16px 16px 13px}.qa-face{width:88px;height:88px}}
 @media(prefers-reduced-motion:reduce){.qa-panel .qa-ring,.qa-panel .qa-face img,.qa-panel .qa-wave i{animation:none!important}}
+
+/* Final responsive navigation polish */
+:root{
+  --nav-top:24px;
+  --nav-height:68px;
+  --nav-safe-area:calc(var(--nav-top) + var(--nav-height) + 24px);
+}
+html{scroll-padding-top:var(--nav-safe-area)}
+body{max-width:100%;overflow-wrap:break-word}
+img,video,iframe{max-width:100%}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--sky);outline-offset:4px}
+[id]{scroll-margin-top:var(--nav-safe-area)}
+.site-wrap{padding-top:var(--nav-safe-area);overflow:visible}
+.site-wrap:before{content:"";position:fixed;z-index:40;pointer-events:none;inset:0 0 auto;height:calc(var(--nav-safe-area) + 30px);background:linear-gradient(180deg,rgba(2,5,3,.99) 0%,rgba(3,7,4,.96) 47%,rgba(4,8,5,.78) 73%,rgba(4,8,5,0) 100%);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+.site-header{position:fixed;z-index:90;top:var(--nav-top);left:50%;transform:translateX(-50%);width:min(1120px,calc(100vw - 32px));height:var(--nav-height);margin:0;padding:7px 24px 7px 14px;gap:28px}
+.brand-copy{display:flex;align-items:baseline;min-width:0}
+.brand-name{flex:none}
+.brand-role{margin-left:4px}
+.role-short{display:none}
+.nav-avatar{width:52px;height:52px;margin-right:13px}
+.nav-links{gap:26px}
+.nav-links a{flex:none}
+.nav-contact{padding:9px 16px}
+.menu-button{width:44px;height:44px;padding:0;border-radius:50%;font-size:27px}
+.menu-button:hover{background:rgba(123,151,91,.16)}
+.inner-main{margin-top:40px}
+.contact-option span{min-width:0}
+.qa-panel{max-height:min(760px,calc(100dvh - var(--nav-safe-area) - 105px))}
+@media(max-width:1120px){
+  .site-header{gap:18px;padding-right:18px}
+  .role-full{display:none}
+  .role-short{display:inline}
+  .nav-links{gap:18px}
+}
+@media(max-width:920px){
+  .site-header{gap:12px}
+  .brand{font-size:18px}
+  .nav-links{gap:13px;font-size:14px}
+  .nav-contact{padding:8px 11px}
+}
+@media(max-width:840px){
+  :root{--nav-top:16px;--nav-height:64px;--nav-safe-area:calc(var(--nav-top) + var(--nav-height) + 22px)}
+  .site-wrap:before{height:calc(var(--nav-safe-area) + 24px);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+  .site-header{height:var(--nav-height);padding:6px 10px 6px 12px}
+  .brand{font-size:18px}
+  .brand-role{display:none}
+  .nav-avatar{width:48px;height:48px;margin-right:10px}
+  .nav-links{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;margin:0;padding:12px;border:1px solid rgba(214,229,194,.2);border-radius:18px;background:rgba(35,42,34,.98);box-shadow:0 18px 42px rgba(0,0,0,.42);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;gap:2px}
+  .nav-links a{min-height:44px;display:flex;align-items:center;padding:9px 12px;border-radius:10px}
+  .nav-links a:hover,.nav-links a:focus-visible{background:rgba(107,139,72,.22)}
+  .nav-contact{justify-content:center;margin:4px 0 0;padding:9px 12px}
+  .menu-button{display:grid;margin-left:auto}
+  .inner-main{margin-top:28px}
+}
+@media(max-width:580px){
+  :root{--nav-top:12px;--nav-height:60px;--nav-safe-area:calc(var(--nav-top) + var(--nav-height) + 18px)}
+  .site-header{width:calc(100vw - 24px);height:var(--nav-height);padding:5px 7px 5px 9px}
+  .nav-avatar{width:46px;height:46px;margin-right:8px}
+  .brand{font-size:17px}
+  .menu-button{width:44px;height:44px}
+  .hero{padding-top:48px}
+  .qa-wrap{right:12px;bottom:max(12px,env(safe-area-inset-bottom))}
+  .qa-toggle{width:50px;height:50px;min-height:50px}
+  .qa-panel{inset:calc(var(--nav-top) + var(--nav-height) + 10px) 8px 8px;width:auto;height:auto;max-height:none;border-radius:20px;padding:18px}
+  .qa-heading{top:-18px;margin:-18px -18px 0;padding:18px 18px 13px;border-radius:20px 20px 0 0}
+}
+@media(max-width:380px){
+  .site-header{width:calc(100vw - 16px)}
+  .brand{font-size:16px}
+  .nav-avatar{width:44px;height:44px}
+  .hero h1{font-size:clamp(40px,13vw,47px)}
+  .hero-actions{gap:8px}
+  .pill{padding-inline:14px}
+  .contact-option{padding:15px 13px;gap:12px}
+  .contact-option small{overflow-wrap:anywhere}
+  .qa-panel{inset:calc(var(--nav-top) + var(--nav-height) + 8px) 5px 5px;padding:15px}
+  .qa-heading{top:-15px;margin:-15px -15px 0;padding:15px 15px 12px}
+}

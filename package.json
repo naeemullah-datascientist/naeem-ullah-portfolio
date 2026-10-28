@@ -1,0 +1,11 @@
+{
+  "name": "naeem-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:responsive": "playwright test tests/responsive.spec.mjs --reporter=line"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}
