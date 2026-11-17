@@ -8,7 +8,7 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parent / "dist"
 shell = (root / "index.html").read_text()
-base_url = os.environ.get("SITE_URL", "https://naeem-ullah.pages.dev").rstrip("/")
+base_url = os.environ.get("SITE_URL", "https://portfolio.naeemullah.workers.dev").rstrip("/")
 og_image = f"{base_url}/assets/og-preview.png"
 description = "AI Engineer building production systems across AI agents, RAG, workflow automation, computer vision, voice AI, and Python backend engineering. Explore Naeem Ullah's projects, research, and client work."
 
@@ -54,6 +54,7 @@ def set_meta(document: str, route: str, title: str, page_description: str, summa
     }
     for pattern, replacement in replacements.items():
         document = re.sub(pattern, replacement, document, count=1, flags=re.S)
+    document = document.replace("https://naeem-ullah.pages.dev", base_url)
     return document
 
 for route, (title, page_description, summary) in pages.items():

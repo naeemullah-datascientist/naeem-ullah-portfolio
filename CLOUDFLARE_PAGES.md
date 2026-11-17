@@ -6,7 +6,7 @@ Use these settings for the Git-integrated Pages project:
 - Build command: `npm run build`
 - Build output directory: `dist`
 - Production branch: `main`
-- Environment variable: `SITE_URL=https://naeem-ullah.pages.dev`
+- Environment variable: `SITE_URL=https://portfolio.naeemullah.workers.dev`
 
 `SITE_URL` controls canonical links, Open Graph URLs, `robots.txt`, and the XML sitemap. Change it only after the Pages hostname or an approved custom domain is active.
 

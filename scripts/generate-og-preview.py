@@ -22,7 +22,7 @@ draw.text((120, 112), 'NAEEM ULLAH', fill=(163, 201, 101), font=font(18, True))
 draw.text((120, 170), 'AI Engineer', fill=(237, 234, 222), font=font(68, True))
 draw.text((120, 270), 'Production systems across agents, RAG & automation', fill=(190, 203, 178), font=font(28))
 draw.text((120, 418), 'Agents · RAG · Automation · Vision · Voice', fill=(226, 222, 211), font=font(23))
-draw.text((930, 516), 'naeem-ullah.pages.dev', fill=(159, 189, 108), font=font(14))
+draw.text((930, 516), 'portfolio.naeemullah.workers.dev', fill=(159, 189, 108), font=font(14))
 
 portrait = Image.open(root / 'dist' / 'assets' / 'naeem-portrait.png').convert('RGB')
 side = min(portrait.size)
