@@ -1,5 +1,5 @@
 const links = {
-  email: 'mailto:naeem.ullah@gmail.com',
+  email: 'mailto:naeemullahhh3@gmail.com',
   github: 'https://github.com/naeemullah-datascientist',
   linkedin: 'https://www.linkedin.com/in/naeemm-ullah/',
   orcid: 'https://orcid.org/0009-0004-5921-3884',
@@ -253,6 +253,9 @@ else if (path.startsWith('/portfolio/') || path.startsWith('/projects/')) {
   content = project ? caseStudy(project) : notFound();
 } else content = notFound();
 app.innerHTML = `<div class="site-wrap ${path === '/' ? 'is-home' : 'is-inner'}">${header()}${content}${footer()}${qaPanel()}</div>`;
+document.querySelectorAll('small').forEach(element => {
+  if (element.textContent.includes('naeem.ullah@gmail.com')) element.textContent = 'naeemullahhh3@gmail.com ↗';
+});
 const pageName = path === '/about' ? 'About' : path === '/publications' ? 'Publications' : path === '/publications/beyond-the-naked-eye' ? 'Beyond the Naked Eye' : path === '/contact' ? 'Contact' : (path === '/portfolio' || path === '/projects') ? 'Projects' : projects.find(item => path === projectPath(item) || path === `/portfolio/${item.slug}`)?.title || 'Projects';
 document.title = path === '/' ? 'Naeem Ullah | AI Engineer' : `${pageName} | Naeem Ullah`;
 document.querySelectorAll('.nav-links a').forEach(link => {
